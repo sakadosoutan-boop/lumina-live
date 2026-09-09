@@ -1,11 +1,135 @@
-export type VisualKind = 'tunnel'|'waves'|'particles'|'grid'|'rings'|'plasma'|'kaleido'|'noise'|'aurora'|'bars'|'terrain'|'vortex';
-export interface Asset { id:string; name:string; kind:'procedural'|'video'|'image'; visual?:VisualKind; url?:string; thumbnail?:string; tags:string[]; hue:number; energy:number; bpm?:number; beats?:number; duration?:number; license:string; source?:string; attribution?:string; status?:string; bytes?:number; favorite?:boolean; seed?:number; }
-export interface Deck {assetId:string; opacity:number; speed:number; scale:number; rotation:number; mirror:boolean; beatSync:boolean; beats:number; hue:number; saturation:number; brightness:number; blend:'normal'|'screen'|'add'|'multiply'|'difference';}
-export interface LyricCue {id:string; start:number; end:number; text:string; section?:string;}
-export interface Song {id:string; title:string; bpm:number; timelineBpm?:number; duration:number; lyrics:string; cues:LyricCue[]; audioUrl?:string; audioName?:string; offset:number; beatsPerBar:number;}
-export interface LyricStyle {enabled:boolean; size:number; position:number; color:string; align:'center'|'left'; mode:'line'|'karaoke'|'typewriter'; shadow:boolean;}
-export interface RenderState {time:number; beat:number; bpm:number; playing:boolean; decks:Deck[]; crossfade:number; master:number; blackout:boolean; freeze:boolean; fx:{glitch:number; bloom:number; vignette:number; chromatic:number; pixelate:number}; lyric:string; lyricProgress:number; lyricStyle:LyricStyle; audio:{low:number;mid:number;high:number;level:number}; width:number;height:number;}
-export interface Show {version:1; title:string; songs:Song[]; assets:Asset[]; decks:Deck[]; crossfade:number; master:number; lyricStyle:LyricStyle; fx:RenderState['fx'];}
-export interface RenderStats {fps:number; dropped:number; mediaErrors:string[];}
-export interface LuminaDesktop {getAssets:()=>Promise<Asset[]>;importMedia:()=>Promise<Asset[]>;getDisplays:()=>Promise<{id:number;label:string;width:number;height:number}[]>;openOutput:(displayId?:number)=>Promise<void>;saveShow:(data:string)=>Promise<boolean>;loadShow:()=>Promise<string|null>;onRemote:(callback:(event:{address:string;args:number[]})=>void)=>()=>void;}
-declare global {interface Window {lumina?:LuminaDesktop;}}
+export type VisualKind =
+  | "tunnel"
+  | "waves"
+  | "particles"
+  | "grid"
+  | "rings"
+  | "plasma"
+  | "kaleido"
+  | "noise"
+  | "aurora"
+  | "bars"
+  | "terrain"
+  | "vortex";
+export interface Asset {
+  id: string;
+  name: string;
+  kind: "procedural" | "video" | "image";
+  visual?: VisualKind;
+  url?: string;
+  thumbnail?: string;
+  tags: string[];
+  hue: number;
+  energy: number;
+  bpm?: number;
+  beats?: number;
+  duration?: number;
+  license: string;
+  source?: string;
+  attribution?: string;
+  status?: string;
+  bytes?: number;
+  favorite?: boolean;
+  seed?: number;
+}
+export interface Deck {
+  assetId: string;
+  opacity: number;
+  speed: number;
+  scale: number;
+  rotation: number;
+  mirror: boolean;
+  beatSync: boolean;
+  beats: number;
+  hue: number;
+  saturation: number;
+  brightness: number;
+  blend: "normal" | "screen" | "add" | "multiply" | "difference";
+}
+export interface LyricCue {
+  id: string;
+  start: number;
+  end: number;
+  text: string;
+  section?: string;
+}
+export interface Song {
+  id: string;
+  title: string;
+  bpm: number;
+  timelineBpm?: number;
+  duration: number;
+  lyrics: string;
+  cues: LyricCue[];
+  audioUrl?: string;
+  audioName?: string;
+  offset: number;
+  beatsPerBar: number;
+}
+export interface LyricStyle {
+  enabled: boolean;
+  size: number;
+  position: number;
+  color: string;
+  align: "center" | "left";
+  mode: "line" | "karaoke" | "typewriter";
+  shadow: boolean;
+}
+export interface RenderState {
+  time: number;
+  beat: number;
+  bpm: number;
+  playing: boolean;
+  decks: Deck[];
+  crossfade: number;
+  master: number;
+  blackout: boolean;
+  freeze: boolean;
+  fx: {
+    glitch: number;
+    bloom: number;
+    vignette: number;
+    chromatic: number;
+    pixelate: number;
+  };
+  lyric: string;
+  lyricProgress: number;
+  lyricStyle: LyricStyle;
+  audio: { low: number; mid: number; high: number; level: number };
+  width: number;
+  height: number;
+}
+export interface Show {
+  version: 1;
+  title: string;
+  songs: Song[];
+  assets: Asset[];
+  decks: Deck[];
+  crossfade: number;
+  master: number;
+  lyricStyle: LyricStyle;
+  fx: RenderState["fx"];
+}
+export interface RenderStats {
+  fps: number;
+  dropped: number;
+  mediaErrors: string[];
+}
+export interface LuminaDesktop {
+  getAssets: () => Promise<Asset[]>;
+  importMedia: () => Promise<Asset[]>;
+  getDisplays: () => Promise<
+    { id: number; label: string; width: number; height: number }[]
+  >;
+  openOutput: (displayId?: number) => Promise<void>;
+  saveShow: (data: string) => Promise<boolean>;
+  loadShow: () => Promise<string | null>;
+  onRemote: (
+    callback: (event: { address: string; args: number[] }) => void,
+  ) => () => void;
+}
+declare global {
+  interface Window {
+    lumina?: LuminaDesktop;
+  }
+}

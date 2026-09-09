@@ -1,76 +1,82 @@
 # LUMINA LIVE — 素材の出典と取得状況
 
-外部動画の「候補発見」「許諾確認」「ダウンロード」「検証」「アプリへの収録」は別の段階である。内蔵96種類はオリジナルのGPU描画プリセットであり、96本の動画ファイルではない。素材の選び方と権利判断の根拠は[調査報告・27資料台帳](../research/report-source.md)、操作方法は[ライブガイド](../docs/live-guide.md)を参照する。
+基本操作は[ライブガイド](live-guide.md)、利用条件の根拠は[調査報告・一次資料27URL](../research/report-source.md)を参照してください。
 
-## 確認時点の実数
+## 現在の素材数
 
-実ファイル集計日時：**2026-09-09 00:10 JST（2026-09-08 15:10 UTC）前後**。マニフェストの内容は07:18 JST、全73動画の実在・サイズとassets合計は07:23 JSTにも同じ値を確認した。収集担当が作業を継続しているため、以下は収集完了の宣言ではない。最終統合担当がマニフェストと実ファイルから再集計する。
+**2026年9月9日更新。** 外部動画251本を取得し、243本をアプリのカタログに登録しました。内蔵96種類と合わせ、選択できる映像は339種類です。
 
-| 区分 | 確認できた数・容量 | 状態と注意点 |
-| --- | --- | --- |
-| オリジナルGPUプリセット | 96種類＝12系統×8変種 | 動画ファイル数・取得バイト数に加算しない。カタログのアートワークはCC0宣言。 |
-| Mantissa取得動画 | 73本、6,266,111,985 byte | 73本全ての実在・サイズ一致を今回確認。取得時記録は73本ともSHA256・probeあり。 |
-| Mantissa未取得候補 | 54本 | open記録では127候補中54本がskipped-budget。配布元全作品の取得完了ではない。 |
-| パックから検証済みの動画 | 0本 | pack-candidatesは空配列。ZIPの取得成功を動画の展開・検証成功と数えない。 |
-| 保持されているパックZIP | 1ファイル、1,392,226,940 byte | four.color.process。展開処理のJSONエラーで停止した記録がある。 |
-| ローカル動画＋パックZIP | 7,658,338,925 byte | 確認対象のmedia/open・media/packs・downloads/packsの合計。 |
-| assetsフォルダー全体 | 76ファイル、7,658,542,708 byte | 上記に候補JSON等を含む実測。研究資料・ブラウザー保存・録画・別フォルダーのコピーは含まない。 |
-| Canva | 1デザイン、10秒・1080pの引継ぎ記録 | UIでは書き出し完了。ローカル動画の存在・サイズ・ハッシュは未確認、取得本数への加算0。 |
-| VideoZero | 1プロジェクト、無音8.1秒の引継ぎ記録 | レビュー済み。ローカルエクスポート未取得、取得本数への加算0。 |
+| 区分 | 本数 | 内訳 |
+| --- | ---: | --- |
+| 内蔵映像 | 96種類 | 12系統×8変種のオリジナルGPU映像。動画ファイルの取得数には含みません。 |
+| open素材 | 118本 | Mantissa 92本、NASA SVS 20本、NOAA 2本、USGS・NPS・ESO・ESA/Hubble 各1本。 |
+| Beepleのパック | 93本 | MANIFEST 66本、four.color.process 10本、Brainfader 8本、Resolume 9本。 |
+| Neb Motionのパック | 40本 | Abstract Tunnels 1・2、Retro Sunsets 1、Abstract Geometry 1を各10本。 |
+| アプリで選べる外部動画 | 243本 | 取得原本251本から、個別レビュー前の8本を除いた数。 |
+| 登録から除外した動画 | 8本 | MANIFESTの名前にORGYを含む素材。原本は保持。内容を名前だけで断定したものではありません。 |
 
-根拠：[open候補JSON](../assets/open-candidates.json)、[open取得記録](../research/open-acquisition.json)、[pack候補JSON](../assets/pack-candidates.json)、[pack取得記録](../research/pack-acquisition.json)、[内蔵カタログ](../src/catalog.ts)。
+取得原本と軽量な再生用ファイルは同じ映像なので、取得本数へ重複して加算しません。配布ページの予定数と実際のZIP内の本数が異なる場合も、実ファイルで数えています。CanvaとVideoZeroのプロジェクトはローカルMP4未取得のため、この本数には含めません。
 
-open記録のupdatedAtは2026-09-08T01:13:15.315Z、pack記録は2026-09-08T00:35:23.992Z。openのrun.statusはrunningのままだが、これはプロセスが今も実行中である証拠にはならない。
+## ファイル検証と容量
 
-open記録のmediaDiskBytesは6,405,007,583 byteで、今回の実在73本の合計とは138,895,598 byte異なる。過去の途中ファイル・進捗値を現在の容量へ加算し直さない。MANIFESTの過去のpartialBytes＝1,403,682,816も記録に残るが、今回の対象ディレクトリーではその.part実体を確認していない。現在のパックZIPはarchive-downloadedイベントと実サイズを参照し、古いdownloadedBytesの進捗値を使わない。
+[最終集計・検証記録](../research/library-audit.json)に、251本の原本と243本の再生用動画のSHA256照合、全編デコード結果、実容量、確認時刻を記録しています。カタログ登録待ちは0本です。保存容量は指定の20,000,000,000 byte以内です。
 
-取得時probeではMantissa73本はいずれも2048×1152、音声なし。先頭フレームのデコード検査は全編検査ではなく、各ループの継ぎ目は未検証。今回動画全体の再ハッシュ・全編目視再生はしていない。sourceRightsの有無、取得成功、実機での安定再生を別々に確認する。
+容量は `assets` 内の全ファイルと `research` 内の取得台帳・出典資料などを数えています。原本、変換版、サムネイル、ZIP・途中ファイルも対象です。集計JSONとデコードキャッシュ自体は別枠です。アプリ、開発用ライブラリ、別の端末やブラウザーへ後から取り込むコピーはこの素材容量に含めません。
 
-## 20 GBの上限
+取得処理には、open 8.5 GB、パック9.5 GB、変換版1.9 GBの枠を設け、展開中も上限を超えないよう管理しています。残ったMantissa候補とUbersketchは取得・展開用の枠に入らず未取得です。通常の素材取り込みは、全端末の保存容量を自動管理する機能ではありません。
 
-上限は **20,000,000,000 byte**。20 GiB（21,474,836,480 byte）へ読み替えない。確認時のassets全体との差は12,341,457,292 byteだが、これは今後使える容量を保証する値ではない。研究資料・他の取得担当・ブラウザーのIndexedDB複製・展開中のZIPと動画・プロキシ・録画も含め、重複保持のピークを親側で監査する。
+原本一覧、カタログ、クレジット、取得台帳はローカルの `assets` と `research` にあります。動画本体とローカル取得台帳はGitHubにアップロードしていません。GitHub上で参照する際は、公開していないローカルファイルへのリンクが開かないことがあります。
 
-現在の[open取得スクリプト](../scripts/collect-open.mjs)は6 GiB、[pack取得スクリプト](../scripts/collect-packs.mjs)は12 GiBの担当別枠を持つ。合計19,327,352,832 byteで、ユーザー上限との差は672,647,168 byte。これは固定の全体管理機構ではない。担当配分が変わった場合も全体の20,000,000,000 byteを維持する。
+MANIFESTの具象映像には `manual-cue` タグを付け、自動VJの候補から除外しています。通常の一覧にある素材は手動で選択できます。ORGYを名前に含む8本は、通常の一覧からも除外し、ローカルの `assets/excluded.json` に記録しています。
 
-アプリの一般的な素材取り込みに、この20 GB全体上限の自動強制は確認できない。Windows版は元ファイルへの登録、ブラウザー版はIndexedDBへの複製を使うため、同じ動画でも必要容量が異なる。[Windows素材登録](../desktop/server.cjs)、[ブラウザー保存](../src/storage.ts)
+## 起動と確認状況
 
-## 配布元ごとの採用条件
+- この作業PC：[試用画面](http://127.0.0.1:4173/)。他のPCからは使えません。
+- Windows：[Lumina-Live.exe](../Lumina-Live.exe)と同じ場所に `assets` を置きます。
+- Chromebook：[単一HTML](../web/Lumina-Live.html)をChromeで開き、必要な動画を取り込みます。
+- [GitHubの保存先](https://github.com/sakadosoutan-boop/lumina-live)は非公開です。HTMLは「Download raw file」で保存してください。
 
-| 配布元 | 本番への扱い | 残す出典・制限 |
-| --- | --- | --- |
-| [Mantissa](https://mantissa.xyz/vj.html) | 取得済み候補の主力。CC0。 | 作者Midge “Mantissa” Sinnaeve、原ページ、SHA256を保持。クレジットは任意。 |
-| [Beeple](https://www.beeple-crap.com/vjloops) | 動画の商用・非商用利用の案内あり。現在は検証済み展開動画0本。 | Mike Winkelmannと原ページを保持。CCの正確な種別は未確定。音楽は別権利。素材ファイルの再配布条件を推定しない。 |
-| [Neb Motion](https://nebmotion.co.uk/vj-loops/free/) | 商用・非商用利用と任意クレジットの案内あり。今回ローカル取得は未確認。 | 公式パックリンクを利用。配布ページのCC表記だけでCC0と書かない。 |
-| [NASA SVS](https://svs.gsfc.nasa.gov/help/) | 原則public domain、個別例外あり。候補のまま。 | [NASA指針](https://www.nasa.gov/nasa-brand-center/images-and-media/)と素材ごとのクレジット。音楽、第三者素材、人物、ロゴ・推薦の誤認を別途確認。 |
-| [ESO](https://eso.org/public/outreach/copyright/)／[ESA/Hubble](https://esahubble.org/copyright/) | CC BY 4.0条件と個別クレジットを満たして利用。候補のまま。 | 見える全文クレジット、[ライセンスリンク](https://creativecommons.org/licenses/by/4.0/)、変更表示。音楽の許諾を映像から推定しない。 |
-| [NOAA](https://oceanexplorer.noaa.gov/faqs/)／[USGSの溶岩動画](https://www.usgs.gov/media/videos/lava-flow)／[NPSの降雨動画](https://npgallery.nps.gov/AssetDetail/4e87e5ab-61f0-4c8c-955f-80ae6c4d5b96) | 公式の原則または個別public domain表示を確認。候補のまま。 | 個別ページの例外とクレジットを維持。「政府サイトなら全て自由」と一般化しない。 |
-| [Pexels](https://www.pexels.com/terms-of-service/)／[Pixabay](https://pixabay.com/service/terms/) | 必要な個別素材の通常取得を検討する範囲。 | 明示許可のない大量・大規模・系統的コピー禁止。無料だから一括収集できるとはいえない。 |
-| [Mixkit](https://mixkit.co/terms/) | 個別条件の確認が済むまで候補。 | スクリプト／ボットでの大量取得禁止。[動画Free／Restricted](https://mixkit.co/license/)を区別。今回のテキスト取得では展開式ライセンス全文は未確認。 |
+最新版は**自動テスト366件合格、型検査・本番ビルド・Windows版と単一HTMLの生成成功、npm auditの検出0件**です。ブラウザーではLIVE・AUDIO、実際のMP4再生、AUTOクロスフェード、別画面への出力、歌詞表示、BLACKOUTを操作して確認しました。
 
-素材が無料でも、バンド自身の楽曲・歌詞・録音や会場投影、公開配信・公演録画の権利まで一括して処理されるわけではない。映像の権利台帳と、自前で使用する歌詞・伴奏音源の管理を分ける。
+全243本の再生用動画に対し、FFmpegで全編をデコードする検査を実施しました。これはファイルの技術的な読み込み検査です。全編の内容レビュー、ループの見え方、本番端末での描画性能は別に確認してください。
 
-## Canvaの具体的な状態
+Surface Pro 7+／Chromebookの実機、物理HDMI、Windows EXEの直接起動は未確認です。単一HTMLの `file://` 直接起動のUI検証はブラウザー操作ツールのURLポリシーでブロックされました。同じアプリのHTTP配信で確認した動作を、これらの実機試験の代わりにはしていません。
+
+## 配布元ごとの利用条件
+
+以下は既存の調査で整理した条件です。今回の文書更新ではネットワークで再調査しておらず、根拠のURLと確認範囲は[調査報告](../research/report-source.md)に残しています。
+
+| 配布元 | ライブで使う際の要点 |
+| --- | --- |
+| [Mantissa](https://mantissa.xyz/vj.html) | CC0を明記。作者はMidge “Mantissa” Sinnaeve。クレジットは任意ですが、出典記録を残します。 |
+| [Beeple](https://www.beeple-crap.com/vjloops) | 商用・非商用の動画利用を案内。作者はMike Winkelmann。正確なCCの種別は未確定なので、CC0と書いたり素材ファイルの再配布可否を推測したりしません。デモ音楽は別権利です。 |
+| [Neb Motion](https://nebmotion.co.uk/vj-loops/free/) | 商用・非商用利用と任意クレジットを案内。配布ページのCC表記だけでCC0と判断しません。 |
+| [NASA SVS](https://svs.gsfc.nasa.gov/help/) | 原則public domainですが、第三者素材などの例外があります。[NASAの利用指針](https://www.nasa.gov/nasa-brand-center/images-and-media/)と個別クレジットを確認します。音楽、人物、ロゴの条件は別です。 |
+| [ESO](https://eso.org/public/outreach/copyright/)／[ESA/Hubble](https://esahubble.org/copyright/) | 映像は原則CC BY 4.0。素材に指定された全文クレジットを見える形で示し、[ライセンス](https://creativecommons.org/licenses/by/4.0/)と編集内容も記録します。音楽の許諾を映像から推測しません。 |
+| [NOAA](https://oceanexplorer.noaa.gov/faqs/)／[USGSの溶岩動画](https://www.usgs.gov/media/videos/lava-flow)／[NPSの降雨動画](https://npgallery.nps.gov/AssetDetail/4e87e5ab-61f0-4c8c-955f-80ae6c4d5b96) | 原則または個別のpublic domain表示が根拠です。例外と出典表記を確認し、「政府サイトの全素材が自由」と一般化しません。 |
+| [Pexels](https://www.pexels.com/terms-of-service/)／[Pixabay](https://pixabay.com/service/terms/) | 明示許可のない大量・大規模・系統的なコピーは禁止です。無料の素材でも、まとめて自動収集してよいとは限りません。 |
+| [Mixkit](https://mixkit.co/terms/) | スクリプトやボットによる大量取得は禁止です。[動画のFree／Restricted](https://mixkit.co/license/)を素材ごとに確認します。未確認の条件を上映可として扱いません。 |
+
+出典を記録することと、観客に必要なクレジットを見せることは別です。表示が必要な素材は、説明ファイルに書くだけで済ませず、投影映像や読めるエンドクレジットにも反映してください。バンドの歌詞、伴奏音源、公演の録画・配信については、映像素材とは別に使用権を確認します。
+
+## Canvaの動画
 
 [Canvaデザインを開く](https://www.canva.com/design/DAHUkLu0GjM/FE9xFwz7zZ9PYiCNG62QvA/edit)
 
-引継ぎ記録：Freeの「Hazragvir — Vjloop tunnel」、提供元表示はPixabay、10秒、1080p、UIのエクスポート状態はcomplete。元の観察日時は引継ぎに未記載。
+選択した素材はFreeの「Hazragvir — Vjloop tunnel」で、提供元表示はPixabayです。10秒・1080pの書き出しは画面上で完了しています。ブラウザーからのダウンロード確認に制約があり、**手元の動画ファイルはまだ未取得**です。保存場所、サイズ、長さ、解像度、音声の有無を確認するまでは、オフラインで使える素材に数えません。
 
-ブラウザー自動化上の制約によりローカルダウンロードをまだ確認できていない。書き出し完了やダウンロード操作の成功表示だけで、保存済み・アプリへ収録済みとはしない。保存パス、実体、バイト数、SHA256、解像度・長さ・音声有無を確認した段階で台帳を更新する。
+通常のFree素材は、条件を満たせばライブの映像・舞台プレゼンテーションに使えます。Free素材の単体ダウンロードまで一律に禁止されているわけではありません。提供元名のPixabayと、特別な制限がある「Branded Content」という区分を混同せず、素材情報で確認します。[Canva規約§2・§5・§6](https://www.canva.com/policies/content-license-agreement/)
 
-通常のFree素材は、出典区分と条件を満たせばライブの映像・舞台プレゼンテーションに使える。Free素材の単体ダウンロードを一律禁止と説明しない。素材情報にある提供元名Pixabayと、規約上のBranded Contentという明示区分は同一ではない。採用時にはFree／Pro／Education／Brandedの表示を確認する。[Canva規約§2・§5・§6](https://www.canva.com/policies/content-license-agreement/)
+**Canva for Educationで提供されるPro素材は、教育目的かつ非商用に限られます。非営利のバンドライブという理由だけでは、この条件を満たしません。** 通常のFree素材と教育用のPro素材を区別してください。[Canva公式解説](https://www.canva.com/licensing-explained/)、[規約§8](https://www.canva.com/policies/content-license-agreement/)
 
-**教育アカウントで得たPro素材には教育目的かつ非商用の制限があり、非営利バンドという理由だけでは足りない。** 今回の通常Freeという観察と、教育Proの条件を混ぜない。Free／Proの見分け方は[Canva公式解説](https://www.canva.com/licensing-explained/)、正式条件は[Canva規約§8](https://www.canva.com/policies/content-license-agreement/)を参照する。
+## VideoZeroの動画
 
-## VideoZeroの具体的な状態
+[オリジナルの軌道・幾何学映像](https://videozero.ai/view/?id=1c4c6876-0c65-45e8-a832-de1bdf17b65f)
 
-[VideoZeroのオリジナル軌道幾何プロジェクト](https://videozero.ai/view/?id=1c4c6876-0c65-45e8-a832-de1bdf17b65f)
+無音8.1秒の映像をレビュー済みです。動画ファイルのローカル保存は未取得のため、オフラインで使える素材には含めません。プロジェクトのURLは視聴・編集への参照で、保存済みの動画ファイルではありません。追加の生成用クレジットは使わない方針です。
 
-引継ぎ記録：オリジナルの軌道・幾何学アニメーション、無音、8.1秒、レビュー済み。ローカルの動画エクスポートは未取得。プロジェクトURLは視聴・作業への参照で、ローカルMP4の保存先ではない。既存プロジェクトを保存・確認する次の段階でも追加使用クレジットを前提にしない。サービス全体のライセンス保証や第三者素材の権利処理済みを、この引継ぎだけから付け加えない。
+## 本番で選ぶ前に
 
-## アプリ収録前と最終監査
+素材一覧に表示された動画をA/B/Cへ読み込み、全編とループのつなぎ目を確認してください。出典・クレジット・音声の条件を確かめてから、曲に合わせて選びます。大きな原本を軽量版に変換しても、出典や利用条件は変わりません。
 
-確認時点では、起動時に参照する統合catalog.jsonは未存在だった。open-candidatesに73本あっても、初期画面に73本追加済みとは限らない。収集担当による統合作業中として扱う。素材はライブラリに現れた後、A/B/Cへロードし、実際の映像・長さ・継ぎ目・色・音声状態を確認する。
-
-最終担当は各素材について、配布元URL、作者と表示すべきクレジット、ライセンスURL・区分、確認日時、保存パス、bytes、SHA256、解像度、fps、duration、audioPresent、probeの実施範囲、取得状態を照合する。過去の失敗記録は現在の実体と照合し、予定本数を成功本数に足さない。重複はハッシュを基準に確認する。
-
-類似素材・AUTO VJはタグ、登録されたenergy・hueによる候補選択である。取得動画のenergy・hueは中立の仮値を含み、全動画を映像解析した測定値ではない。繋がりの良さは担当者が試して確定する。[類似素材処理](../src/sync.ts)
+「類似素材」やAUTO VJの候補選択には、タグ、色、動きの強さの目安を使います。準備済み動画では短いサンプルから色や動きの強さを算出しますが、曲の意味や映像全体の内容を理解する機能ではありません。手動で取り込んだ未解析の素材には初期値が使われるため、切替結果はリハーサルで確認してください。[素材の準備処理](../scripts/build-catalog.mjs)、[類似素材の選択](../src/sync.ts)

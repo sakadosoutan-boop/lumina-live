@@ -7,7 +7,10 @@ assets/prepared.json
 assets/open-candidates.json
 assets/pack-candidates.json
 assets/credits.txt
+assets/excluded.json
 research/*acquisition.json
+research/*verification.json
+research/media-decode-cache.json
 research/source-snapshots/
 research/pack-snapshots/
 research/mantissa.html

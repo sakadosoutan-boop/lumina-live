@@ -12,4 +12,4 @@
 
 収集済みフォルダーをEXEの隣に置くと、Windows版が読み込みます。ブラウザー版では必要な動画を「取り込む」から読み込めます。
 
-再収集は `node scripts/collect-open.mjs`、`node scripts/collect-packs.mjs`、再生用の統合は `node scripts/build-catalog.mjs` です。初回実行ではネットワーク・容量・処理時間を使います。各配布元の条件と `docs/material-sources.md` を確認してください。合計20GBの枠は開放素材8.5GB、パック8GB、再生用変換3.3GBと余裕分で分けています。
+再収集は `node scripts/collect-open.mjs`、`node scripts/collect-packs.mjs`、再生用の統合は `node scripts/build-catalog.mjs` です。初回実行ではネットワーク・容量・処理時間を使います。各配布元の条件と `docs/material-sources.md` を確認してください。合計20GBの枠は開放素材8.5GB、パック9.5GB、再生用変換1.9GBと余裕分で分けています。

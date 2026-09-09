@@ -1,6 +1,6 @@
-import { builtInAssets } from './catalog';
-import { VJRenderer } from './renderer';
-import type { Asset, RenderState } from './types';
+import { builtInAssets } from "./catalog";
+import { VJRenderer } from "./renderer";
+import type { Asset, RenderState } from "./types";
 
 export interface ProceduralThumbnailOptions {
   signal?: AbortSignal;
@@ -11,7 +11,11 @@ export interface ProceduralThumbnailOptions {
 }
 
 function checkAbort(signal?: AbortSignal): void {
-  if (signal?.aborted) throw signal.reason ?? new DOMException('Thumbnail generation aborted.', 'AbortError');
+  if (signal?.aborted)
+    throw (
+      signal.reason ??
+      new DOMException("Thumbnail generation aborted.", "AbortError")
+    );
 }
 
 function yieldToHost(signal?: AbortSignal): Promise<void> {
@@ -22,12 +26,22 @@ function yieldToHost(signal?: AbortSignal): Promise<void> {
     const cleanup = () => {
       if (idle !== undefined) window.cancelIdleCallback(idle);
       if (timer !== undefined) clearTimeout(timer);
-      signal?.removeEventListener('abort', abort);
+      signal?.removeEventListener("abort", abort);
     };
-    const abort = () => { cleanup(); reject(signal?.reason ?? new DOMException('Thumbnail generation aborted.', 'AbortError')); };
-    const done = () => { cleanup(); resolve(); };
-    signal?.addEventListener('abort', abort, { once: true });
-    if (typeof window.requestIdleCallback === 'function') idle = window.requestIdleCallback(done, { timeout: 500 });
+    const abort = () => {
+      cleanup();
+      reject(
+        signal?.reason ??
+          new DOMException("Thumbnail generation aborted.", "AbortError"),
+      );
+    };
+    const done = () => {
+      cleanup();
+      resolve();
+    };
+    signal?.addEventListener("abort", abort, { once: true });
+    if (typeof window.requestIdleCallback === "function")
+      idle = window.requestIdleCallback(done, { timeout: 500 });
     else timer = setTimeout(done, 16);
   });
 }
@@ -48,26 +62,48 @@ export async function generateProceduralThumbnails(
   checkAbort(signal);
   const unique = new Map<string, Asset>();
   for (const asset of assets) {
-    if (asset.kind === 'procedural' && !unique.has(asset.id)) unique.set(asset.id, { ...asset, tags: [...asset.tags] });
+    if (asset.kind === "procedural" && !unique.has(asset.id))
+      unique.set(asset.id, { ...asset, tags: [...asset.tags] });
   }
   const pending = [...unique.values()];
   const result = new Map<string, string>();
   if (!pending.length) return result;
-  const batchSize = Number.isFinite(options.batchSize) ? Math.max(1, Math.min(4, Math.floor(options.batchSize!))) : 2;
+  const batchSize = Number.isFinite(options.batchSize)
+    ? Math.max(1, Math.min(4, Math.floor(options.batchSize!)))
+    : 2;
   await yieldToHost(signal);
   checkAbort(signal);
-  const canvas = document.createElement('canvas');
-  canvas.width = 240; canvas.height = 135;
+  const canvas = document.createElement("canvas");
+  canvas.width = 240;
+  canvas.height = 135;
   let renderer: VJRenderer | undefined;
   try {
     renderer = new VJRenderer(canvas, pending, { precompile: false });
     const state: RenderState = {
-      time: 0, beat: 0, bpm: 120, playing: false, decks: [], crossfade: 0,
-      master: 1, blackout: false, freeze: false,
+      time: 0,
+      beat: 0,
+      bpm: 120,
+      playing: false,
+      decks: [],
+      crossfade: 0,
+      master: 1,
+      blackout: false,
+      freeze: false,
       fx: { glitch: 0, bloom: 0, vignette: 0, chromatic: 0, pixelate: 0 },
-      lyric: '', lyricProgress: 0,
-      lyricStyle: { enabled: false, size: 64, position: 0.77, color: '#ffffff', align: 'center', mode: 'line', shadow: true },
-      audio: { low: 0, mid: 0, high: 0, level: 0 }, width: 240, height: 135,
+      lyric: "",
+      lyricProgress: 0,
+      lyricStyle: {
+        enabled: false,
+        size: 64,
+        position: 0.77,
+        color: "#ffffff",
+        align: "center",
+        mode: "line",
+        shadow: true,
+      },
+      audio: { low: 0, mid: 0, high: 0, level: 0 },
+      width: 240,
+      height: 135,
     };
     for (let index = 0; index < pending.length;) {
       checkAbort(signal);
@@ -78,22 +114,41 @@ export async function generateProceduralThumbnails(
         // Deterministic mid-motion frames, preserving each real seed, hue and
         // composition. No substitute CSS artwork or thumbnail-only recoloring.
         const seed = Number.isFinite(asset.seed) ? asset.seed! : 0;
-        state.time = 6 + ((seed % 8 + 8) % 8) * 0.37;
-        state.beat = state.time * state.bpm / 60;
-        state.decks = [{ assetId: asset.id, opacity: 1, speed: 1, scale: 1, rotation: 0,
-          mirror: false, beatSync: true, beats: asset.beats ?? 8, hue: 0,
-          saturation: 1, brightness: 1, blend: 'normal' }];
+        state.time = 6 + (((seed % 8) + 8) % 8) * 0.37;
+        state.beat = (state.time * state.bpm) / 60;
+        state.decks = [
+          {
+            assetId: asset.id,
+            opacity: 1,
+            speed: 1,
+            scale: 1,
+            rotation: 0,
+            mirror: false,
+            beatSync: true,
+            beats: asset.beats ?? 8,
+            hue: 0,
+            saturation: 1,
+            brightness: 1,
+            blend: "normal",
+          },
+        ];
         renderer.render(state);
         const errors = renderer.getStats().mediaErrors;
-        if (errors.length) throw new Error(`Thumbnail ${asset.id}: ${errors.join('; ')}`);
+        if (errors.length)
+          throw new Error(`Thumbnail ${asset.id}: ${errors.join("; ")}`);
         // Snapshot in the same task as render: preserveDrawingBuffer is false.
         // Small synchronous encodes keep one bounded snapshot, with no queued
         // GPU readbacks or full-resolution images competing with live output.
-        const url = canvas.toDataURL('image/webp', 0.82);
-        if (url === 'data:,') throw new Error(`Thumbnail ${asset.id}: canvas snapshot failed.`);
+        const url = canvas.toDataURL("image/webp", 0.82);
+        if (url === "data:,")
+          throw new Error(`Thumbnail ${asset.id}: canvas snapshot failed.`);
         result.set(asset.id, url);
         batch.set(asset.id, url);
-      } while (index < pending.length && batch.size < batchSize && performance.now() - start < 8);
+      } while (
+        index < pending.length &&
+        batch.size < batchSize &&
+        performance.now() - start < 8
+      );
       checkAbort(signal);
       onBatch?.(batch);
       checkAbort(signal);
