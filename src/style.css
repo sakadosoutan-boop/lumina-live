@@ -810,6 +810,30 @@ hr {
   border-bottom: 1px solid #202c3e;
   padding: 0 0 12px;
 }
+.preset-bar {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #2b3b4c;
+}
+.preset-bar label,
+.preset-bar select {
+  font-size: 14px;
+}
+.preset-bar select {
+  min-height: 36px;
+  max-width: 100%;
+  background: #17362f;
+  border-color: #356d5d;
+}
+.preset-bar span {
+  font-size: 12px;
+  color: #a0b5c2;
+}
 .library-settings > div {
   display: flex;
   align-items: center;

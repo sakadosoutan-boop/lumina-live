@@ -41,6 +41,7 @@ import type {
   LyricCue,
 } from "./types";
 import { builtInAssets } from "./catalog";
+import { applyStagePreset, stagePresets } from "./presets";
 import { VJRenderer } from "./renderer";
 import {
   Transport,
@@ -1751,6 +1752,39 @@ function Console() {
           <section className="content-panel">
             {tab === "library" ? (
               <>
+                <div className="preset-bar">
+                  <label htmlFor="stage-preset">映像プリセット</label>
+                  <select
+                    id="stage-preset"
+                    value=""
+                    aria-label="映像プリセット（即時適用）"
+                    onChange={(e) => {
+                      const preset = stagePresets.find(
+                        (p) => p.id === e.target.value,
+                      );
+                      if (!preset) return;
+                      fade.current = null;
+                      pending.current = null;
+                      autoIndex.current = -1;
+                      setAutoBars(0);
+                      setQueueLabel("");
+                      setShow((s) => applyStagePreset(s, preset));
+                      setTarget(0);
+                      setSelected(preset.decks[0].assetId);
+                      announce(`${preset.name}を適用 · ${preset.description}`);
+                    }}
+                  >
+                    <option value="" disabled>
+                      選んですぐに切り替え
+                    </option>
+                    {stagePresets.map((p) => (
+                      <option key={p.id} value={p.id}>
+                        {p.name}
+                      </option>
+                    ))}
+                  </select>
+                  <span>内蔵映像だけで再生できます</span>
+                </div>
                 <div className="library-toolbar">
                   <div>
                     <h2>
