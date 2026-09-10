@@ -42,6 +42,8 @@ import type {
 } from "./types";
 import { builtInAssets } from "./catalog";
 import { applyStagePreset, stagePresets } from "./presets";
+import { PanelDivider, usePanelLayout } from "./PanelLayout";
+import { defaultLayout } from "./layout";
 import { VJRenderer } from "./renderer";
 import {
   Transport,
@@ -352,6 +354,10 @@ export default function App() {
   );
 }
 function Console() {
+  const panels = usePanelLayout();
+  const [libraryFocus, setLibraryFocus] = useState(false);
+  const contentPanel = useRef<HTMLElement>(null);
+  const modalPanel = useRef<HTMLElement>(null);
   const [show, setShow] = useState<Show>(initialShow);
   const [songId, setSongId] = useState("");
   const [playing, setPlaying] = useState(false);
@@ -380,6 +386,50 @@ function Console() {
   const [transitionBeats, setTransitionBeats] = useState(4);
   const [notice, setNotice] = useState("");
   const [modal, setModal] = useState("");
+  useEffect(() => {
+    contentPanel.current?.scrollTo({ top: 0 });
+  }, [tab, page, search, category, related]);
+  useEffect(() => {
+    if (!modal) return;
+    const previous = document.activeElement as HTMLElement | null;
+    const panel = modalPanel.current;
+    panel?.querySelector<HTMLElement>("button")?.focus();
+    const key = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        setModal("");
+      } else if (event.key === "Tab" && panel) {
+        const items = [
+          ...panel.querySelectorAll<HTMLElement>(
+            "button:not(:disabled),input:not(:disabled),select:not(:disabled),textarea:not(:disabled),a[href],[tabindex='0']",
+          ),
+        ].filter((el) => el.getClientRects().length);
+        const first = items[0],
+          last = items[items.length - 1];
+        if (
+          event.shiftKey &&
+          (document.activeElement === first ||
+            !panel.contains(document.activeElement))
+        ) {
+          event.preventDefault();
+          last?.focus();
+        } else if (
+          !event.shiftKey &&
+          (document.activeElement === last ||
+            !panel.contains(document.activeElement))
+        ) {
+          event.preventDefault();
+          first?.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", key, true);
+    return () => {
+      document.removeEventListener("keydown", key, true);
+      if (previous?.isConnected) previous.focus({ preventScroll: true });
+    };
+  }, [modal]);
   const [recording, setRecording] = useState(false);
   const [micOn, setMicOn] = useState(false);
   const [midiOn, setMidiOn] = useState(false);
@@ -1252,13 +1302,27 @@ function Console() {
   useEffect(() => {
     const key = (e: KeyboardEvent) => {
       if (
-        (e.target as HTMLElement)?.matches(
-          "input,textarea,select,[contenteditable]",
+        modal ||
+        e.defaultPrevented ||
+        e.isComposing ||
+        e.ctrlKey ||
+        e.metaKey ||
+        e.altKey
+      )
+        return;
+      if (
+        (e.target as HTMLElement)?.closest(
+          "input,textarea,select,[contenteditable],[role='separator']",
         )
       )
         return;
       if (e.repeat) return;
       const k = e.key.toLowerCase();
+      if (
+        [" ", "arrowright", "arrowleft", "arrowup", "arrowdown"].includes(k) &&
+        (e.target as HTMLElement)?.closest("button,a,[data-scroll-region]")
+      )
+        return;
       if ([" ", "arrowright", "arrowleft", "arrowup", "arrowdown"].includes(k))
         e.preventDefault();
       if (k === " ") void play();
@@ -1354,7 +1418,10 @@ function Console() {
     updateSong({ cues });
   };
   return (
-    <div className={"console tab-" + tab}>
+    <div
+      className={"console tab-" + tab + (libraryFocus ? " library-focus" : "")}
+      style={panels.style}
+    >
       <header className="topbar">
         <a className="brand" href="#" onClick={(e) => e.preventDefault()}>
           <span className="brand-mark">
@@ -1383,6 +1450,14 @@ function Console() {
             <Save size={16} />
           </button>
           <span className="divider" />
+          <button
+            aria-label="画面レイアウト"
+            title="パネルとサムネイルの大きさ"
+            onClick={() => setModal("layout")}
+          >
+            <SlidersHorizontal size={16} />
+            <span>レイアウト</span>
+          </button>
           <button onClick={() => setModal("settings")}>
             <Settings2 size={16} />
             <span>接続・出力</span>
@@ -1501,8 +1576,14 @@ function Console() {
           BLACKOUT <kbd>B</kbd>
         </button>
       </section>
-      <div className="workspace">
-        <aside className="sidebar">
+      <div className="workspace" ref={panels.workspace.ref}>
+        <aside
+          className="sidebar"
+          id="workspace-sidebar"
+          aria-label="素材の分類"
+          tabIndex={0}
+          data-scroll-region
+        >
           <div className="nav-label">WORKSPACE</div>
           {[
             { id: "library", label: "素材ライブラリ", icon: Layers },
@@ -1554,9 +1635,22 @@ function Console() {
             </button>
           </div>
         </aside>
-        <main className="main">
+        <PanelDivider
+          name="サイドバーの幅"
+          controls="workspace-sidebar"
+          axis="x"
+          value={panels.sides.sidebar}
+          min={120}
+          max={Math.min(
+            280,
+            panels.workspace.width - 476 - panels.sides.lyrics,
+          )}
+          onChange={(v) => panels.set("sidebar", v)}
+          onReset={() => panels.set("sidebar", defaultLayout.sidebar)}
+        />
+        <main className="main" ref={panels.main.ref}>
           <section className="performance">
-            <div className="monitor-panel">
+            <div className="monitor-panel" id="preview-panel">
               <div className="panel-head">
                 <span>
                   <i className={playing ? "live-dot on" : "live-dot"} />
@@ -1619,7 +1713,27 @@ function Console() {
                 </button>
               </div>
             </div>
-            <div className="mixer">
+            <PanelDivider
+              name="プレビューの幅"
+              controls="preview-panel"
+              axis="x"
+              value={panels.monitor}
+              min={Math.max(190, (panels.main.width - 12) * 0.25)}
+              max={Math.min(
+                panels.main.width - 222,
+                (panels.main.width - 12) * 0.75,
+              )}
+              onChange={(v) =>
+                panels.set("monitor", v / Math.max(1, panels.main.width - 12))
+              }
+              onReset={() => panels.set("monitor", defaultLayout.monitor)}
+            />
+            <div
+              className="mixer"
+              aria-label="ライブミキサー"
+              tabIndex={0}
+              data-scroll-region
+            >
               <div className="panel-head">
                 <span>
                   <SlidersHorizontal size={13} /> LIVE MIXER
@@ -1749,7 +1863,33 @@ function Console() {
               </div>
             </div>
           </section>
-          <section className="content-panel">
+          <PanelDivider
+            name="プレビューと素材一覧の高さ"
+            controls="preview-panel library-panel"
+            axis="y"
+            className="library-divider"
+            value={panels.preview}
+            min={Math.max(140, panels.main.height * 0.18)}
+            max={Math.min(panels.main.height - 210, panels.main.height * 0.7)}
+            onChange={(v) =>
+              panels.set("preview", v / Math.max(1, panels.main.height))
+            }
+            onReset={() => panels.set("preview", defaultLayout.preview)}
+          />
+          <section
+            className="content-panel"
+            id="library-panel"
+            ref={contentPanel}
+            aria-label={
+              tab === "library"
+                ? "素材一覧"
+                : tab === "lyrics"
+                  ? "歌詞編集"
+                  : "セットリスト編集"
+            }
+            tabIndex={0}
+            data-scroll-region
+          >
             {tab === "library" ? (
               <>
                 <div className="preset-bar">
@@ -1784,6 +1924,14 @@ function Console() {
                     ))}
                   </select>
                   <span>内蔵映像だけで再生できます</span>
+                  <button
+                    className="library-focus-button"
+                    aria-pressed={libraryFocus}
+                    onClick={() => setLibraryFocus((v) => !v)}
+                  >
+                    <Focus size={15} />
+                    {libraryFocus ? "プレビューを戻す" : "素材を広く表示"}
+                  </button>
                 </div>
                 <div className="library-toolbar">
                   <div>
@@ -1845,6 +1993,20 @@ function Console() {
                       ))}
                     </select>
                   </div>
+                  <label className="thumbnail-size">
+                    サムネイル
+                    <input
+                      type="range"
+                      aria-label="サムネイルの大きさ"
+                      min={140}
+                      max={320}
+                      step={10}
+                      value={panels.layout.thumbnail}
+                      onChange={(e) =>
+                        panels.set("thumbnail", Number(e.target.value))
+                      }
+                    />
+                  </label>
                   <span className="muted">
                     {filtered.length ? page * 24 + 1 : 0}–
                     {Math.min((page + 1) * 24, filtered.length)} /{" "}
@@ -2152,7 +2314,27 @@ function Console() {
             )}
           </section>
         </main>
-        <aside className="lyrics-panel">
+        <PanelDivider
+          name="歌詞パネルの幅"
+          controls="lyrics-panel"
+          axis="x"
+          reverse
+          value={panels.sides.lyrics}
+          min={210}
+          max={Math.min(
+            440,
+            panels.workspace.width - 476 - panels.sides.sidebar,
+          )}
+          onChange={(v) => panels.set("lyrics", v)}
+          onReset={() => panels.set("lyrics", defaultLayout.lyrics)}
+        />
+        <aside
+          className="lyrics-panel"
+          id="lyrics-panel"
+          aria-label="歌詞キュー"
+          tabIndex={0}
+          data-scroll-region
+        >
           <div className="panel-head">
             <span>
               <Music2 size={13} /> LYRICS
@@ -2264,7 +2446,19 @@ function Console() {
           </div>
         </aside>
       </div>
-      <footer className="timeline">
+      <PanelDivider
+        name="タイムラインの高さ"
+        controls="transport-timeline"
+        axis="y"
+        reverse
+        className="timeline-divider"
+        value={panels.layout.timeline}
+        min={60}
+        max={160}
+        onChange={(v) => panels.set("timeline", v)}
+        onReset={() => panels.set("timeline", defaultLayout.timeline)}
+      />
+      <footer className="timeline" id="transport-timeline">
         <div className="timeline-time">
           <span>TRANSPORT</span>
           <b>{clock(time)}</b>
@@ -2385,6 +2579,7 @@ function Console() {
         >
           <section
             className="modal"
+            ref={modalPanel}
             role="dialog"
             aria-modal="true"
             aria-label="設定"
@@ -2396,7 +2591,63 @@ function Console() {
             >
               <X size={18} />
             </button>
-            {modal === "settings" ? (
+            {modal === "layout" ? (
+              <>
+                <h2>画面レイアウト</h2>
+                <p>
+                  パネルの境界線をドラッグして調節できます。ダブルクリックでその境界を標準に戻します。
+                </p>
+                {(
+                  [
+                    ["sidebar", "サイドバーの幅", 120, 280],
+                    ["lyrics", "歌詞パネルの幅", 210, 440],
+                    ["preview", "プレビューの高さ", 18, 70],
+                    ["monitor", "プレビューの横幅", 25, 75],
+                    ["timeline", "タイムラインの高さ", 60, 160],
+                    ["thumbnail", "サムネイルの大きさ", 140, 320],
+                  ] as const
+                ).map(([key, label, min, max]) => {
+                  const ratio = key === "preview" || key === "monitor";
+                  return (
+                    <label className="layout-setting" key={key}>
+                      <span>
+                        {label}
+                        <b>
+                          {Math.round(panels.layout[key] * (ratio ? 100 : 1))}
+                          {ratio ? "%" : "px"}
+                        </b>
+                      </span>
+                      <input
+                        aria-label={label}
+                        type="range"
+                        min={min}
+                        max={max}
+                        step={1}
+                        value={panels.layout[key] * (ratio ? 100 : 1)}
+                        onChange={(e) =>
+                          panels.set(
+                            key,
+                            Number(e.target.value) / (ratio ? 100 : 1),
+                          )
+                        }
+                      />
+                    </label>
+                  );
+                })}
+                <p>
+                  画面が狭いときは収まる大きさに調整します。小さなウィンドウではパネルを縦に並べます。設定はこのブラウザーに保存します。
+                </p>
+                <button
+                  className="primary"
+                  onClick={() => {
+                    panels.reset();
+                    setLibraryFocus(false);
+                  }}
+                >
+                  標準レイアウトに戻す
+                </button>
+              </>
+            ) : modal === "settings" ? (
               <>
                 <h2>接続・出力</h2>
                 <div className="form-row">

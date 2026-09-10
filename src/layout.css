@@ -1,0 +1,568 @@
+/* One scroll owner per panel; splitters resize the operator UI only. */
+.panel-divider {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  touch-action: none;
+  user-select: none;
+  border-radius: 4px;
+  position: relative;
+  z-index: 2;
+}
+.panel-divider span {
+  border-radius: 3px;
+  background: #405568;
+  pointer-events: none;
+}
+.divider-x {
+  cursor: col-resize;
+}
+.divider-y {
+  cursor: row-resize;
+}
+.divider-x span {
+  width: 3px;
+  height: 34px;
+}
+.divider-y span {
+  width: 42px;
+  height: 3px;
+}
+.panel-divider:hover,
+.panel-divider.dragging,
+.panel-divider:focus-visible {
+  background: #28453f;
+}
+.panel-divider:hover span,
+.panel-divider.dragging span {
+  background: var(--cyan);
+}
+.panel-divider:focus-visible,
+[data-scroll-region]:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: -2px;
+}
+[data-scroll-region],
+.modal {
+  scrollbar-width: auto;
+  scrollbar-color: #547183 #101722;
+}
+[data-scroll-region]::-webkit-scrollbar,
+.modal::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+[data-scroll-region]::-webkit-scrollbar-thumb,
+.modal::-webkit-scrollbar-thumb {
+  background: #547183;
+  border: 3px solid #101722;
+  border-radius: 8px;
+}
+[data-scroll-region]::-webkit-scrollbar-track,
+.modal::-webkit-scrollbar-track {
+  background: #101722;
+}
+.main,
+.performance,
+.content-panel,
+.lyrics-panel,
+.sidebar,
+.mixer {
+  min-width: 0;
+  min-height: 0;
+}
+.content-panel {
+  display: block;
+  overflow: auto;
+  margin-top: 0;
+  padding: 0 6px 8px 0;
+  scrollbar-gutter: stable;
+}
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, var(--thumbnail-size, 200px)), 1fr)
+  );
+  gap: 16px 12px;
+  max-height: none;
+  overflow: visible;
+  align-content: start;
+  padding: 14px 2px;
+}
+.asset-art {
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+.asset-name {
+  font-size: 12px;
+  line-height: 1.6;
+  padding-top: 6px;
+}
+.asset-sub {
+  font-size: 10px;
+  line-height: 1.6;
+}
+.asset-select:focus-visible {
+  outline-offset: 2px;
+}
+.favorite {
+  min-width: 28px;
+  min-height: 28px;
+  bottom: 6px;
+  right: 1px;
+}
+.library-toolbar {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.library-toolbar > div:first-child {
+  flex: 1 0 140px;
+}
+.library-toolbar h2 {
+  font-size: 14px;
+}
+.library-toolbar p {
+  font-size: 10px;
+}
+.library-toolbar button,
+.search input {
+  font-size: 11px;
+}
+.library-settings {
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  font-size: 10px;
+}
+.library-settings select,
+.library-settings > .muted,
+.library-settings button {
+  font-size: 10px;
+}
+.library-settings select {
+  max-width: 105px;
+}
+.library-settings > div {
+  flex-wrap: wrap;
+}
+.thumbnail-size {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #a3b6c6;
+}
+.thumbnail-size input {
+  width: 82px;
+}
+.preset-bar {
+  padding: 6px 0 10px;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.preset-bar label,
+.preset-bar select {
+  font-size: 12px;
+}
+.preset-bar select {
+  min-height: 32px;
+}
+.preset-bar > span {
+  display: none;
+}
+.library-focus-button {
+  margin-left: auto;
+  font-size: 11px;
+}
+.library-focus-button[aria-pressed="true"] {
+  background: #214b41;
+  border-color: #5b9a86;
+}
+.asset-details {
+  flex-wrap: wrap;
+  font-size: 10px;
+  padding: 10px 0;
+}
+.asset-details button {
+  font-size: 10px;
+}
+.layout-setting {
+  display: block;
+  margin: 18px 0;
+}
+.layout-setting > span {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+.layout-setting b {
+  font-weight: 500;
+  color: var(--cyan);
+}
+.layout-setting input {
+  width: 100%;
+}
+.lyrics-panel {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+.lyrics-panel > * {
+  flex-shrink: 0;
+}
+.live-cues {
+  flex: none;
+  max-height: none;
+  overflow: visible;
+}
+.lyrics-bottom {
+  margin-top: 12px;
+}
+.lyric-editor,
+.lyric-editor > div:first-child,
+.cue-editor-list,
+.setlist {
+  overflow: visible;
+  max-height: none;
+}
+.lyric-editor {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+.setlist-row {
+  flex-wrap: wrap;
+}
+.setlist-row input {
+  min-width: 140px;
+}
+
+@media (min-width: 1000px) and (min-height: 560px) {
+  .console {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+  .topbar {
+    flex-shrink: 0;
+  }
+  .transport {
+    height: auto;
+    min-height: 65px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+  .workspace {
+    display: grid;
+    grid-template-columns: var(--sidebar-size) 8px minmax(0, 1fr) 8px var(
+        --lyrics-size
+      );
+    min-height: 0;
+    overflow: hidden;
+  }
+  .sidebar {
+    padding: 16px 8px 12px;
+    overflow-y: auto;
+    border-right: 0;
+  }
+  .sidebar > * {
+    flex-shrink: 0;
+  }
+  .sidebar .nav {
+    white-space: normal;
+    font-size: 10px;
+    padding: 9px 7px;
+    gap: 6px;
+  }
+  .sidebar .collection {
+    font-size: 10px;
+    white-space: normal;
+    text-align: left;
+    padding: 5px 7px;
+  }
+  .sidebar .nav-label {
+    margin-left: 7px;
+  }
+  .sidebar-bottom {
+    padding-left: 7px;
+    padding-right: 0;
+  }
+  .main {
+    display: grid;
+    grid-template-rows: var(--preview-size) 12px minmax(0, 1fr);
+    padding: 10px 8px 0;
+    overflow: hidden;
+  }
+  .performance {
+    display: grid;
+    grid-template-columns: var(--monitor-size) 12px minmax(0, 1fr);
+    height: auto;
+    gap: 0;
+    min-height: 0;
+  }
+  .monitor-panel {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+  }
+  .monitor {
+    min-height: 0;
+    flex: 1;
+    aspect-ratio: auto;
+  }
+  .monitor-panel .panel-head,
+  .monitor-footer {
+    flex-shrink: 0;
+  }
+  .monitor-panel .panel-head {
+    padding: 0 8px;
+    letter-spacing: 0.03em;
+  }
+  .monitor-panel .panel-head .muted {
+    display: none;
+  }
+  .monitor-footer {
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 5px 8px;
+  }
+  .monitor-footer .mini-meter {
+    display: none;
+  }
+  .mixer {
+    display: block;
+    overflow-y: auto;
+    height: 100%;
+    padding-bottom: 8px;
+    scrollbar-gutter: stable;
+  }
+  .mixer .panel-head {
+    position: sticky;
+    top: 0;
+    background: #111722;
+    z-index: 1;
+  }
+  .mixer .deck-ranges {
+    display: grid;
+  }
+  .deck-options {
+    flex-wrap: wrap;
+  }
+  .deck-options select {
+    width: auto;
+  }
+  .panel-divider {
+    display: flex;
+  }
+  .content-panel {
+    min-height: 0;
+    margin: 0;
+  }
+  .lyrics-panel {
+    display: flex;
+    border-left: 0;
+  }
+  .tab-lyrics .main,
+  .tab-setlist .main,
+  .library-focus.tab-library .main {
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .tab-lyrics .performance,
+  .tab-setlist .performance,
+  .library-focus.tab-library .performance,
+  .tab-lyrics .library-divider,
+  .tab-setlist .library-divider,
+  .library-focus.tab-library .library-divider {
+    display: none;
+  }
+  .tab-lyrics .lyric-editor {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
+  .timeline-divider {
+    height: 10px;
+  }
+  .timeline {
+    height: var(--timeline-size);
+    min-height: 0;
+    flex-shrink: 0;
+    padding: 8px 18px;
+    overflow: auto;
+  }
+  [data-scroll-region] {
+    overscroll-behavior: contain;
+  }
+}
+
+/* A compact window gets normal page scrolling instead of clipped columns. */
+@media (max-width: 999px), (max-height: 559px) {
+  .console {
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+  .topbar {
+    height: auto;
+    min-height: 58px;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
+  .transport {
+    height: auto;
+    min-height: 65px;
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+  .workspace {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+  }
+  .sidebar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 10px;
+    overflow: visible;
+    border-right: 0;
+  }
+  .sidebar .nav {
+    width: auto;
+    margin: 0;
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+  .sidebar .nav small {
+    display: inline;
+  }
+  .sidebar .nav-label,
+  .sidebar .collection,
+  .sidebar .sidebar-bottom {
+    display: none;
+  }
+  .main {
+    display: block;
+    overflow: visible;
+    padding: 8px 10px;
+  }
+  .performance {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(210px, 0.85fr);
+    gap: 10px;
+    height: 230px;
+  }
+  .monitor-panel {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .monitor {
+    min-height: 0;
+    flex: 1;
+    aspect-ratio: auto;
+  }
+  .monitor-panel .panel-head,
+  .monitor-footer {
+    flex-shrink: 0;
+  }
+  .monitor-footer {
+    flex-wrap: wrap;
+  }
+  .monitor-footer .mini-meter {
+    display: none;
+  }
+  .mixer {
+    display: block;
+    height: 100%;
+    overflow-y: auto;
+    margin: 0;
+  }
+  .mixer .deck-ranges {
+    display: grid;
+  }
+  .deck-options {
+    flex-wrap: wrap;
+  }
+  .content-panel {
+    display: block;
+    height: auto;
+    max-height: max(320px, 65dvh);
+    min-height: 0;
+    margin-top: 12px;
+    overflow-y: auto;
+  }
+  .library-focus.tab-library .content-panel {
+    max-height: max(400px, 80dvh);
+  }
+  .tab-lyrics .performance,
+  .tab-setlist .performance,
+  .library-focus.tab-library .performance {
+    display: none;
+  }
+  .tab-lyrics .lyric-editor {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
+  .lyrics-panel {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border);
+    max-height: none;
+    overflow: visible;
+  }
+  .live-cues {
+    max-height: none;
+  }
+  .timeline {
+    height: auto;
+    min-height: 77px;
+  }
+  .panel-divider {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .performance {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+  .monitor-panel {
+    height: 230px;
+  }
+  .mixer {
+    height: 240px;
+  }
+  .library-focus-button {
+    margin-left: 0;
+  }
+  .preset-bar {
+    flex-wrap: wrap;
+  }
+  .library-settings {
+    gap: 8px;
+  }
+  .thumbnail-size {
+    width: 100%;
+  }
+  .thumbnail-size input {
+    width: 120px;
+  }
+  .library-toolbar .search {
+    flex-basis: 100%;
+  }
+  .asset-grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(min(100%, var(--thumbnail-size)), 1fr)
+    );
+  }
+  .top-actions {
+    gap: 2px;
+  }
+  .top-actions .output-button {
+    font-size: 10px;
+    padding: 7px;
+  }
+}
