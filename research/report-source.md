@@ -124,9 +124,9 @@ NASA SVSの原則的なpublic domainは例外表示と音楽を確認して適�
 
 ## ファイルと検証の状況
 
-[Windows用EXE](../Lumina-Live.exe)と[単一HTML](../web/Lumina-Live.html)を生成済みです。[GitHub](https://github.com/sakadosoutan-boop/lumina-live)は非公開リポジトリです。外部動画はローカルの `assets` に保存しています。
+[Windows用EXE](../Lumina-Live.exe)と[単一HTML](../web/Lumina-Live.html)を生成済みです。[GitHub](https://github.com/sakadosoutan-boop/lumina-live)は公開リポジトリです。外部動画はローカルの `assets` に保存しています。
 
-最新版は**自動テスト366件合格、型検査・本番ビルド・Windows版と単一HTMLの生成成功、npm auditの検出0件**です。ブラウザーではLIVE・AUDIO、実際のMP4再生、AUTOクロスフェード、別画面への出力、歌詞表示、BLACKOUTを操作して確認しました。
+最新版は**自動テスト372件合格、型検査・本番ビルド・Windows版と単一HTMLの生成成功、npm auditの検出0件**です。ブラウザーではLIVE・AUDIO、実際のMP4再生、AUTOクロスフェード、別画面への出力、歌詞表示、BLACKOUTを操作して確認しました。
 
 全243本の再生用動画に対し、FFmpegで全編をデコードする検査を実施しました。これはファイルの技術的な読み込み検査です。全編の内容レビュー、ループの見え方、本番端末での描画性能は別に確認してください。
 

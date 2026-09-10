@@ -4,6 +4,8 @@
 
 ## 起動
 
+**ブラウザー版：[Lumina Liveを開く](https://sakadosoutan-boop.github.io/lumina-live/)**。Windows／ChromebookのChromeで利用できます。内蔵映像とデモ歌詞は、そのまま「再生」で試せます。[ブラウザー版の使い方](docs/browser.md)
+
 - **Windows**：プロジェクト直下の `Lumina-Live.exe` を起動します。動画ライブラリの `assets` フォルダーはEXEと同じ階層に配置します。`scripts/start-windows.cmd` も使えます。配布用EXEの控えは `release` にあります。
 - **Chromebook**：`release/Lumina-Live-offline.html` をChromeで開きます。「取り込む」から手元の動画を選択します。素材はブラウザーのローカル保存領域に保存されます。HTML本体には96種類の生成映像を内蔵しています。
 - **開発環境**：`npm ci` → `npm run build` → `npm run serve`。表示された `http://127.0.0.1:4173/` を開きます。Windowsのデスクトップ版は `npm start`。

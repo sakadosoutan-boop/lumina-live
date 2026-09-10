@@ -6,7 +6,7 @@
 
 この作業PCで[操作画面](http://127.0.0.1:4173/)を開き、「▶ 再生」でデモを動かします。素材をA/Bへ読み込んで「AUTO」で切り替えます。操作画面は1つだけ開き、投影画面は「外部出力」から開いてください。このアドレスは作業PC上のローカルサーバーが動いている間だけ使えます。
 
-Windowsでは `Lumina-Live.exe` と隣の `assets` を一緒に持ち運びます。Chromebookでは `web/Lumina-Live.html` をChromeで開き、必要な動画を取り込みます。[GitHub](https://github.com/sakadosoutan-boop/lumina-live)は非公開で、ソースとHTMLを保存しています。
+Windowsでは `Lumina-Live.exe` と隣の `assets` を一緒に持ち運びます。Chromebookでは `web/Lumina-Live.html` をChromeで開き、必要な動画を取り込みます。[GitHub](https://github.com/sakadosoutan-boop/lumina-live)は公開で、ソースとHTMLを保存しています。
 
 ## 素材
 
@@ -29,7 +29,7 @@ CanvaはFreeの10秒・1080pトンネル映像のデザインと画面上の書�
 
 ## 検証
 
-最新版は**自動テスト366件合格、型検査・本番ビルド・Windows版と単一HTMLの生成成功、npm auditの検出0件**です。ブラウザーではLIVE・AUDIO、実際のMP4再生、AUTOクロスフェード、別画面への出力、歌詞表示、BLACKOUTを操作して確認しました。
+最新版は**自動テスト372件合格、型検査・本番ビルド・Windows版と単一HTMLの生成成功、npm auditの検出0件**です。ブラウザーではLIVE・AUDIO、実際のMP4再生、AUTOクロスフェード、別画面への出力、歌詞表示、BLACKOUTを操作して確認しました。
 
 全243本の再生用動画に対し、FFmpegで全編をデコードする検査を実施しました。これはファイルの技術的な読み込み検査です。全編の内容レビュー、ループの見え方、本番端末での描画性能は別に確認してください。
 

@@ -26,7 +26,7 @@ Lumina/
 
 `web/Lumina-Live.html` または `release/Lumina-Live-offline.html` をダウンロードし、Chromeで開きます。両方とも同内容で、アプリ本体と96種類の生成映像を含む単一HTMLです。
 
-[GitHubのHTML](https://github.com/sakadosoutan-boop/lumina-live/blob/main/web/Lumina-Live.html)は、ファイル画面の「Download raw file」で保存してください。GitHubのコード表示画面ではアプリは動きません。非公開リポジトリのため、ご自身のGitHubアカウントでログインしてください。
+[ブラウザー版のURL](https://sakadosoutan-boop.github.io/lumina-live/)をChromeで開けば、そのまま使用できます。[GitHubのHTML](https://github.com/sakadosoutan-boop/lumina-live/blob/main/web/Lumina-Live.html)を保存する場合は、ファイル画面の「Download raw file」を使用してください。GitHubのコード表示画面ではアプリは動きません。
 
 開発サーバーが動いている作業PCでは [ローカル操作画面](http://127.0.0.1:4173/) も利用できます。このアドレスは他のPCからは接続できません。操作画面は1つだけ開き、投影画面は「外部出力」から開いてください。
 

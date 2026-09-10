@@ -85,6 +85,13 @@ await rename(temp, destination);
 const webDestination = path.join(root, "web", "Lumina-Live.html");
 await mkdir(path.dirname(webDestination), { recursive: true });
 await writeFile(webDestination, html, "utf8");
+// GitHub Pages serves /docs. Publish the exact tested application, including
+// bundled presets, instead of maintaining a hand-written second entrypoint.
+const pagesDir = path.join(root, "docs");
+await mkdir(path.join(pagesDir, "assets"), { recursive: true });
+await writeFile(path.join(pagesDir, "index.html"), html, "utf8");
+await writeFile(path.join(pagesDir, ".nojekyll"), "", "utf8");
+await writeFile(path.join(pagesDir, "assets", "catalog.json"), "[]\n", "utf8");
 console.log(
   `Standalone HTML: ${destination} (${(Buffer.byteLength(html) / 1024).toFixed(1)} KiB)`,
 );
