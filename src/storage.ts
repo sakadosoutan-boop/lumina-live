@@ -91,7 +91,7 @@ function unique<T extends { id: string }>(items: T[], field: string): T[] {
 const fallback = (value: unknown, defaultValue: unknown): unknown =>
   value === undefined ? defaultValue : value;
 
-function safePath(path: string, field: string): void {
+function safePath(path: string, field: string, allowColon = false): void {
   let decoded = path;
   for (let i = 0; i < 4; i++) {
     if (
@@ -99,7 +99,12 @@ function safePath(path: string, field: string): void {
       decoded.startsWith("//") ||
       decoded
         .split("/")
-        .some((part) => part === "." || part === ".." || part.includes(":"))
+        .some(
+          (part) =>
+            part === "." ||
+            part === ".." ||
+            (!allowColon && part.includes(":")),
+        )
     )
       invalid(field);
     if (!decoded.includes("%")) return;
@@ -112,7 +117,9 @@ function safePath(path: string, field: string): void {
   invalid(field);
 }
 
-function httpUrl(value: string, field: string): void {
+function httpUrl(value: string, field: string, sourceLink = false): void {
+  if (value !== value.trim() || /[\u0000-\u001f\u007f\\]/.test(value))
+    invalid(field);
   if (!/^https?:\/\/[^/\s?#]/i.test(value)) invalid(field);
   let parsed: URL;
   try {
@@ -122,7 +129,11 @@ function httpUrl(value: string, field: string): void {
   }
   if (!parsed.hostname || parsed.username || parsed.password) invalid(field);
   // Inspect the original path; URL() already collapses literal/encoded dot segments.
-  safePath(value.replace(/^https?:\/\/[^/?#]+/i, "").split(/[?#]/)[0], field);
+  safePath(
+    value.replace(/^https?:\/\/[^/?#]+/i, "").split(/[?#]/)[0],
+    field,
+    sourceLink,
+  );
 }
 
 function mediaUrl(
@@ -162,6 +173,10 @@ function mediaUrl(
     if (path.endsWith("/")) invalid(field);
   } else invalid(field);
   return url;
+}
+
+export function validateAssetCatalog(value: unknown): Asset[] {
+  return unique(array(value, "assets", 0, 10000).map(readAsset), "assets");
 }
 
 function readAsset(value: unknown, index: number): Asset {
@@ -228,8 +243,15 @@ function readAsset(value: unknown, index: number): Asset {
     if (a[key] !== undefined) asset[key] = string(a[key], field + "." + key);
   }
   // Source also holds plain-text credits in the built-in catalog.
-  if (asset.source && /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(asset.source.trim()))
-    mediaUrl(asset.source, field + ".source");
+  if (
+    asset.source &&
+    /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(asset.source.trim())
+  ) {
+    // Source-page namespaces such as Wikimedia /wiki/File:... are links, never local file paths.
+    if (/^https?:\/\//i.test(asset.source))
+      httpUrl(asset.source, field + ".source", true);
+    else mediaUrl(asset.source, field + ".source");
+  }
   return asset;
 }
 
@@ -384,6 +406,8 @@ export function serializeShow(show: Show): string {
     ...show,
     assets: show.assets.map((a) => ({
       ...a,
+      // Directory selections are session-scoped, even if a prior cached copy exists.
+      tags: a.tags.filter((tag) => tag !== "folder-connected"),
       url:
         a.url?.startsWith("blob:") || (!a.url && a.status === MISSING_MEDIA)
           ? "indexeddb:" + a.id

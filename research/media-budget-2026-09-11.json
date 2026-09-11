@@ -1,0 +1,12 @@
+{
+  "date": "2026-09-11T14:07:53.379Z",
+  "scope": "Retained source media and research evidence plus public lightweight copies; excludes node_modules, Git history, installed app and temporary deployment duplicates",
+  "assetsBytes": 17820677999,
+  "researchBytes": 10885575,
+  "publicBytes": 296045404,
+  "totalBytes": 18127608978,
+  "capBytes": 20000000000,
+  "remainingBytes": 1872391022,
+  "localVideos": 250,
+  "publicVideos": 125
+}

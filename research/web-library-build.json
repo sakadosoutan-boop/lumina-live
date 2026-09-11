@@ -1,0 +1,3756 @@
+{
+  "updatedAt": "2026-09-11T14:03:41.259Z",
+  "settings": "Full duration / <=1280x720 / 30fps / H.264 CRF28 capped1100kbps / no audio",
+  "cap": 350000000,
+  "bytes": 294624702,
+  "entries": [
+    {
+      "id": "open-mantissa-001",
+      "sourceHash": "f868ff2b39fda5e57eee83cb909fa32bf81d3b355e09f94f85f3123e4212d28e",
+      "sha256": "8f75191a42f6f0f0c5057eef776ff977bfad23afa182ff35ec40fca9c4b72e8e",
+      "bytes": 1763323,
+      "asset": {
+        "id": "open-mantissa-001",
+        "name": "Mantissa 001",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-001.mp4",
+        "thumbnail": "./assets/library/open-mantissa-001.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 217,
+        "energy": 1,
+        "duration": 12,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1763323
+      }
+    },
+    {
+      "id": "open-mantissa-002",
+      "sourceHash": "5c7647a8373ed6dd0933b7e23d96938e923e5c57b8b562e92b007509330afb6e",
+      "sha256": "0e68987a21db95dd83505b9f75ad5b44cc799595df498c203e289c24117c8545",
+      "bytes": 2313638,
+      "asset": {
+        "id": "open-mantissa-002",
+        "name": "Mantissa 002",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-002.mp4",
+        "thumbnail": "./assets/library/open-mantissa-002.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "cyan",
+          "web-library"
+        ],
+        "hue": 183,
+        "energy": 0.592,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2313638
+      }
+    },
+    {
+      "id": "open-mantissa-003",
+      "sourceHash": "9bf5e02e8ffee97b9c070e39717c185ff823362f2ab6f0780a4108f5acc52625",
+      "sha256": "e6aef478bc41a1d30bc360bc799d74dba5b27a12211aabee0e95650f316f6c6b",
+      "bytes": 2308785,
+      "asset": {
+        "id": "open-mantissa-003",
+        "name": "Mantissa 003",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-003.mp4",
+        "thumbnail": "./assets/library/open-mantissa-003.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 300,
+        "energy": 0.598,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2308785
+      }
+    },
+    {
+      "id": "open-mantissa-004",
+      "sourceHash": "5f6b2d5f23daa0a58419d23b9f94ab5ecd5eae4f124cb6e5e6e5e9ce522abdd0",
+      "sha256": "f93c505c5f13c441e30e8d436e241ddd57994eece1cf6c40a75109cdafc2625f",
+      "bytes": 2315022,
+      "asset": {
+        "id": "open-mantissa-004",
+        "name": "Mantissa 004",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-004.mp4",
+        "thumbnail": "./assets/library/open-mantissa-004.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 257,
+        "energy": 1,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2315022
+      }
+    },
+    {
+      "id": "open-mantissa-005",
+      "sourceHash": "bc64e11d73e500d639973286635ad1229b52cb2e0c4ac3fc59bf780500b0e76b",
+      "sha256": "abd0186882e3d4909148294bb70a751bf6262beb82e03274d0e334c52f91ee24",
+      "bytes": 2314551,
+      "asset": {
+        "id": "open-mantissa-005",
+        "name": "Mantissa 005",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-005.mp4",
+        "thumbnail": "./assets/library/open-mantissa-005.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 334,
+        "energy": 0.71,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2314551
+      }
+    },
+    {
+      "id": "open-mantissa-006",
+      "sourceHash": "c6b3d5ff616e69311ffad745603d2861db16d9313794172a80b734af34352b6a",
+      "sha256": "a6a88ce14e1d0bfbec40f6b9ed3fec8f5049fa6d48578481eedde7ab898c668a",
+      "bytes": 2316000,
+      "asset": {
+        "id": "open-mantissa-006",
+        "name": "Mantissa 006",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-006.mp4",
+        "thumbnail": "./assets/library/open-mantissa-006.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 253,
+        "energy": 0.649,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2316000
+      }
+    },
+    {
+      "id": "open-mantissa-007",
+      "sourceHash": "02f4e9d2357823df63c4cfd2f2fe86f4a502ddb4079d80ec7482c1dca669f47a",
+      "sha256": "9173f0712835e02002ad2cc6419863559e3bc3aa34923516264b7303f166f2da",
+      "bytes": 2308833,
+      "asset": {
+        "id": "open-mantissa-007",
+        "name": "Mantissa 007",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-007.mp4",
+        "thumbnail": "./assets/library/open-mantissa-007.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 45,
+        "energy": 0.812,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2308833
+      }
+    },
+    {
+      "id": "open-mantissa-008",
+      "sourceHash": "a25f37193a301895c7a45280973493131fe46981074b869f0d6b4733295da8b3",
+      "sha256": "401075e058e15970f323bb8ef5b5171a35747eda5cf146ab5d29a732c21701cf",
+      "bytes": 2310755,
+      "asset": {
+        "id": "open-mantissa-008",
+        "name": "Mantissa 008",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-008.mp4",
+        "thumbnail": "./assets/library/open-mantissa-008.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 267,
+        "energy": 0.791,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2310755
+      }
+    },
+    {
+      "id": "open-mantissa-009",
+      "sourceHash": "ecea2e9933f77fda9f04b27cdb35d07192f32a99df3a50b4262187cbab23ba03",
+      "sha256": "8575d55c29a8c4364f68844e7082d787c9728a3f2d19d5aaa868f031ce07a186",
+      "bytes": 2319384,
+      "asset": {
+        "id": "open-mantissa-009",
+        "name": "Mantissa 009",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-009.mp4",
+        "thumbnail": "./assets/library/open-mantissa-009.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 35,
+        "energy": 0.845,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2319384
+      }
+    },
+    {
+      "id": "open-mantissa-010",
+      "sourceHash": "8b288b17edbe277a59ff0ba15baa10c7db6b7db119c8b7f6d843487b27af4fb6",
+      "sha256": "53bc1e32999bbf13e15f5c48c43dc253ef29d71f5762f4511cd45ed83c6bfedd",
+      "bytes": 2316146,
+      "asset": {
+        "id": "open-mantissa-010",
+        "name": "Mantissa 010",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-010.mp4",
+        "thumbnail": "./assets/library/open-mantissa-010.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "cyan",
+          "web-library"
+        ],
+        "hue": 197,
+        "energy": 1,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2316146
+      }
+    },
+    {
+      "id": "open-mantissa-011",
+      "sourceHash": "d7798ed0a64d4261ed7af338e8570079782ee1599ed07506f7e13afa0c07499d",
+      "sha256": "af329593bbc2cccb0ffd02b6fcfedfd769def5c45aaeff3b68b66e1a44367127",
+      "bytes": 2316137,
+      "asset": {
+        "id": "open-mantissa-011",
+        "name": "Mantissa 011",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-011.mp4",
+        "thumbnail": "./assets/library/open-mantissa-011.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "green",
+          "web-library"
+        ],
+        "hue": 109,
+        "energy": 0.724,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2316137
+      }
+    },
+    {
+      "id": "open-mantissa-012",
+      "sourceHash": "a243c7d74db982107fd10d4cf2695b7d553f5745d369834a27216d612b65d8bb",
+      "sha256": "2c847d184f16cdef750b5f96cb0675e09450872bb7bbf88beca4e706d37bc2c9",
+      "bytes": 2311630,
+      "asset": {
+        "id": "open-mantissa-012",
+        "name": "Mantissa 012",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-012.mp4",
+        "thumbnail": "./assets/library/open-mantissa-012.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 221,
+        "energy": 0.544,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2311630
+      }
+    },
+    {
+      "id": "open-mantissa-013",
+      "sourceHash": "e8237351484bf17a1aff2a3d16430eb3328f6205e6dafa7b1ec92ec0606bb8d1",
+      "sha256": "1979e7f2556d7d4066007dd68576f3ddab193a495de2e487fcec3db57463e6fb",
+      "bytes": 2310650,
+      "asset": {
+        "id": "open-mantissa-013",
+        "name": "Mantissa 013",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-013.mp4",
+        "thumbnail": "./assets/library/open-mantissa-013.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "cyan",
+          "web-library"
+        ],
+        "hue": 195,
+        "energy": 0.669,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2310650
+      }
+    },
+    {
+      "id": "open-mantissa-014",
+      "sourceHash": "25561fdc2e2d5f88078ef525ab64f2176f9aba881157291698baa76339315ab7",
+      "sha256": "a2806d506046007f52acb6d1915deca23a07bb99e72e66ea7df2ab0aaec7aa35",
+      "bytes": 2312359,
+      "asset": {
+        "id": "open-mantissa-014",
+        "name": "Mantissa 014",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-014.mp4",
+        "thumbnail": "./assets/library/open-mantissa-014.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "green",
+          "web-library"
+        ],
+        "hue": 162,
+        "energy": 0.524,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2312359
+      }
+    },
+    {
+      "id": "open-mantissa-015",
+      "sourceHash": "8f4cb7148af279885a5ac4897439d593257720a5900bf652dd9912c7acd1014c",
+      "sha256": "59770386478f87975b56f733e63d9e1fd1936c3a2793ba9a328fd310ecb1fdb4",
+      "bytes": 2315160,
+      "asset": {
+        "id": "open-mantissa-015",
+        "name": "Mantissa 015",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-015.mp4",
+        "thumbnail": "./assets/library/open-mantissa-015.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 236,
+        "energy": 0.633,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2315160
+      }
+    },
+    {
+      "id": "open-mantissa-016",
+      "sourceHash": "9fc3e33638ba70fbfaf81d44f291e0efe8f67abab59bd548fcad855d4788442c",
+      "sha256": "13eda2e045c847e39a6bed6e649022bdecb3aa5f5aad1083d7cbc3c19b9201bb",
+      "bytes": 2311621,
+      "asset": {
+        "id": "open-mantissa-016",
+        "name": "Mantissa 016",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-016.mp4",
+        "thumbnail": "./assets/library/open-mantissa-016.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 225,
+        "energy": 0.582,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2311621
+      }
+    },
+    {
+      "id": "open-mantissa-017",
+      "sourceHash": "22c8ef6227e9042d6974d7d1ff292faf4fd34f752da645b285151cc19b7850af",
+      "sha256": "21d8a0b3e1ecedae91a6b5098bff122c96b94c6c9a2b82e855a18eb5754cd64c",
+      "bytes": 2313623,
+      "asset": {
+        "id": "open-mantissa-017",
+        "name": "Mantissa 017",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-017.mp4",
+        "thumbnail": "./assets/library/open-mantissa-017.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 334,
+        "energy": 0.687,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2313623
+      }
+    },
+    {
+      "id": "open-mantissa-018",
+      "sourceHash": "8bf7680c78b7fc48a3f953c3b93b7d0f67391448bb8879249755cd3b79114a7d",
+      "sha256": "ae4805688432baf88752f9a2859763a207337873019c31c1704b08d0f000ca8a",
+      "bytes": 2310946,
+      "asset": {
+        "id": "open-mantissa-018",
+        "name": "Mantissa 018",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-018.mp4",
+        "thumbnail": "./assets/library/open-mantissa-018.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "cyan",
+          "web-library"
+        ],
+        "hue": 188,
+        "energy": 0.594,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2310946
+      }
+    },
+    {
+      "id": "open-mantissa-019",
+      "sourceHash": "b2a3f21743c32e18e1dd906f127c5d2e9627551a374efdf066b66fa10cf6e8f9",
+      "sha256": "092dfbdbf4bccc0ea7bc711bf9f30b7be9d626bdca65b04282aca5cf92525f95",
+      "bytes": 2311837,
+      "asset": {
+        "id": "open-mantissa-019",
+        "name": "Mantissa 019",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-019.mp4",
+        "thumbnail": "./assets/library/open-mantissa-019.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 2,
+        "energy": 0.663,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2311837
+      }
+    },
+    {
+      "id": "open-mantissa-020",
+      "sourceHash": "01829cd3a385dca5e00ec22a5b984ffd93d09ffac413f7f1a530dbb33817a14d",
+      "sha256": "4e8da18d5699fedae80514bf86859a7527c45adc2967944f351fbdd04ebbed26",
+      "bytes": 2311524,
+      "asset": {
+        "id": "open-mantissa-020",
+        "name": "Mantissa 020",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-020.mp4",
+        "thumbnail": "./assets/library/open-mantissa-020.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 299,
+        "energy": 0.934,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2311524
+      }
+    },
+    {
+      "id": "open-mantissa-021",
+      "sourceHash": "cab7b44da4249ddf9d019ed817a446d12c04c0609adf4cb3f0999c0d0ee0ec33",
+      "sha256": "a00f5df01317cbf4eb6d676f1d229a17e79b3e5cc26664c2ddf9d51c17217f62",
+      "bytes": 2316428,
+      "asset": {
+        "id": "open-mantissa-021",
+        "name": "Mantissa 021",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-021.mp4",
+        "thumbnail": "./assets/library/open-mantissa-021.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 300,
+        "energy": 0.897,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2316428
+      }
+    },
+    {
+      "id": "open-mantissa-022",
+      "sourceHash": "adad6b625b8cac46e55163261e21506299d908def06fa2d70fd0efd412ff8679",
+      "sha256": "207fc197823641fb05852e739dc8b169c461e4c1e726d143b06e5e9953d773b1",
+      "bytes": 2315324,
+      "asset": {
+        "id": "open-mantissa-022",
+        "name": "Mantissa 022",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-022.mp4",
+        "thumbnail": "./assets/library/open-mantissa-022.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 234,
+        "energy": 0.796,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2315324
+      }
+    },
+    {
+      "id": "open-mantissa-023",
+      "sourceHash": "05b70589ba3b045c0caefdccb85f8362d957670e8d62f7b6eb6ed390a8c6f3f6",
+      "sha256": "cb731513b0e8d769fda4590d6aaf6880198c7b04dfc63ba9971b7f5bb9a8a123",
+      "bytes": 2313123,
+      "asset": {
+        "id": "open-mantissa-023",
+        "name": "Mantissa 023",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-023.mp4",
+        "thumbnail": "./assets/library/open-mantissa-023.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "green",
+          "web-library"
+        ],
+        "hue": 137,
+        "energy": 0.871,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2313123
+      }
+    },
+    {
+      "id": "open-mantissa-024",
+      "sourceHash": "52afcf4698b4557db26381cbb224f9be1dd5543f7e9d6adf256b820e6205c2aa",
+      "sha256": "5780c7d971882a9c69678b6262eebbe228a62115bafcc65bab3c30e789658889",
+      "bytes": 2315251,
+      "asset": {
+        "id": "open-mantissa-024",
+        "name": "Mantissa 024",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-024.mp4",
+        "thumbnail": "./assets/library/open-mantissa-024.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 260,
+        "energy": 0.616,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2315251
+      }
+    },
+    {
+      "id": "open-mantissa-025",
+      "sourceHash": "033f2b168ed32ca604dda6cfbed0e22515900aebebd39b369f669ff9e58e505e",
+      "sha256": "6fd8a226f0a51c138620b077f7d4456030d2d2b69aa836fc5d6e0c4c18df7bdf",
+      "bytes": 2305749,
+      "asset": {
+        "id": "open-mantissa-025",
+        "name": "Mantissa 025",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-025.mp4",
+        "thumbnail": "./assets/library/open-mantissa-025.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 348,
+        "energy": 0.639,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2305749
+      }
+    },
+    {
+      "id": "open-mantissa-026",
+      "sourceHash": "9d7220eb6512515ea6787b37725bbd20c42168f716442329251438877444e982",
+      "sha256": "6cc65f1f03864d08bc39cf16a24f1dbcbfa5fa47547821854827eb5ef50500ac",
+      "bytes": 2315771,
+      "asset": {
+        "id": "open-mantissa-026",
+        "name": "Mantissa 026",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-026.mp4",
+        "thumbnail": "./assets/library/open-mantissa-026.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 8,
+        "energy": 0.789,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2315771
+      }
+    },
+    {
+      "id": "open-mantissa-027",
+      "sourceHash": "ac2bcba4c8a4eddb900b8222028af0ca887a5d0c223b0f866c30a1e4d99372b9",
+      "sha256": "e28a56b6029bd5f2456ba172b3dbeee070a28aed467a3c3b231f93fc03a869af",
+      "bytes": 2310344,
+      "asset": {
+        "id": "open-mantissa-027",
+        "name": "Mantissa 027",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-027.mp4",
+        "thumbnail": "./assets/library/open-mantissa-027.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 29,
+        "energy": 0.638,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2310344
+      }
+    },
+    {
+      "id": "open-mantissa-028",
+      "sourceHash": "0b0a356d244bd171243f46ee56968d8cb3a41a20e55fc61cb1837baea087c3a0",
+      "sha256": "ec86dcf0f8d38d87cdab32b084a75f28a0ce3784a10a7103c21bc575564f4d94",
+      "bytes": 2315700,
+      "asset": {
+        "id": "open-mantissa-028",
+        "name": "Mantissa 028",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-028.mp4",
+        "thumbnail": "./assets/library/open-mantissa-028.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "cyan",
+          "web-library"
+        ],
+        "hue": 188,
+        "energy": 0.814,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2315700
+      }
+    },
+    {
+      "id": "open-mantissa-029",
+      "sourceHash": "0b0a642e74ee1ac75027ad2c2144549a8ec82462fe225ebbe0e15f893ac1d192",
+      "sha256": "2d1abd91c9df69bd8600cc9fe68e4aa706b6a72a12c9f465f7e439f2c872b3d4",
+      "bytes": 2308328,
+      "asset": {
+        "id": "open-mantissa-029",
+        "name": "Mantissa 029",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-029.mp4",
+        "thumbnail": "./assets/library/open-mantissa-029.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 43,
+        "energy": 0.469,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2308328
+      }
+    },
+    {
+      "id": "open-mantissa-030",
+      "sourceHash": "f8aed0c579456cbddd7a1bdd70ad39230e73c0f523b73a16ac35403b5701a359",
+      "sha256": "8f691faa5656e10e5f4c79db902d08b53d988f2d7f149a6da26359717f5425e0",
+      "bytes": 2316080,
+      "asset": {
+        "id": "open-mantissa-030",
+        "name": "Mantissa 030",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-030.mp4",
+        "thumbnail": "./assets/library/open-mantissa-030.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 248,
+        "energy": 0.577,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2316080
+      }
+    },
+    {
+      "id": "open-mantissa-031",
+      "sourceHash": "76a305e36346e372f4ca10918ec4aa600eb8f2b8dbd25d7979f2fe50fbd9fc76",
+      "sha256": "b4185c5ba51337eaf853b1ae1ad939986294814dbf6ecedf9f151eefeef342dc",
+      "bytes": 2314492,
+      "asset": {
+        "id": "open-mantissa-031",
+        "name": "Mantissa 031",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-031.mp4",
+        "thumbnail": "./assets/library/open-mantissa-031.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 14,
+        "energy": 0.856,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2314492
+      }
+    },
+    {
+      "id": "open-mantissa-032",
+      "sourceHash": "f58bed2b8f8787d5cde0dec1a9189dd6c05e57a02182f08bfc368f952261a7fb",
+      "sha256": "acdc2a56055f8681c543d00abfe0cf62fcf85c74359333a3ce7395309170b765",
+      "bytes": 2307417,
+      "asset": {
+        "id": "open-mantissa-032",
+        "name": "Mantissa 032",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-032.mp4",
+        "thumbnail": "./assets/library/open-mantissa-032.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 349,
+        "energy": 0.581,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2307417
+      }
+    },
+    {
+      "id": "open-mantissa-033",
+      "sourceHash": "1cabf9fc2af2d21b5689751816d6701bb425ecbb5e80df4ac9a237f0bb12dffd",
+      "sha256": "2e779f31109f0c37c6ea64b138429dac6c0286ddfe1bfa341db6caa9e5f51793",
+      "bytes": 2312505,
+      "asset": {
+        "id": "open-mantissa-033",
+        "name": "Mantissa 033",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-033.mp4",
+        "thumbnail": "./assets/library/open-mantissa-033.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 356,
+        "energy": 0.623,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2312505
+      }
+    },
+    {
+      "id": "open-mantissa-034",
+      "sourceHash": "80b413992894abaefca856aa888653e7e0e02fa5e2ae6ab27f9bad6f01e10365",
+      "sha256": "18403e049e98682aa000e77986a945e8e79d16506380f77bd23a47ae70d2e25f",
+      "bytes": 2313716,
+      "asset": {
+        "id": "open-mantissa-034",
+        "name": "Mantissa 034",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-034.mp4",
+        "thumbnail": "./assets/library/open-mantissa-034.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 3,
+        "energy": 0.762,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2313716
+      }
+    },
+    {
+      "id": "open-mantissa-035",
+      "sourceHash": "ad598c49483bcb859afeb7866b1ac9f1029fb89a5ea0fee404f7f4c061804cf5",
+      "sha256": "951c02ed3e0f98bd5e797d651561117f2a09169fb1478cdbfaf2134e88f21602",
+      "bytes": 2313083,
+      "asset": {
+        "id": "open-mantissa-035",
+        "name": "Mantissa 035",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-035.mp4",
+        "thumbnail": "./assets/library/open-mantissa-035.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 3,
+        "energy": 1,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2313083
+      }
+    },
+    {
+      "id": "open-mantissa-036",
+      "sourceHash": "84e22b048d562760271b610d15e00aa97eb6c497bb95d1539e8d71d8a796d685",
+      "sha256": "863d31f577f941e334cab311d99eeb1ae70e72d3f2b4aace6aba06b524c40190",
+      "bytes": 2312777,
+      "asset": {
+        "id": "open-mantissa-036",
+        "name": "Mantissa 036",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-036.mp4",
+        "thumbnail": "./assets/library/open-mantissa-036.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 15,
+        "energy": 0.737,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2312777
+      }
+    },
+    {
+      "id": "open-mantissa-037",
+      "sourceHash": "2b94d2909d59372dbcd4feb74c882aa735c1ba0c96ca663fc23787f7e4fcfab3",
+      "sha256": "41248e038f17d511630e0b0be008ed0c663432d655916b4080359c1dab06c5a1",
+      "bytes": 2314213,
+      "asset": {
+        "id": "open-mantissa-037",
+        "name": "Mantissa 037",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-037.mp4",
+        "thumbnail": "./assets/library/open-mantissa-037.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 1,
+        "energy": 0.78,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2314213
+      }
+    },
+    {
+      "id": "open-mantissa-038",
+      "sourceHash": "3ab5468888bd677cf7686c52f4a0161a7125d3603045abc6d64120160779a0e5",
+      "sha256": "ac56f39ee33a31c93724023719433946ebba4e44cb090528589707cd4b09c458",
+      "bytes": 2308294,
+      "asset": {
+        "id": "open-mantissa-038",
+        "name": "Mantissa 038",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-038.mp4",
+        "thumbnail": "./assets/library/open-mantissa-038.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 5,
+        "energy": 0.869,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2308294
+      }
+    },
+    {
+      "id": "open-mantissa-039",
+      "sourceHash": "e5f6687187d497a12055f502d9ea388e43cfd2e06743c1107025f0444db26b41",
+      "sha256": "dade14d963d7aa92b2d9f7e4e39c1d81843e7f20455b22eadb4f7e63c1b90619",
+      "bytes": 2313965,
+      "asset": {
+        "id": "open-mantissa-039",
+        "name": "Mantissa 039",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-039.mp4",
+        "thumbnail": "./assets/library/open-mantissa-039.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 344,
+        "energy": 0.617,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2313965
+      }
+    },
+    {
+      "id": "open-mantissa-040",
+      "sourceHash": "a347452c224f14656afbb00ae782a8ba75da6f5bc3a0668e75e91006f088ce5a",
+      "sha256": "492b57ac8378b5d85d0eb4b601d7dffcb8510d7e5deb438081f5061bef5df5dd",
+      "bytes": 2311530,
+      "asset": {
+        "id": "open-mantissa-040",
+        "name": "Mantissa 040",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-040.mp4",
+        "thumbnail": "./assets/library/open-mantissa-040.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 225,
+        "energy": 0.966,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2311530
+      }
+    },
+    {
+      "id": "open-mantissa-041",
+      "sourceHash": "1b10f98b9a127612d0b43c7027d0ece30e729a61810453ffc5b1fdcbbd78e21b",
+      "sha256": "4b9185122c286eaedb1722bc6c8ce487b8104903e22e17bd28a751400bcefee6",
+      "bytes": 2315455,
+      "asset": {
+        "id": "open-mantissa-041",
+        "name": "Mantissa 041",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-041.mp4",
+        "thumbnail": "./assets/library/open-mantissa-041.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 360,
+        "energy": 0.764,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2315455
+      }
+    },
+    {
+      "id": "open-mantissa-042",
+      "sourceHash": "5215526cb0f0ae81d3a5b74728a144494f74052394679800a9731a1c49fc5030",
+      "sha256": "5d56732ea75879bc099da9948917a37eb06d15a47598d09afd10f92961f0c3b6",
+      "bytes": 2312329,
+      "asset": {
+        "id": "open-mantissa-042",
+        "name": "Mantissa 042",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-042.mp4",
+        "thumbnail": "./assets/library/open-mantissa-042.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 19,
+        "energy": 0.64,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2312329
+      }
+    },
+    {
+      "id": "open-mantissa-043",
+      "sourceHash": "d709048907d6a1fd7103edc770aee700cd9b96e4f4a888c1a79e8e7da4cb7183",
+      "sha256": "0877007fbccd8c916ca1c192efa094b9c61571cb1a041096f9fd9af5167ee009",
+      "bytes": 2311777,
+      "asset": {
+        "id": "open-mantissa-043",
+        "name": "Mantissa 043",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-043.mp4",
+        "thumbnail": "./assets/library/open-mantissa-043.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 360,
+        "energy": 0.671,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2311777
+      }
+    },
+    {
+      "id": "open-mantissa-044",
+      "sourceHash": "c6eb525ba44626d134a8d61512f10aa59684d7f95d4c9db203e42e1c1ea68d3a",
+      "sha256": "b26af47729054391b69e39119767c34fe25ae71ab95817fafe91e8e1ef0e9abb",
+      "bytes": 2314240,
+      "asset": {
+        "id": "open-mantissa-044",
+        "name": "Mantissa 044",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-044.mp4",
+        "thumbnail": "./assets/library/open-mantissa-044.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 4,
+        "energy": 0.751,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2314240
+      }
+    },
+    {
+      "id": "open-mantissa-045",
+      "sourceHash": "7c32ee2c77dff6fe58b5ae1590e602bed6a7fc635b62d4a60696422372e2aacd",
+      "sha256": "6edcb55b0bdef7c2c87c295f38b7ed551412a557b5e916eec31d8b74f4076dcc",
+      "bytes": 2315198,
+      "asset": {
+        "id": "open-mantissa-045",
+        "name": "Mantissa 045",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-045.mp4",
+        "thumbnail": "./assets/library/open-mantissa-045.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 11,
+        "energy": 0.994,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2315198
+      }
+    },
+    {
+      "id": "open-mantissa-046",
+      "sourceHash": "32454698ff7734c73b78731f7048281722fffa7be60db81cfd4c006e24411720",
+      "sha256": "cbbf430b9fb2d69127e781b4c70c569bdd89d2a9cffb407f83cf8f91d7743c9b",
+      "bytes": 2313630,
+      "asset": {
+        "id": "open-mantissa-046",
+        "name": "Mantissa 046",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-046.mp4",
+        "thumbnail": "./assets/library/open-mantissa-046.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 283,
+        "energy": 0.964,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2313630
+      }
+    },
+    {
+      "id": "open-mantissa-047",
+      "sourceHash": "eb319f5904238a265dac549cfaeb9b10a5a120cebe7b0ebd751e7b95108ac6e1",
+      "sha256": "735240a88b10ab30f7ead6c5fb784ab23d247fa37af637e095a23b5a11f453f8",
+      "bytes": 2311531,
+      "asset": {
+        "id": "open-mantissa-047",
+        "name": "Mantissa 047",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-047.mp4",
+        "thumbnail": "./assets/library/open-mantissa-047.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 203,
+        "energy": 0.828,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2311531
+      }
+    },
+    {
+      "id": "open-mantissa-048",
+      "sourceHash": "a398a0a8493ba6fc69fdd74996c76ef5698ba2256a7a9acb7a262f84c9c4678c",
+      "sha256": "a8a9071a0ab1b6ffc22c7cea90b75de892308ea8779c7837f5d5751ff7b887bd",
+      "bytes": 2316803,
+      "asset": {
+        "id": "open-mantissa-048",
+        "name": "Mantissa 048",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-048.mp4",
+        "thumbnail": "./assets/library/open-mantissa-048.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 30,
+        "energy": 0.525,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2316803
+      }
+    },
+    {
+      "id": "open-mantissa-049",
+      "sourceHash": "6bcf3e3a45e7e4eae0fe378b73f27dead7d0eb21ebef4ed295fb30dcdff58e8c",
+      "sha256": "9c2b64b49c735ceec2785e8aafe4c8837f1a2a5638c80126c31b56d9383c7c5f",
+      "bytes": 2311521,
+      "asset": {
+        "id": "open-mantissa-049",
+        "name": "Mantissa 049",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-049.mp4",
+        "thumbnail": "./assets/library/open-mantissa-049.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 327,
+        "energy": 0.726,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2311521
+      }
+    },
+    {
+      "id": "open-mantissa-050",
+      "sourceHash": "b3cf616b705b1ab4b70258a6dbfac9443db4127f79c3a1c41baccc6b0db09aa8",
+      "sha256": "6c027f5f1908a6e2e99ce737e28b6436a7286562538a4bfb8bc359c3a5181adb",
+      "bytes": 2311614,
+      "asset": {
+        "id": "open-mantissa-050",
+        "name": "Mantissa 050",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-050.mp4",
+        "thumbnail": "./assets/library/open-mantissa-050.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "cyan",
+          "web-library"
+        ],
+        "hue": 193,
+        "energy": 0.95,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2311614
+      }
+    },
+    {
+      "id": "open-mantissa-051",
+      "sourceHash": "71b0d432a1202f190a02a57d89fcc2081dd7657eb94a5dda3fb4a9468ebd1835",
+      "sha256": "eb648514e1b6369e7b30979cb0c79a79b44905e8268473924017f4c40503a3e3",
+      "bytes": 2314234,
+      "asset": {
+        "id": "open-mantissa-051",
+        "name": "Mantissa 051",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-051.mp4",
+        "thumbnail": "./assets/library/open-mantissa-051.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 212,
+        "energy": 0.723,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2314234
+      }
+    },
+    {
+      "id": "open-mantissa-052",
+      "sourceHash": "2531958aabe6bd6a208c2a5de5232973f6accadb36e0694333986dbd577a8f24",
+      "sha256": "3a526527403d1a4de983aa5b312d2f0bac7bb0d271aafdffe074483865119dad",
+      "bytes": 2312353,
+      "asset": {
+        "id": "open-mantissa-052",
+        "name": "Mantissa 052",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-052.mp4",
+        "thumbnail": "./assets/library/open-mantissa-052.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 207,
+        "energy": 0.583,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2312353
+      }
+    },
+    {
+      "id": "open-mantissa-053",
+      "sourceHash": "42da7cf4cbca501ad83e22247e30d61bdd4ecc10cf269455cf25f372ca90fab7",
+      "sha256": "4a7068bda538457f75bd5866e190f76ff3362cf77b6ac59fb3cdfa02f1b90e32",
+      "bytes": 2312054,
+      "asset": {
+        "id": "open-mantissa-053",
+        "name": "Mantissa 053",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-053.mp4",
+        "thumbnail": "./assets/library/open-mantissa-053.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 6,
+        "energy": 0.914,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2312054
+      }
+    },
+    {
+      "id": "open-mantissa-054",
+      "sourceHash": "ee08ceb865150cc1a79ca2d3f26cbb33da3a909b7f56070120dd6763fec78409",
+      "sha256": "996a6ef50094f281e5694a8cdc4ce0fc36995b0007982bfc1b89d432c5675260",
+      "bytes": 2313900,
+      "asset": {
+        "id": "open-mantissa-054",
+        "name": "Mantissa 054",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-054.mp4",
+        "thumbnail": "./assets/library/open-mantissa-054.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 225,
+        "energy": 0.64,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2313900
+      }
+    },
+    {
+      "id": "open-mantissa-055",
+      "sourceHash": "1bb59f5056eeaf3813499b47dd84c6d89fec7190b778b21f39744f0ef0d80bae",
+      "sha256": "57311892d42cfe4c4a45b27a8de39bb1cfe0570907c6ffeb6d4ac0bc21a79932",
+      "bytes": 2311605,
+      "asset": {
+        "id": "open-mantissa-055",
+        "name": "Mantissa 055",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-055.mp4",
+        "thumbnail": "./assets/library/open-mantissa-055.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 233,
+        "energy": 0.65,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2311605
+      }
+    },
+    {
+      "id": "open-mantissa-056",
+      "sourceHash": "1aab2dd48e5562171b29badaa23ad8724640599b57aa6c1878ab68d354711788",
+      "sha256": "5873c6c54ed27b80caf5acc0782feb7852da93bb4df2c7d448494bd0f3cb4168",
+      "bytes": 2312020,
+      "asset": {
+        "id": "open-mantissa-056",
+        "name": "Mantissa 056",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-056.mp4",
+        "thumbnail": "./assets/library/open-mantissa-056.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 26,
+        "energy": 0.581,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2312020
+      }
+    },
+    {
+      "id": "open-mantissa-057",
+      "sourceHash": "1d09a78ba88617c20a2a619cf10b7cacd3bf23ab523c36832f58813a146f68da",
+      "sha256": "f779e9e870c9e6f483d8b7eee643aa48fe943e9cb2953b0457470f6af4e7925e",
+      "bytes": 2312266,
+      "asset": {
+        "id": "open-mantissa-057",
+        "name": "Mantissa 057",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-057.mp4",
+        "thumbnail": "./assets/library/open-mantissa-057.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "cyan",
+          "web-library"
+        ],
+        "hue": 199,
+        "energy": 0.75,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2312266
+      }
+    },
+    {
+      "id": "open-mantissa-058",
+      "sourceHash": "d2822cee91c7bf6252f0dad32b32c1e6963522d93af7e9482c5fb5358d103930",
+      "sha256": "79a90eb9e18ecfaff544f560f9dc421681999c76cafb9c43f74ce7972af78343",
+      "bytes": 2316647,
+      "asset": {
+        "id": "open-mantissa-058",
+        "name": "Mantissa 058",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-058.mp4",
+        "thumbnail": "./assets/library/open-mantissa-058.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 43,
+        "energy": 1,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2316647
+      }
+    },
+    {
+      "id": "open-mantissa-059",
+      "sourceHash": "bcef72a801a02b284f9d2630cd0b880b91528fa97de1476228148ad1ba9f7850",
+      "sha256": "2e6b4cb81f56548438869c6532b8a308dafa7f77333efc5e7a9f2b6d65001163",
+      "bytes": 2313691,
+      "asset": {
+        "id": "open-mantissa-059",
+        "name": "Mantissa 059",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-059.mp4",
+        "thumbnail": "./assets/library/open-mantissa-059.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 15,
+        "energy": 1,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2313691
+      }
+    },
+    {
+      "id": "open-mantissa-060",
+      "sourceHash": "41ffed57c43ba2993b42437c923f161e6c3679cc237e63136050db875e7cbaeb",
+      "sha256": "cd162e8584f52020a2a952d69fe909ecaac497d12967f52e382552b5ea0a25d5",
+      "bytes": 2311051,
+      "asset": {
+        "id": "open-mantissa-060",
+        "name": "Mantissa 060",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-060.mp4",
+        "thumbnail": "./assets/library/open-mantissa-060.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 19,
+        "energy": 1,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2311051
+      }
+    },
+    {
+      "id": "open-mantissa-061",
+      "sourceHash": "82b221ecc8311089014383cf89bca8ef2347831dcb0fcc8464cfdf7ee1950a8c",
+      "sha256": "6220629738ae4c97461dc8bcf3031d0d66a0e9c4aa97e40b97cd071b81ef29af",
+      "bytes": 1486346,
+      "asset": {
+        "id": "open-mantissa-061",
+        "name": "Mantissa 061",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-061.mp4",
+        "thumbnail": "./assets/library/open-mantissa-061.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 250,
+        "energy": 0.975,
+        "duration": 10,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1486346
+      }
+    },
+    {
+      "id": "open-mantissa-062",
+      "sourceHash": "07eb38759c803a8bb91d23a73bfcd1eb9efefa06bcace1af7894957f43dfc316",
+      "sha256": "e926180e030ab03b6deceb8f20aed9eacdd41aa0a710765b54d7f8bf0323647b",
+      "bytes": 1611294,
+      "asset": {
+        "id": "open-mantissa-062",
+        "name": "Mantissa 062",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-062.mp4",
+        "thumbnail": "./assets/library/open-mantissa-062.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 24,
+        "energy": 0.869,
+        "duration": 10.97,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1611294
+      }
+    },
+    {
+      "id": "open-mantissa-063",
+      "sourceHash": "5fd95c1d8571996ad590f91ea0a39e7fc7ad6da666f42a05c8ca4ea7d34f5c54",
+      "sha256": "1f45c158ca8477f0d27181a0ae223c19266baf737fd133028fce019ee3cc612a",
+      "bytes": 1487119,
+      "asset": {
+        "id": "open-mantissa-063",
+        "name": "Mantissa 063",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-063.mp4",
+        "thumbnail": "./assets/library/open-mantissa-063.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 23,
+        "energy": 0.903,
+        "duration": 10,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1487119
+      }
+    },
+    {
+      "id": "open-mantissa-064",
+      "sourceHash": "e6b5049cc91fe17a1f92035a73340c485207c339d22c42fe9b858ab1b0e3bd70",
+      "sha256": "a7eed6800963b981aded099b1f996a630e6900b1406e2e4db0459771bd1c7786",
+      "bytes": 2314176,
+      "asset": {
+        "id": "open-mantissa-064",
+        "name": "Mantissa 064",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-064.mp4",
+        "thumbnail": "./assets/library/open-mantissa-064.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 274,
+        "energy": 0.79,
+        "duration": 16,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2314176
+      }
+    },
+    {
+      "id": "open-mantissa-065",
+      "sourceHash": "7b73fc7b7ec88db6cc8dd6383222e5fba13070649bc3dd51d2986e6f2e19155e",
+      "sha256": "21cd4d561c9721aa272711ce7eca355755d9ec09c3e9c7efb69ab2b93e2246cb",
+      "bytes": 2868135,
+      "asset": {
+        "id": "open-mantissa-065",
+        "name": "Mantissa 065",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-065.mp4",
+        "thumbnail": "./assets/library/open-mantissa-065.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 313,
+        "energy": 0.823,
+        "duration": 20,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2868135
+      }
+    },
+    {
+      "id": "open-mantissa-066",
+      "sourceHash": "151cf77c703a43c7de6bf2cf4b00271b2f8e87a80df14856f191c824f6ca0008",
+      "sha256": "53b3bd1b3ac82abda5f2a88a6b0a8231a5705b8b08c425ed88419cdc95da39af",
+      "bytes": 2869730,
+      "asset": {
+        "id": "open-mantissa-066",
+        "name": "Mantissa 066",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-066.mp4",
+        "thumbnail": "./assets/library/open-mantissa-066.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "cyan",
+          "web-library"
+        ],
+        "hue": 190,
+        "energy": 0.896,
+        "duration": 20,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2869730
+      }
+    },
+    {
+      "id": "open-mantissa-067",
+      "sourceHash": "700d6a7e26cccee6c7c0180ce23662045ed61f8c95a48a6c56cd9cb8924ed6e0",
+      "sha256": "3593ac15a5fb2b47ca19c4119826f64f721923113d0d83fae0e46a9cf3dee5cb",
+      "bytes": 1490359,
+      "asset": {
+        "id": "open-mantissa-067",
+        "name": "Mantissa 067",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-067.mp4",
+        "thumbnail": "./assets/library/open-mantissa-067.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 354,
+        "energy": 0.784,
+        "duration": 10,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1490359
+      }
+    },
+    {
+      "id": "open-mantissa-068",
+      "sourceHash": "583832aea3bc3e888c0a6d8d8f53cae713a890befdea05f79b931fab092ec217",
+      "sha256": "f48087fa0465be0cfa7788f42c0e514a47de0e834689493b7e888671eb78e65a",
+      "bytes": 2174536,
+      "asset": {
+        "id": "open-mantissa-068",
+        "name": "Mantissa 068",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-068.mp4",
+        "thumbnail": "./assets/library/open-mantissa-068.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 0,
+        "energy": 0.603,
+        "duration": 15,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2174536
+      }
+    },
+    {
+      "id": "open-mantissa-069",
+      "sourceHash": "849823dd44cec21804e65948f9babcaeb1f83f506da97041e111340e44254d98",
+      "sha256": "5d0c8947193d826229081d01a2d81e2d5b5c09a3131fd280409fbf2b2b6a5b83",
+      "bytes": 2173924,
+      "asset": {
+        "id": "open-mantissa-069",
+        "name": "Mantissa 069",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-069.mp4",
+        "thumbnail": "./assets/library/open-mantissa-069.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 276,
+        "energy": 0.734,
+        "duration": 15,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2173924
+      }
+    },
+    {
+      "id": "open-mantissa-070",
+      "sourceHash": "223857444b758347a35ee4fe039a92c1e71d9c9ad7f3164c21dabf58b1aa8357",
+      "sha256": "08f4c195983e1737d2d8cb87fd123f3b798e2660ad3085b609872f2dea5df20a",
+      "bytes": 2176314,
+      "asset": {
+        "id": "open-mantissa-070",
+        "name": "Mantissa 070",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-070.mp4",
+        "thumbnail": "./assets/library/open-mantissa-070.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 351,
+        "energy": 0.631,
+        "duration": 15,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2176314
+      }
+    },
+    {
+      "id": "open-mantissa-071",
+      "sourceHash": "d8722f9d22978eaf64d88bba8dab52b09bb3083a13ef4559c07b32aac80135e6",
+      "sha256": "7f5962b1524fff666f05ba1e80f8b0aa00cd114a94e4761eb2cfb0f316a63599",
+      "bytes": 1487617,
+      "asset": {
+        "id": "open-mantissa-071",
+        "name": "Mantissa 071",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-071.mp4",
+        "thumbnail": "./assets/library/open-mantissa-071.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 58,
+        "energy": 0.903,
+        "duration": 10,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1487617
+      }
+    },
+    {
+      "id": "open-mantissa-072",
+      "sourceHash": "dd5d553241ae784de9a56e5a9bb7b2d228aabf4596501aa5d08fd6df28d30e90",
+      "sha256": "65a07701ef6f35cd92db7426f4df4c38693f35ed6dcb521cf97764b22958d312",
+      "bytes": 1578141,
+      "asset": {
+        "id": "open-mantissa-072",
+        "name": "Mantissa 072",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-072.mp4",
+        "thumbnail": "./assets/library/open-mantissa-072.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 241,
+        "energy": 0.576,
+        "duration": 15,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1578141
+      }
+    },
+    {
+      "id": "open-mantissa-073",
+      "sourceHash": "c2aecc9ea5f92c3375015b65c423b3e9d94b0a800c487ca11df5437bd1325180",
+      "sha256": "583225a1ad2b337e7b90e172f771f46d5ae623b3fe806ad0813f0ce6b5e2bcd8",
+      "bytes": 2038532,
+      "asset": {
+        "id": "open-mantissa-073",
+        "name": "Mantissa 073",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-073.mp4",
+        "thumbnail": "./assets/library/open-mantissa-073.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 290,
+        "energy": 0.575,
+        "duration": 14,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2038532
+      }
+    },
+    {
+      "id": "open-mantissa-074",
+      "sourceHash": "2aedfacd4505adeb13b67dcf849e5ad29d438ce2b95ef285b80734adce8f0df9",
+      "sha256": "7573d60b334432b87b312856e307c0d1606be626bdf831d79f2e8c809f102d47",
+      "bytes": 2038587,
+      "asset": {
+        "id": "open-mantissa-074",
+        "name": "Mantissa 074",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-074.mp4",
+        "thumbnail": "./assets/library/open-mantissa-074.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 312,
+        "energy": 0.792,
+        "duration": 14,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2038587
+      }
+    },
+    {
+      "id": "open-mantissa-075",
+      "sourceHash": "29bc9366b78b0ce77c2a24ef736eadb3424ceacbd2cac22ab1ba36a426f7b587",
+      "sha256": "f47ca1bc6b80ec5925f55d6ddf31c3f7b56518c65c957dd9a11ea3baf24b2b22",
+      "bytes": 1812054,
+      "asset": {
+        "id": "open-mantissa-075",
+        "name": "Mantissa 075",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-075.mp4",
+        "thumbnail": "./assets/library/open-mantissa-075.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 268,
+        "energy": 0.7,
+        "duration": 14,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1812054
+      }
+    },
+    {
+      "id": "open-mantissa-076",
+      "sourceHash": "1963dc4a3c97fc2c82ed5d9936137212f3061fb05e743074b3e2cbe022019e70",
+      "sha256": "2cbfc7709c45d02ed421da7761eab16d54a13100c303f04fe918291602ea75c9",
+      "bytes": 2038997,
+      "asset": {
+        "id": "open-mantissa-076",
+        "name": "Mantissa 076",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-076.mp4",
+        "thumbnail": "./assets/library/open-mantissa-076.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 11,
+        "energy": 0.773,
+        "duration": 14,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2038997
+      }
+    },
+    {
+      "id": "open-mantissa-087",
+      "sourceHash": "d5572a1d49dd9f0534cc06c9ec15d5cc12b974f0b0590247cb90e39445c9a29d",
+      "sha256": "d489eb00a3467e1a0b31ea8c1a5e04a1473d57c8d68dc3af8388d1356a6a32cf",
+      "bytes": 1487484,
+      "asset": {
+        "id": "open-mantissa-087",
+        "name": "Mantissa 087",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-087.mp4",
+        "thumbnail": "./assets/library/open-mantissa-087.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 30,
+        "energy": 0.935,
+        "duration": 10,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1487484
+      }
+    },
+    {
+      "id": "open-mantissa-090",
+      "sourceHash": "f847a72c17349df1680433fbd9f3c7bf6e606b130a0d083bbbc22e39439cec13",
+      "sha256": "9a511caf71a113498fcfbc794daa127eb9e53027992726a021fe958369f68021",
+      "bytes": 825448,
+      "asset": {
+        "id": "open-mantissa-090",
+        "name": "Mantissa 090",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-090.mp4",
+        "thumbnail": "./assets/library/open-mantissa-090.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "green",
+          "web-library"
+        ],
+        "hue": 87,
+        "energy": 0.321,
+        "duration": 8.45,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 825448
+      }
+    },
+    {
+      "id": "open-mantissa-092",
+      "sourceHash": "b576e1e534d6b055e5b6d0721557fb2c18dc1a97bfc6c690f3d2c32d10da4d8f",
+      "sha256": "f86706bb0d551832a2c743d42022c4024fc94e26963bb1f8cd09468250dcd4aa",
+      "bytes": 1485791,
+      "asset": {
+        "id": "open-mantissa-092",
+        "name": "Mantissa 092",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-092.mp4",
+        "thumbnail": "./assets/library/open-mantissa-092.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 30,
+        "energy": 0.843,
+        "duration": 10,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1485791
+      }
+    },
+    {
+      "id": "open-mantissa-095",
+      "sourceHash": "848c8de0a4f87b4bdffc8d8db685460256802515e291c297fd345f5272e61172",
+      "sha256": "9b3f7b0a7663789bf6c078fa7d10e7800dd9a74f0f8b6ffc5b5cc9f08fc9c96b",
+      "bytes": 1488290,
+      "asset": {
+        "id": "open-mantissa-095",
+        "name": "Mantissa 095",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-095.mp4",
+        "thumbnail": "./assets/library/open-mantissa-095.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 4,
+        "energy": 1,
+        "duration": 10,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1488290
+      }
+    },
+    {
+      "id": "open-mantissa-096",
+      "sourceHash": "29015c43fec7aab36bf89a4813e00ad568abab7c95c35b755127c7efe8c5c6c5",
+      "sha256": "4a5c8c85d2cf3ac586acee3281472eefb565dd46372f15e4ea455620d8b6a69f",
+      "bytes": 1487956,
+      "asset": {
+        "id": "open-mantissa-096",
+        "name": "Mantissa 096",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-096.mp4",
+        "thumbnail": "./assets/library/open-mantissa-096.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 6,
+        "energy": 0.813,
+        "duration": 10,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1487956
+      }
+    },
+    {
+      "id": "open-mantissa-097",
+      "sourceHash": "f06d6c8ab2a913f420af60681855ae58c51da87c3439280ad52683fe9c8a9a2c",
+      "sha256": "13e9f55e731f4c96406e611cf09bcd789cbfdb9c881e54ef8c506f316864ecd7",
+      "bytes": 1486094,
+      "asset": {
+        "id": "open-mantissa-097",
+        "name": "Mantissa 097",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-097.mp4",
+        "thumbnail": "./assets/library/open-mantissa-097.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "blue",
+          "web-library"
+        ],
+        "hue": 217,
+        "energy": 0.762,
+        "duration": 10,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1486094
+      }
+    },
+    {
+      "id": "open-mantissa-100",
+      "sourceHash": "99cc13818356173318fb03e2fba90f5ca72408b42eb9cba78a443701ba941074",
+      "sha256": "ca78f0a6979bb8a6347c17aa50b9bc5766ba45daad0eecef3972e2751fbe99b5",
+      "bytes": 1475311,
+      "asset": {
+        "id": "open-mantissa-100",
+        "name": "Mantissa 100",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-100.mp4",
+        "thumbnail": "./assets/library/open-mantissa-100.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 0,
+        "energy": 1,
+        "duration": 10,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1475311
+      }
+    },
+    {
+      "id": "open-mantissa-104",
+      "sourceHash": "c0a0f86d389083597322f8de0e73fbc9f1f10846d846dfcd33e9855459f6a00b",
+      "sha256": "6bc8616594c6bb030c428ea2e70db68f651be05d3b8967d6fb2d2ef1ac5baff2",
+      "bytes": 2174834,
+      "asset": {
+        "id": "open-mantissa-104",
+        "name": "Mantissa 104",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-104.mp4",
+        "thumbnail": "./assets/library/open-mantissa-104.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 0,
+        "energy": 0.55,
+        "duration": 15,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2174834
+      }
+    },
+    {
+      "id": "open-mantissa-106",
+      "sourceHash": "c4b35c1e9548bb7778bd8a23d03802e0d62b509e7cba852a8ec1a330e5393451",
+      "sha256": "60aa664cc5249a7fe61887d8f6e9e09c5c851ca755033d1582fec805cf11a881",
+      "bytes": 1601530,
+      "asset": {
+        "id": "open-mantissa-106",
+        "name": "Mantissa 106",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-106.mp4",
+        "thumbnail": "./assets/library/open-mantissa-106.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "cyan",
+          "web-library"
+        ],
+        "hue": 186,
+        "energy": 0.628,
+        "duration": 10.83,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1601530
+      }
+    },
+    {
+      "id": "open-mantissa-113",
+      "sourceHash": "69d3474f9fbaeedffe2650473472be8f744b14ee8ddb8de8e200725ad761c88c",
+      "sha256": "f3d23674eddd7ef4203f1bf0954c53361e3d1c1981ace0a78b65f4bdf708e97f",
+      "bytes": 1766770,
+      "asset": {
+        "id": "open-mantissa-113",
+        "name": "Mantissa 113",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-113.mp4",
+        "thumbnail": "./assets/library/open-mantissa-113.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 46,
+        "energy": 0.613,
+        "duration": 12,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1766770
+      }
+    },
+    {
+      "id": "open-mantissa-114",
+      "sourceHash": "0b0346f253189c5f8e3376be286473ccb037a89f74d00786f81674ac739dbd3e",
+      "sha256": "980effd5d1b46480d492f38a52d70b2f030bb09ce56c5d155418b5a0627f3cfe",
+      "bytes": 1211346,
+      "asset": {
+        "id": "open-mantissa-114",
+        "name": "Mantissa 114",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-114.mp4",
+        "thumbnail": "./assets/library/open-mantissa-114.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 52,
+        "energy": 0.937,
+        "duration": 8,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1211346
+      }
+    },
+    {
+      "id": "open-mantissa-117",
+      "sourceHash": "b3ed91a38d745964557e62da7faf92b0fff52083d3701b03b9715b56fedd2460",
+      "sha256": "48a0c980fa1fc0a06bd2e72cd3ee4311b3eb4fe707910870b40a40ed6c744f4e",
+      "bytes": 800901,
+      "asset": {
+        "id": "open-mantissa-117",
+        "name": "Mantissa 117",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-117.mp4",
+        "thumbnail": "./assets/library/open-mantissa-117.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 37,
+        "energy": 0.961,
+        "duration": 5,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 800901
+      }
+    },
+    {
+      "id": "open-mantissa-118",
+      "sourceHash": "8ae511d76daf7c0819647ab87f5f71401ce48ae0a0a0268ac7354b8efae121a7",
+      "sha256": "daff1f899e5ed5d54e8f6188793a37248a6e2c8d6d1123d63c26706838ed156b",
+      "bytes": 1212677,
+      "asset": {
+        "id": "open-mantissa-118",
+        "name": "Mantissa 118",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-118.mp4",
+        "thumbnail": "./assets/library/open-mantissa-118.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "green",
+          "web-library"
+        ],
+        "hue": 75,
+        "energy": 0.676,
+        "duration": 8,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1212677
+      }
+    },
+    {
+      "id": "open-mantissa-119",
+      "sourceHash": "98ff500c20349d175d6da6ee937d38a132532f50d01c30d91fa864e4387750f8",
+      "sha256": "130f5f1561e98a93ac80f08b17de70e786cdf7166b9181eb1652f14424e72c1a",
+      "bytes": 1487574,
+      "asset": {
+        "id": "open-mantissa-119",
+        "name": "Mantissa 119",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-119.mp4",
+        "thumbnail": "./assets/library/open-mantissa-119.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 314,
+        "energy": 0.691,
+        "duration": 10,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1487574
+      }
+    },
+    {
+      "id": "open-mantissa-122",
+      "sourceHash": "d31b1988d39871a8d3f03f72ded1239e5b500094e6c59d58103a07bf2e02d782",
+      "sha256": "94505fbed45f7e002ca80cf71703ed1f965a5dec303fc45720b3e24a9b0574a0",
+      "bytes": 809049,
+      "asset": {
+        "id": "open-mantissa-122",
+        "name": "Mantissa 122",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-122.mp4",
+        "thumbnail": "./assets/library/open-mantissa-122.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "red",
+          "web-library"
+        ],
+        "hue": 356,
+        "energy": 0.592,
+        "duration": 5,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 809049
+      }
+    },
+    {
+      "id": "open-mantissa-124",
+      "sourceHash": "9f7930dd2a203f698cab3c3a0d97bbb23f48238ab44f8c5c6c00e0472121ec81",
+      "sha256": "a517ee64c4f81ac1a1023446900cc3e63b414627d73d771f7012e8869cf21cf0",
+      "bytes": 966792,
+      "asset": {
+        "id": "open-mantissa-124",
+        "name": "Mantissa 124",
+        "kind": "video",
+        "url": "./assets/library/open-mantissa-124.mp4",
+        "thumbnail": "./assets/library/open-mantissa-124.jpg",
+        "tags": [
+          "open",
+          "cc0",
+          "abstract",
+          "vj-loop",
+          "mantissa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 56,
+        "energy": 0.856,
+        "duration": 6.23,
+        "license": "CC0-1.0",
+        "source": "https://mantissa.xyz/vj.html",
+        "attribution": "Midge “Mantissa” Sinnaeve — mantissa.xyz (optional)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 966792
+      }
+    },
+    {
+      "id": "open-noaa-diving-details",
+      "sourceHash": "8a6b072ff3ff0165a92e3d108a2f2de1f312f9a37723d8b0e7061bd5f6264db7",
+      "sha256": "3e3896b0d5e73f3b798916415219ab291f7c4287ef93a5b431906781bcda478f",
+      "bytes": 16876830,
+      "asset": {
+        "id": "open-noaa-diving-details",
+        "name": "Diving for Details — Deep Ocean",
+        "kind": "video",
+        "url": "./assets/library/open-noaa-diving-details.mp4",
+        "thumbnail": "./assets/library/open-noaa-diving-details.jpg",
+        "tags": [
+          "open",
+          "nature",
+          "ocean",
+          "marine",
+          "macro",
+          "blue",
+          "web-library"
+        ],
+        "hue": 232,
+        "energy": 0.692,
+        "duration": 168.13,
+        "license": "Public domain (NOAA; U.S. copyright status)",
+        "source": "https://oceanexplorer.noaa.gov/multimedia/video-playlist-extras-diving/",
+        "attribution": "NOAA Ocean Exploration",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 16876830
+      }
+    },
+    {
+      "id": "open-usgs-lava-flow",
+      "sourceHash": "b2782dd5b298f0a9ca2e1a2e1a9e631af4db51ea2bdce590f6e760f2c9bd2631",
+      "sha256": "22c33767b5cec771a6ae7784714890af3bf218eb4af1c24be2fb2eb64a6918d6",
+      "bytes": 1678206,
+      "asset": {
+        "id": "open-usgs-lava-flow",
+        "name": "Lava Flow — Hawaii",
+        "kind": "video",
+        "url": "./assets/library/open-usgs-lava-flow.mp4",
+        "thumbnail": "./assets/library/open-usgs-lava-flow.jpg",
+        "tags": [
+          "open",
+          "nature",
+          "lava",
+          "volcano",
+          "gold",
+          "web-library"
+        ],
+        "hue": 26,
+        "energy": 0.444,
+        "duration": 11.51,
+        "license": "Public domain (USGS; U.S. copyright status)",
+        "source": "https://www.usgs.gov/media/videos/lava-flow",
+        "attribution": "USGS / Hawaiian Volcano Observatory",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1678206
+      }
+    },
+    {
+      "id": "open-nps-summer-rainfall",
+      "sourceHash": "f082ef3f0745cc0faa7d524e1e2f913d1b9a727d53dfa1640eee54f22d75d3bf",
+      "sha256": "712d32dfe2ba0957cb7e4e1e3ca3a9f4bdbce97edaf20a43d1a463a1cda11b21",
+      "bytes": 11243661,
+      "asset": {
+        "id": "open-nps-summer-rainfall",
+        "name": "Summer Rainfall — Zion Canyon",
+        "kind": "video",
+        "url": "./assets/library/open-nps-summer-rainfall.mp4",
+        "thumbnail": "./assets/library/open-nps-summer-rainfall.jpg",
+        "tags": [
+          "open",
+          "nature",
+          "rain",
+          "waterfall",
+          "canyon",
+          "red",
+          "web-library"
+        ],
+        "hue": 0,
+        "energy": 0.277,
+        "duration": 112.21000000000001,
+        "license": "Public domain (NPS; U.S. copyright status)",
+        "source": "https://npgallery.nps.gov/AssetDetail/4e87e5ab-61f0-4c8c-955f-80ae6c4d5b96",
+        "attribution": "NPS / Ally O'Rullian",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 11243661
+      }
+    },
+    {
+      "id": "open-nasa-14126-new-trebuchet-mkii",
+      "sourceHash": "54741b79c12aea6eaaceeba273723a4fe85ccbe1981bd720b420ff9ac6280922",
+      "sha256": "1e97f17bd66e97d8e9172877c92689db381d140e377608205b8040ff6343dd03",
+      "bytes": 3680322,
+      "asset": {
+        "id": "open-nasa-14126-new-trebuchet-mkii",
+        "name": "SDO — New Trebuchet mkII",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-new-trebuchet-mkii.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-new-trebuchet-mkii.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "red",
+          "web-library"
+        ],
+        "hue": 13,
+        "energy": 0.403,
+        "duration": 26.03,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 3680322
+      }
+    },
+    {
+      "id": "open-nasa-14126-helios-second-shot-mkiii",
+      "sourceHash": "bdd518328b1535fe348c30f39177b5be655ab573cec33647bb76c84b001942d6",
+      "sha256": "d5b7f394ed139b4b3fd1e763a69b114a7a709311795557c5a7623fec091f0c22",
+      "bytes": 7836762,
+      "asset": {
+        "id": "open-nasa-14126-helios-second-shot-mkiii",
+        "name": "SDO — Helios Second Shot MkIII",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-helios-second-shot-mkiii.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-helios-second-shot-mkiii.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "red",
+          "web-library"
+        ],
+        "hue": 0,
+        "energy": 0.2,
+        "duration": 133.03,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 7836762
+      }
+    },
+    {
+      "id": "open-nasa-14126-magnificent-eruption-mk-ii-overlay",
+      "sourceHash": "ef83457b0076ab81e5a8dfdd7c02eb5bbabc9ab2f794f933bd8a50665a6a7d25",
+      "sha256": "f9beffdff62de9bc94509452ed84b25bde0089c965fee116ad5fca70549838aa",
+      "bytes": 2489775,
+      "asset": {
+        "id": "open-nasa-14126-magnificent-eruption-mk-ii-overlay",
+        "name": "SDO — Magnificent Eruption Mk II-overlay",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-magnificent-eruption-mk-ii-overlay.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-magnificent-eruption-mk-ii-overlay.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "red",
+          "web-library"
+        ],
+        "hue": 17,
+        "energy": 0.452,
+        "duration": 21.42,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2489775
+      }
+    },
+    {
+      "id": "open-nasa-14126-4033-eclipse-mkii-1",
+      "sourceHash": "50d7274cf51c0eb293f131313c76be922adfb80e92323736c3d70bf7d0f4867f",
+      "sha256": "32566281ffe768133b652658b34372d53cc53acc6a9345ddc567efb07d33fb26",
+      "bytes": 1268898,
+      "asset": {
+        "id": "open-nasa-14126-4033-eclipse-mkii-1",
+        "name": "SDO — 4033 Eclipse mkII-1",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-4033-eclipse-mkii-1.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-4033-eclipse-mkii-1.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "red",
+          "web-library"
+        ],
+        "hue": 9,
+        "energy": 0.321,
+        "duration": 19.95,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1268898
+      }
+    },
+    {
+      "id": "open-nasa-14126-holiday-lights-blend-move-mkiii",
+      "sourceHash": "52c6751166efc0433653101b09a2eff2bf08262fd3d7cdbf6fb1231163bd911f",
+      "sha256": "1310c2bd3531895b82baedaa11287e5e361481d66d143441f8504b839f0cbcd3",
+      "bytes": 1001469,
+      "asset": {
+        "id": "open-nasa-14126-holiday-lights-blend-move-mkiii",
+        "name": "SDO — Holiday Lights Blend Move MkIII",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-holiday-lights-blend-move-mkiii.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-holiday-lights-blend-move-mkiii.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "purple",
+          "web-library"
+        ],
+        "hue": 309,
+        "energy": 0.587,
+        "duration": 10.01,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1001469
+      }
+    },
+    {
+      "id": "open-nasa-14126-oct2-eruption-2",
+      "sourceHash": "b3e982f62af36fd1addb5e2b46a33252a8c8ef300b739e7617560e7204035b1b",
+      "sha256": "989bc0a8166c9c076a487b301265f74c21e3d0ac46e3b2d1aa5b738682fd1fd0",
+      "bytes": 1221853,
+      "asset": {
+        "id": "open-nasa-14126-oct2-eruption-2",
+        "name": "SDO — Oct2 Eruption 2",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-oct2-eruption-2.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-oct2-eruption-2.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "red",
+          "web-library"
+        ],
+        "hue": 22,
+        "energy": 0.409,
+        "duration": 20.02,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1221853
+      }
+    },
+    {
+      "id": "open-nasa-14126-march-7-flare-spin",
+      "sourceHash": "77af0b655830ef1f586df5b052fee558640026e56be256daf4b25ce3c9b58d27",
+      "sha256": "06177977a2e6e52a2f7ed44f20a6a5c55680655ba4f9d6d018a2e8610574fa40",
+      "bytes": 1422127,
+      "asset": {
+        "id": "open-nasa-14126-march-7-flare-spin",
+        "name": "SDO — March 7 Flare Spin",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-march-7-flare-spin.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-march-7-flare-spin.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 46,
+        "energy": 0.387,
+        "duration": 17.28,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1422127
+      }
+    },
+    {
+      "id": "open-nasa-14126-july-19-twister",
+      "sourceHash": "959a805ac6f41a6939231f7dc4eab22d3ffdfda6ab5821be30ffa41a07f73bb5",
+      "sha256": "b081ca2d5b48c7d7fad6c21205f461225d8e217caccfe98e9f3b465f0b8622f2",
+      "bytes": 319569,
+      "asset": {
+        "id": "open-nasa-14126-july-19-twister",
+        "name": "SDO — July 19 Twister",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-july-19-twister.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-july-19-twister.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 51,
+        "energy": 0.345,
+        "duration": 15.85,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 319569
+      }
+    },
+    {
+      "id": "open-nasa-14126-171-304-june-21-pe",
+      "sourceHash": "506eb5b5f5351343548cf7e59ce08ddc5e27cb06784411cd8ccfb0b405f91d92",
+      "sha256": "cacff3ca6810e537732a2aec87a707491486150f4af0d31965ae655adb389b4b",
+      "bytes": 1502283,
+      "asset": {
+        "id": "open-nasa-14126-171-304-june-21-pe",
+        "name": "SDO — 171-304-June 21 PE",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-171-304-june-21-pe.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-171-304-june-21-pe.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "red",
+          "web-library"
+        ],
+        "hue": 16,
+        "energy": 0.408,
+        "duration": 18.79,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1502283
+      }
+    },
+    {
+      "id": "open-nasa-14126-oct-cusp-flow-blend-4",
+      "sourceHash": "bc7b06fe889d9578770c8370fcaa7719e96ffa52f99e2b151c399011a628792d",
+      "sha256": "297bef6558864d83e544e727ff688b9ae378680873a478f754ceaea0a5f11bc9",
+      "bytes": 3591110,
+      "asset": {
+        "id": "open-nasa-14126-oct-cusp-flow-blend-4",
+        "name": "SDO — Oct Cusp Flow Blend 4",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-oct-cusp-flow-blend-4.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-oct-cusp-flow-blend-4.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "red",
+          "web-library"
+        ],
+        "hue": 12,
+        "energy": 0.466,
+        "duration": 25.36,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 3591110
+      }
+    },
+    {
+      "id": "open-nasa-14126-canyon-of-fire-new-slow",
+      "sourceHash": "d731a6b7b9087d06ed903f78a975bb0a98191df1c7862c2b7e2575c07845919c",
+      "sha256": "550a9c35a91cacda25d2113a9bb23fca35155d608b4a146393ad8afaef391a91",
+      "bytes": 2160884,
+      "asset": {
+        "id": "open-nasa-14126-canyon-of-fire-new-slow",
+        "name": "SDO — Canyon of Fire New-Slow",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-canyon-of-fire-new-slow.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-canyon-of-fire-new-slow.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 36,
+        "energy": 0.394,
+        "duration": 15.02,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2160884
+      }
+    },
+    {
+      "id": "open-nasa-14126-wispy-pull-out-mkvi-hso",
+      "sourceHash": "1bf1f6158531e23aafa2ac2efc107fa9016bb9e43ee8da5304920bd07f7951f2",
+      "sha256": "61586e8a8e0a648ae72984d9642ed4ecc845375d218858e77b3a01aaf6f50ac3",
+      "bytes": 1558022,
+      "asset": {
+        "id": "open-nasa-14126-wispy-pull-out-mkvi-hso",
+        "name": "SDO — Wispy pull out mkVI HSO",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-wispy-pull-out-mkvi-hso.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-wispy-pull-out-mkvi-hso.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 34,
+        "energy": 0.418,
+        "duration": 28.9,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1558022
+      }
+    },
+    {
+      "id": "open-nasa-14126-umbrella-cu-new",
+      "sourceHash": "4811250c0e55399af2eac280b75c17046b420cee29a620f131b3abf4b412f09b",
+      "sha256": "c0f82f706c0dd0f30d767c5a70e0053429960df860f89c3ca55e6ed330599474",
+      "bytes": 2789068,
+      "asset": {
+        "id": "open-nasa-14126-umbrella-cu-new",
+        "name": "SDO — Umbrella-CU NEW",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-umbrella-cu-new.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-umbrella-cu-new.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "red",
+          "web-library"
+        ],
+        "hue": 7,
+        "energy": 0.373,
+        "duration": 19.45,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 2789068
+      }
+    },
+    {
+      "id": "open-nasa-14126-171-131-blue-blend-flux-rope-sharpened",
+      "sourceHash": "312e17d56ac378f20f93035f75e93eb8d10d0aad32c4684275ba0f57266d46d9",
+      "sha256": "3000ba2db762ef87fb271bc19c9fde23dc1fc7c6a074910cbf7525b34f10c96a",
+      "bytes": 1894354,
+      "asset": {
+        "id": "open-nasa-14126-171-131-blue-blend-flux-rope-sharpened",
+        "name": "SDO — 171-131 Blue Blend flux rope sharpened",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-171-131-blue-blend-flux-rope-sharpened.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-171-131-blue-blend-flux-rope-sharpened.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "red",
+          "web-library"
+        ],
+        "hue": 22,
+        "energy": 0.421,
+        "duration": 20.02,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1894354
+      }
+    },
+    {
+      "id": "open-nasa-14126-october-flares-171-screen-c-sharp-and-dark",
+      "sourceHash": "461eb513fb569eb742da965308a05efe2a1881064676377d275e93d4d9898ee1",
+      "sha256": "6088437fb14b2c25dfe84f0d3c620c1051215af9077411ba777e018d8cd93592",
+      "bytes": 822837,
+      "asset": {
+        "id": "open-nasa-14126-october-flares-171-screen-c-sharp-and-dark",
+        "name": "SDO — October flares 171-Screen C-sharp and dark",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-october-flares-171-screen-c-sharp-and-dark.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-october-flares-171-screen-c-sharp-and-dark.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 47,
+        "energy": 0.395,
+        "duration": 20.02,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 822837
+      }
+    },
+    {
+      "id": "open-nasa-14126-giant-sunspot-track-hso-mkii",
+      "sourceHash": "fad122376cc47470f11df5aa3342c5ee24112dddbc6d9e1b36d308275bf3860d",
+      "sha256": "82e8d02b17e70297e4972ca3509fc9f7a666d1fa466b46f5f2476107904531f4",
+      "bytes": 3387623,
+      "asset": {
+        "id": "open-nasa-14126-giant-sunspot-track-hso-mkii",
+        "name": "SDO — Giant Sunspot track HSO mkII",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-giant-sunspot-track-hso-mkii.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-giant-sunspot-track-hso-mkii.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "gold",
+          "web-library"
+        ],
+        "hue": 28,
+        "energy": 0.532,
+        "duration": 25.03,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 3387623
+      }
+    },
+    {
+      "id": "open-nasa-14126-4038-solar-ballet-cu-mk-ii",
+      "sourceHash": "94ac8c80a495828956be32432e1c1d75c3ce2965ef7afb6d773561c2aa30e399",
+      "sha256": "0fb70090ed0414c1c6304a38c2e8b574223e14c4fac0025817c8ff09da58cc21",
+      "bytes": 3577996,
+      "asset": {
+        "id": "open-nasa-14126-4038-solar-ballet-cu-mk-ii",
+        "name": "SDO — 4038 Solar Ballet CU mk II",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-4038-solar-ballet-cu-mk-ii.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-4038-solar-ballet-cu-mk-ii.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "red",
+          "web-library"
+        ],
+        "hue": 9,
+        "energy": 0.357,
+        "duration": 37.57,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 3577996
+      }
+    },
+    {
+      "id": "open-nasa-14126-helios-first-shot-mkv",
+      "sourceHash": "c15a3573092f525a516d6aa23512150b620b81e3c06d07c482db2fe1f7408018",
+      "sha256": "4dbbca4f4b6e6be7767162bc69a42b7eaeb66260d9cfbd9812d499e269931602",
+      "bytes": 5912625,
+      "asset": {
+        "id": "open-nasa-14126-helios-first-shot-mkv",
+        "name": "SDO — Helios First Shot mkV",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-helios-first-shot-mkv.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-helios-first-shot-mkv.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "red",
+          "web-library"
+        ],
+        "hue": 7,
+        "energy": 0.213,
+        "duration": 87.02,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 5912625
+      }
+    },
+    {
+      "id": "open-nasa-14126-eclipse-masked",
+      "sourceHash": "284a9bd1bee2a367e5db93744da8a7f750b6c4af5b5a49384822469a79bbc956",
+      "sha256": "f7fac3df113c5728bfb356b236a83fb7a1cf78d1927de4dcf357a11cfed7c3dd",
+      "bytes": 1253390,
+      "asset": {
+        "id": "open-nasa-14126-eclipse-masked",
+        "name": "SDO — Eclipse Masked",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-14126-eclipse-masked.mp4",
+        "thumbnail": "./assets/library/open-nasa-14126-eclipse-masked.jpg",
+        "tags": [
+          "open",
+          "space",
+          "sun",
+          "solar",
+          "nasa",
+          "red",
+          "web-library"
+        ],
+        "hue": 9,
+        "energy": 0.321,
+        "duration": 19.95,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/14126/",
+        "attribution": "NASA's Goddard Space Flight Center",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1253390
+      }
+    },
+    {
+      "id": "open-nasa-solar-system-4k",
+      "sourceHash": "384a10866615b0440923bf900162ca2a6df54fb34178f22bba1f541e53356846",
+      "sha256": "e54914a9ffec3e1750fb9293ccf22c6e8c100c1a7d0b7c677b5976a84359101c",
+      "bytes": 1042962,
+      "asset": {
+        "id": "open-nasa-solar-system-4k",
+        "name": "Solar System Animation — 4K",
+        "kind": "video",
+        "url": "./assets/library/open-nasa-solar-system-4k.mp4",
+        "thumbnail": "./assets/library/open-nasa-solar-system-4k.jpg",
+        "tags": [
+          "open",
+          "space",
+          "planets",
+          "nasa",
+          "red",
+          "web-library"
+        ],
+        "hue": 0,
+        "energy": 0.22,
+        "duration": 13.43,
+        "license": "Public domain (NASA SVS; U.S. copyright status)",
+        "source": "https://svs.gsfc.nasa.gov/20249/",
+        "attribution": "NASA's Goddard Space Flight Center Conceptual Image Lab",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1042962
+      }
+    },
+    {
+      "id": "open-eso-milky-way",
+      "sourceHash": "f45d8e49e2ff522e7cfc8394ebcf8e09e4f45e8b861b5eefb4ebc6988c866ad2",
+      "sha256": "cc63696febbb0413cfbb489993b4ac58f2efb292804d28b203acdd01f12b65b4",
+      "bytes": 582254,
+      "asset": {
+        "id": "open-eso-milky-way",
+        "name": "Milky Way Revealed — Paranal",
+        "kind": "video",
+        "url": "./assets/library/open-eso-milky-way.mp4",
+        "thumbnail": "./assets/library/open-eso-milky-way.jpg",
+        "tags": [
+          "open",
+          "space",
+          "stars",
+          "night-sky",
+          "timelapse",
+          "gold",
+          "web-library"
+        ],
+        "hue": 40,
+        "energy": 0.343,
+        "duration": 7.6,
+        "license": "CC-BY-4.0",
+        "source": "https://www.eso.org/public/videos/uhd_yb_paranal_01/",
+        "attribution": "ESO/B. Tafreshi",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 582254
+      }
+    },
+    {
+      "id": "open-hubble-pillars",
+      "sourceHash": "7f9409fb0a6e192d95c42120c84361da8e1890baae1e355d331d8030ce299507",
+      "sha256": "e80e3efa912fc1079b46a89d23b4c990272c7469ff3311682afb14413540190a",
+      "bytes": 5336385,
+      "asset": {
+        "id": "open-hubble-pillars",
+        "name": "Pillars of Creation — Zoom",
+        "kind": "video",
+        "url": "./assets/library/open-hubble-pillars.mp4",
+        "thumbnail": "./assets/library/open-hubble-pillars.jpg",
+        "tags": [
+          "open",
+          "space",
+          "nebula",
+          "stars",
+          "zoom",
+          "gold",
+          "web-library"
+        ],
+        "hue": 31,
+        "energy": 0.336,
+        "duration": 56.2,
+        "license": "CC-BY-4.0",
+        "source": "https://esahubble.org/videos/heic1501f/",
+        "attribution": "NASA, ESA/Hubble and the Hubble Heritage Team",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 5336385
+      }
+    },
+    {
+      "id": "open-noaa-jellyfish-ex2107",
+      "sourceHash": "c5c4cfde44b1529e9bbb8ad98902403362c3a8453f6d29f09d90c2b339f092d7",
+      "sha256": "45395aec582481894b3cf3a59b9f0be31c414021306110e693ce84a75ea458a7",
+      "bytes": 1773502,
+      "asset": {
+        "id": "open-noaa-jellyfish-ex2107",
+        "name": "Narcomedusae Jellyfish — Deep Ocean",
+        "kind": "video",
+        "url": "./assets/library/open-noaa-jellyfish-ex2107.mp4",
+        "thumbnail": "./assets/library/open-noaa-jellyfish-ex2107.jpg",
+        "tags": [
+          "open",
+          "nature",
+          "ocean",
+          "marine",
+          "jellyfish",
+          "blue",
+          "web-library"
+        ],
+        "hue": 217,
+        "energy": 0.294,
+        "duration": 40.12,
+        "license": "Public domain (NOAA; U.S. copyright status)",
+        "source": "https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2107-gallery-media-dive03-jellyfish/",
+        "attribution": "NOAA Ocean Exploration, Windows to the Deep 2021",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1773502
+      }
+    },
+    {
+      "id": "halloween-stock-moon-360",
+      "sourceHash": "d9da5aa87d060e90dfc0c3620a6540cd41bd1950613ce70221ad80f780246d6c",
+      "sha256": "6a5ffd41ed6e59067ac69e0e4911035e42cd83e742827c7253e56b10bb4633d4",
+      "bytes": 1137566,
+      "asset": {
+        "id": "halloween-stock-moon-360",
+        "name": "Moon 360 animation",
+        "kind": "video",
+        "url": "./assets/library/halloween-stock-moon-360.mp4",
+        "thumbnail": "./assets/library/halloween-stock-moon-360.jpg",
+        "tags": [
+          "halloween",
+          "stock",
+          "cc0",
+          "moon",
+          "night",
+          "web-library"
+        ],
+        "hue": 0,
+        "energy": 0.15,
+        "duration": 30.033333333333335,
+        "license": "CC0-1.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Moon_360_animation.webm",
+        "attribution": "Wikideas1 — https://creativecommons.org/publicdomain/zero/1.0/ (credit retained for provenance)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1137566
+      }
+    },
+    {
+      "id": "halloween-stock-vetla-fog",
+      "sourceHash": "7ef7a3fe1cb7434bd68ef87709c1c8a2f680be8a9d4c98c3c8fbbc49788e1758",
+      "sha256": "9050b0dce1e8dcefee8edb515a8b8521c67393885034b6b3dc3bb56f13267b2c",
+      "bytes": 1399103,
+      "asset": {
+        "id": "halloween-stock-vetla-fog",
+        "name": "Drone video of foggy Vetla village in Estonia",
+        "kind": "video",
+        "url": "./assets/library/halloween-stock-vetla-fog.mp4",
+        "thumbnail": "./assets/library/halloween-stock-vetla-fog.jpg",
+        "tags": [
+          "halloween",
+          "stock",
+          "cc0",
+          "fog",
+          "mist",
+          "atmosphere",
+          "web-library"
+        ],
+        "hue": 190,
+        "energy": 0.15,
+        "duration": 46.56666666666667,
+        "license": "CC0-1.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Drone_video_of_foggy_Vetla_village_in_Estonia.ogv",
+        "attribution": "Sillerkiil — https://creativecommons.org/publicdomain/zero/1.0/ (credit retained for provenance)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 1399103
+      }
+    },
+    {
+      "id": "halloween-stock-misty-river-47",
+      "sourceHash": "526d316d4f9d8674d91ea4046cd80b97cbeb8009d2eff9c11cd1fece87e43a09",
+      "sha256": "395afb641b1da0b3aae96be9a3e410bda5f13c8113e300d0ba02b92e551cf5a4",
+      "bytes": 3368699,
+      "asset": {
+        "id": "halloween-stock-misty-river-47",
+        "name": "Misty river 47 seconds",
+        "kind": "video",
+        "url": "./assets/library/halloween-stock-misty-river-47.mp4",
+        "thumbnail": "./assets/library/halloween-stock-misty-river-47.jpg",
+        "tags": [
+          "halloween",
+          "stock",
+          "cc0",
+          "fog",
+          "mist",
+          "atmosphere",
+          "web-library"
+        ],
+        "hue": 190,
+        "energy": 0.15,
+        "duration": 47.166666666666664,
+        "license": "CC0-1.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Misty_river_47_seconds.webm",
+        "attribution": "Digitura — https://creativecommons.org/publicdomain/zero/1.0/ (credit retained for provenance)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 3368699
+      }
+    },
+    {
+      "id": "halloween-stock-misty-river",
+      "sourceHash": "4504d569991c31f748b7ec711df02289ac17fee52006e36453a50f94973a5832",
+      "sha256": "f596f85c4231ed6e1c2f52cc54859803a0a8d0e37b65e29916b2f84467d7bdc3",
+      "bytes": 6825557,
+      "asset": {
+        "id": "halloween-stock-misty-river",
+        "name": "Misty river",
+        "kind": "video",
+        "url": "./assets/library/halloween-stock-misty-river.mp4",
+        "thumbnail": "./assets/library/halloween-stock-misty-river.jpg",
+        "tags": [
+          "halloween",
+          "stock",
+          "cc0",
+          "fog",
+          "mist",
+          "atmosphere",
+          "web-library"
+        ],
+        "hue": 190,
+        "energy": 0.15,
+        "duration": 48.766666666666666,
+        "license": "CC0-1.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Misty_river.webm",
+        "attribution": "Digitura — https://creativecommons.org/publicdomain/zero/1.0/ (credit retained for provenance)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 6825557
+      }
+    },
+    {
+      "id": "halloween-stock-bats-thermal",
+      "sourceHash": "2217084db38a84d0578b6c604dca41cad5b9101e6a16460e248a0636f8953229",
+      "sha256": "070601fd28dd3ae9f4fbb438c61813d65ce266d8b3aba6c685d3a329e565b8c9",
+      "bytes": 3265188,
+      "asset": {
+        "id": "halloween-stock-bats-thermal",
+        "name": "Bats at Wind Turbines",
+        "kind": "video",
+        "url": "./assets/library/halloween-stock-bats-thermal.mp4",
+        "thumbnail": "./assets/library/halloween-stock-bats-thermal.jpg",
+        "tags": [
+          "halloween",
+          "stock",
+          "public-domain",
+          "bats",
+          "thermal",
+          "spooky",
+          "web-library"
+        ],
+        "hue": 0,
+        "energy": 0.4,
+        "duration": 76.63333333333334,
+        "license": "Public Domain (USGS)",
+        "source": "https://www.usgs.gov/media/videos/bats-wind-turbines",
+        "attribution": "U.S. Geological Survey; Paul Cryan is listed as contact (individual camera operator not specified) — https://www.usgs.gov/media/videos/bats-wind-turbines (credit retained for provenance)",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 3265188
+      }
+    },
+    {
+      "id": "halloween-pumpkin-gate",
+      "sourceHash": "3698a5ae3cc08e4402a951945169e92d8aeea23d02a045df993f5d7040cfce78",
+      "sha256": "337f211e9e507114c904a9bb79e36d6e31ea1d441a64b1b583aa276f92744960",
+      "bytes": 478664,
+      "asset": {
+        "id": "halloween-pumpkin-gate",
+        "name": "HALLOWEEN · カボチャの門",
+        "kind": "video",
+        "url": "./assets/library/halloween-pumpkin-gate.mp4",
+        "thumbnail": "./assets/library/halloween-pumpkin-gate.jpg",
+        "tags": [
+          "halloween",
+          "original",
+          "loop",
+          "orange",
+          "pumpkin",
+          "forest",
+          "web-library"
+        ],
+        "hue": 28,
+        "energy": 0.2,
+        "duration": 12,
+        "license": "AI生成オリジナル · Lumina Liveで利用可",
+        "source": "Lumina Live / OpenAI image generation",
+        "attribution": "AI生成背景 + Lumina Live カメラアニメーション",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 478664
+      }
+    },
+    {
+      "id": "halloween-moon-castle",
+      "sourceHash": "d861ebe966a7b863c17ba34e0f703438bb9d828c9dcd13a8b0e020d135f754fd",
+      "sha256": "48b410e5f471d8fd9fafa1a3ee2bc413487cbd89dd3fcb0fd90dd727cd964ae4",
+      "bytes": 281517,
+      "asset": {
+        "id": "halloween-moon-castle",
+        "name": "HALLOWEEN · 月夜の城",
+        "kind": "video",
+        "url": "./assets/library/halloween-moon-castle.mp4",
+        "thumbnail": "./assets/library/halloween-moon-castle.jpg",
+        "tags": [
+          "halloween",
+          "original",
+          "loop",
+          "purple",
+          "moon",
+          "bats",
+          "web-library"
+        ],
+        "hue": 250,
+        "energy": 0.2,
+        "duration": 12,
+        "license": "AI生成オリジナル · Lumina Liveで利用可",
+        "source": "Lumina Live / OpenAI image generation",
+        "attribution": "AI生成背景 + Lumina Live カメラアニメーション",
+        "status": "オンライン・軽量720p H.264",
+        "bytes": 281517
+      }
+    }
+  ],
+  "failures": []
+}

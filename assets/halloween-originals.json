@@ -1,0 +1,48 @@
+[
+  {
+    "id": "halloween-pumpkin-gate",
+    "name": "HALLOWEEN · カボチャの門",
+    "kind": "video",
+    "url": "/assets/media/halloween/originals/halloween-pumpkin-gate.mp4",
+    "thumbnail": "/assets/media/halloween/originals/halloween-pumpkin-gate.jpg",
+    "tags": [
+      "halloween",
+      "original",
+      "loop",
+      "orange",
+      "pumpkin",
+      "forest"
+    ],
+    "hue": 28,
+    "energy": 0.2,
+    "duration": 12,
+    "license": "AI生成オリジナル · Lumina Liveで利用可",
+    "source": "Lumina Live / OpenAI image generation",
+    "attribution": "AI生成背景 + Lumina Live カメラアニメーション",
+    "status": "AI生成静止画を用いた12秒カメラループ・無音",
+    "bytes": 1159876
+  },
+  {
+    "id": "halloween-moon-castle",
+    "name": "HALLOWEEN · 月夜の城",
+    "kind": "video",
+    "url": "/assets/media/halloween/originals/halloween-moon-castle.mp4",
+    "thumbnail": "/assets/media/halloween/originals/halloween-moon-castle.jpg",
+    "tags": [
+      "halloween",
+      "original",
+      "loop",
+      "purple",
+      "moon",
+      "bats"
+    ],
+    "hue": 250,
+    "energy": 0.2,
+    "duration": 12,
+    "license": "AI生成オリジナル · Lumina Liveで利用可",
+    "source": "Lumina Live / OpenAI image generation",
+    "attribution": "AI生成背景 + Lumina Live カメラアニメーション",
+    "status": "AI生成静止画を用いた12秒カメラループ・無音",
+    "bytes": 591602
+  }
+]

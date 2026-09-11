@@ -91,7 +91,14 @@ const pagesDir = path.join(root, "docs");
 await mkdir(path.join(pagesDir, "assets"), { recursive: true });
 await writeFile(path.join(pagesDir, "index.html"), html, "utf8");
 await writeFile(path.join(pagesDir, ".nojekyll"), "", "utf8");
-await writeFile(path.join(pagesDir, "assets", "catalog.json"), "[]\n", "utf8");
+// Keep the separately prepared licensed web library across application rebuilds.
+const catalogFile = path.join(pagesDir, "assets", "catalog.json");
+try {
+  await readFile(catalogFile);
+} catch (error) {
+  if (error.code !== "ENOENT") throw error;
+  await writeFile(catalogFile, "[]\n", "utf8");
+}
 console.log(
   `Standalone HTML: ${destination} (${(Buffer.byteLength(html) / 1024).toFixed(1)} KiB)`,
 );

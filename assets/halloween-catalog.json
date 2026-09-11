@@ -1,0 +1,116 @@
+[
+  {
+    "id": "halloween-stock-moon-360",
+    "name": "Moon 360 animation",
+    "kind": "video",
+    "url": "/assets/media/halloween/stock/halloween-stock-moon-360.mp4",
+    "thumbnail": "/assets/media/halloween/stock/halloween-stock-moon-360.jpg",
+    "tags": [
+      "halloween",
+      "stock",
+      "cc0",
+      "moon",
+      "night"
+    ],
+    "hue": 0,
+    "energy": 0.15,
+    "duration": 30.033333333333335,
+    "license": "CC0-1.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Moon_360_animation.webm",
+    "attribution": "Wikideas1 — https://creativecommons.org/publicdomain/zero/1.0/ (credit retained for provenance)",
+    "status": "再生用・最大720p/30fps H.264・無音・全デコード確認済",
+    "bytes": 1993426
+  },
+  {
+    "id": "halloween-stock-vetla-fog",
+    "name": "Drone video of foggy Vetla village in Estonia",
+    "kind": "video",
+    "url": "/assets/media/halloween/stock/halloween-stock-vetla-fog.mp4",
+    "thumbnail": "/assets/media/halloween/stock/halloween-stock-vetla-fog.jpg",
+    "tags": [
+      "halloween",
+      "stock",
+      "cc0",
+      "fog",
+      "mist",
+      "atmosphere"
+    ],
+    "hue": 190,
+    "energy": 0.15,
+    "duration": 46.56666666666667,
+    "license": "CC0-1.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Drone_video_of_foggy_Vetla_village_in_Estonia.ogv",
+    "attribution": "Sillerkiil — https://creativecommons.org/publicdomain/zero/1.0/ (credit retained for provenance)",
+    "status": "再生用・最大720p/30fps H.264・無音・全デコード確認済",
+    "bytes": 2848587
+  },
+  {
+    "id": "halloween-stock-misty-river-47",
+    "name": "Misty river 47 seconds",
+    "kind": "video",
+    "url": "/assets/media/halloween/stock/halloween-stock-misty-river-47.mp4",
+    "thumbnail": "/assets/media/halloween/stock/halloween-stock-misty-river-47.jpg",
+    "tags": [
+      "halloween",
+      "stock",
+      "cc0",
+      "fog",
+      "mist",
+      "atmosphere"
+    ],
+    "hue": 190,
+    "energy": 0.15,
+    "duration": 47.166666666666664,
+    "license": "CC0-1.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Misty_river_47_seconds.webm",
+    "attribution": "Digitura — https://creativecommons.org/publicdomain/zero/1.0/ (credit retained for provenance)",
+    "status": "再生用・最大720p/30fps H.264・無音・全デコード確認済",
+    "bytes": 7133182
+  },
+  {
+    "id": "halloween-stock-misty-river",
+    "name": "Misty river",
+    "kind": "video",
+    "url": "/assets/media/halloween/stock/halloween-stock-misty-river.mp4",
+    "thumbnail": "/assets/media/halloween/stock/halloween-stock-misty-river.jpg",
+    "tags": [
+      "halloween",
+      "stock",
+      "cc0",
+      "fog",
+      "mist",
+      "atmosphere"
+    ],
+    "hue": 190,
+    "energy": 0.15,
+    "duration": 48.766666666666666,
+    "license": "CC0-1.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Misty_river.webm",
+    "attribution": "Digitura — https://creativecommons.org/publicdomain/zero/1.0/ (credit retained for provenance)",
+    "status": "再生用・最大720p/30fps H.264・無音・全デコード確認済",
+    "bytes": 16174682
+  },
+  {
+    "id": "halloween-stock-bats-thermal",
+    "name": "Bats at Wind Turbines",
+    "kind": "video",
+    "url": "/assets/media/halloween/stock/halloween-stock-bats-thermal.mp4",
+    "thumbnail": "/assets/media/halloween/stock/halloween-stock-bats-thermal.jpg",
+    "tags": [
+      "halloween",
+      "stock",
+      "public-domain",
+      "bats",
+      "thermal",
+      "spooky"
+    ],
+    "hue": 0,
+    "energy": 0.4,
+    "duration": 76.63333333333334,
+    "license": "Public Domain (USGS)",
+    "source": "https://www.usgs.gov/media/videos/bats-wind-turbines",
+    "attribution": "U.S. Geological Survey; Paul Cryan is listed as contact (individual camera operator not specified) — https://www.usgs.gov/media/videos/bats-wind-turbines (credit retained for provenance)",
+    "status": "再生用・最大720p/30fps H.264・無音・全デコード確認済",
+    "bytes": 1962881
+  }
+]

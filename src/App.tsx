@@ -44,6 +44,8 @@ import { builtInAssets } from "./catalog";
 import { applyStagePreset, stagePresets } from "./presets";
 import { PanelDivider, usePanelLayout } from "./PanelLayout";
 import { defaultLayout } from "./layout";
+import { planFolderLibrary } from "./folder-library";
+import { downloadMediaBlob, mergeAssetCatalog } from "./media-library";
 import { VJRenderer } from "./renderer";
 import {
   Transport,
@@ -71,6 +73,7 @@ import {
   serializeShow,
   validateShow,
   revokeMediaUrls,
+  validateAssetCatalog,
 } from "./storage";
 
 const uid = () => crypto.randomUUID();
@@ -444,6 +447,11 @@ function Console() {
   const [cueEdit, setCueEdit] = useState(false);
   const [loopSong, setLoopSong] = useState(false);
   const [audioReady, setAudioReady] = useState(false);
+  const [libraryBusy, setLibraryBusy] = useState(false);
+  const [libraryProgress, setLibraryProgress] = useState("");
+  const folderInput = useRef<HTMLInputElement>(null);
+  const libraryTransfer = useRef<AbortController | null>(null);
+  useEffect(() => () => libraryTransfer.current?.abort(), []);
   const song = show.songs.find((s) => s.id === songId) ?? show.songs[0];
   const asset = show.assets.find((a) => a.id === selected) ?? show.assets[0];
   const cue = activeCue(song.cues, time + song.offset);
@@ -795,6 +803,82 @@ function Console() {
       }
     } else fileInput.current?.click();
   };
+  const connectFolder = async (files: FileList | null) => {
+    if (!files?.length || libraryBusy) return;
+    setLibraryBusy(true);
+    setLibraryProgress("フォルダーの素材を照合しています…");
+    try {
+      const plan = await planFolderLibrary(Array.from(files));
+      const added = plan.entries.map(({ asset, file, thumbnail }) => ({
+        ...asset,
+        url: URL.createObjectURL(file),
+        thumbnail: thumbnail ? URL.createObjectURL(thumbnail) : undefined,
+        bytes: file.size,
+        tags: [...new Set([...asset.tags, "folder-connected"])],
+        status: "フォルダー接続・次回起動時に再接続",
+      }));
+      // This deliberately avoids making a second multi-gigabyte copy in IndexedDB.
+      setShow((s) => ({
+        ...s,
+        assets: mergeAssetCatalog(s.assets, added, true),
+      }));
+      setCategory("folder-connected");
+      setTab("library");
+      setRelated(false);
+      setLibraryProgress(
+        `${added.length}本を接続しました${plan.missing ? `（未検出${plan.missing}本）` : ""}。次回は同じフォルダーを選び直してください。`,
+      );
+      announce(
+        `${added.length}本をフォルダーから接続しました。動画のコピーやアップロードは行いません。`,
+      );
+    } catch (error) {
+      setLibraryProgress(String(error));
+    } finally {
+      setLibraryBusy(false);
+    }
+  };
+  const cacheOnlineMedia = async () => {
+    if (libraryBusy || playing) return;
+    const control = new AbortController();
+    libraryTransfer.current = control;
+    const pendingAssets = show.assets.filter(
+      (a) =>
+        a.tags.includes("web-library") && a.url && !a.url.startsWith("blob:"),
+    );
+    setLibraryBusy(true);
+    let completed = 0;
+    try {
+      for (const a of pendingAssets) {
+        control.signal.throwIfAborted();
+        setLibraryProgress(
+          `端末に保存中 ${completed + 1}/${pendingAssets.length} · ${a.name}`,
+        );
+        const blob = await downloadMediaBlob(a.url!, control.signal);
+        control.signal.throwIfAborted();
+        await storeMedia(a.id, blob);
+        control.signal.throwIfAborted();
+        if (!latest.current.show.assets.some((b) => b.id === a.id)) continue;
+        const url = URL.createObjectURL(blob);
+        setShow((s) => ({
+          ...s,
+          assets: s.assets.map((b) =>
+            b.id === a.id ? { ...b, url, status: "端末に保存済み" } : b,
+          ),
+        }));
+        completed++;
+      }
+      setLibraryProgress(
+        `${completed}本を端末に保存しました。ブラウザーデータを消すと再保存が必要です。`,
+      );
+    } catch (error) {
+      setLibraryProgress(
+        `${completed}本まで保存済み。${control.signal.aborted ? "保存を中止しました。" : `保存を完了できませんでした。空き容量と通信を確認してください。 ${String(error)}`}`,
+      );
+    } finally {
+      libraryTransfer.current = null;
+      setLibraryBusy(false);
+    }
+  };
   const loadAudio = async (file?: File) => {
     if (!file) return;
     try {
@@ -1013,7 +1097,9 @@ function Console() {
           const r = await fetch("./assets/catalog.json");
           if (r.ok) {
             const j = await r.json();
-            imported = Array.isArray(j) ? j : (j.assets ?? []);
+            imported = validateAssetCatalog(
+              Array.isArray(j) ? j : (j.assets ?? []),
+            );
           }
         }
       } catch {
@@ -1022,19 +1108,9 @@ function Console() {
       if (alive && generation === loadGeneration.current) {
         setShow((old) => {
           const current = s ?? old;
-          const ids = new Map(imported.map((a) => [a.id, a]));
           return {
             ...current,
-            assets: [
-              ...current.assets.map((a) =>
-                ids.has(a.id)
-                  ? { ...a, ...ids.get(a.id), favorite: a.favorite }
-                  : a,
-              ),
-              ...imported.filter(
-                (a) => !current.assets.some((b) => b.id === a.id),
-              ),
-            ],
+            assets: mergeAssetCatalog(current.assets, imported),
           };
         });
         if (s) {
@@ -1610,6 +1686,9 @@ function Console() {
             { id: "geometric", label: "Geometry / 幾何学" },
             { id: "nature", label: "Nature / 自然" },
             { id: "glitch", label: "Glitch / 信号" },
+            { id: "halloween", label: "Halloween / ハロウィン" },
+            { id: "web-library", label: "オンライン素材" },
+            { id: "folder-connected", label: "接続したフォルダー" },
           ].map((n) => (
             <button
               key={n.id}
@@ -1960,6 +2039,50 @@ function Console() {
                     <Plus size={15} />
                     取り込む
                   </button>
+                  <button onClick={() => setModal("library")}>
+                    <FolderOpen size={15} />
+                    素材管理
+                  </button>
+                </div>
+                <div className="library-access">
+                  <button
+                    className={category === "halloween" ? "active" : ""}
+                    onClick={() => {
+                      setCategory(
+                        category === "halloween" ? "all" : "halloween",
+                      );
+                      setRelated(false);
+                    }}
+                  >
+                    ハロウィン
+                  </button>
+                  <span>
+                    {
+                      show.assets.filter((a) => a.tags.includes("web-library"))
+                        .length
+                    }
+                    本のオンライン素材 ·{" "}
+                    {
+                      show.assets.filter((a) =>
+                        a.tags.includes("folder-connected"),
+                      ).length
+                    }
+                    本のフォルダー素材
+                  </span>
+                  {show.assets.some((a) => a.tags.includes("web-library")) && (
+                    <a
+                      href="./assets/credits.txt"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      素材クレジット
+                    </a>
+                  )}
+                  {libraryBusy && (
+                    <button onClick={() => setModal("library")}>
+                      保存状況を見る
+                    </button>
+                  )}
                 </div>
                 <div className="library-settings">
                   <div>
@@ -2528,6 +2651,18 @@ function Console() {
       />
       <input
         hidden
+        ref={folderInput}
+        type="file"
+        multiple
+        {...{ webkitdirectory: "" }}
+        aria-label="素材フォルダーを選択"
+        onChange={(e) => {
+          void connectFolder(e.target.files);
+          e.target.value = "";
+        }}
+      />
+      <input
+        hidden
         ref={showInput}
         type="file"
         accept=".json"
@@ -2591,7 +2726,51 @@ function Console() {
             >
               <X size={18} />
             </button>
-            {modal === "layout" ? (
+            {modal === "library" ? (
+              <>
+                <h2>素材管理</h2>
+                <p>
+                  オンライン素材はそのまま選んで再生できます。本番前に端末へ保存すると、開いている操作画面で通信が切れても再生できます。オフラインで起動する場合は、保存した単一HTMLを開き、手元の素材フォルダーを接続してください。このサイトの保存データは単一HTMLには引き継がれません。
+                </p>
+                <button
+                  className="primary"
+                  disabled={
+                    libraryBusy ||
+                    playing ||
+                    !show.assets.some(
+                      (a) =>
+                        a.tags.includes("web-library") &&
+                        a.url &&
+                        !a.url.startsWith("blob:"),
+                    )
+                  }
+                  onClick={() => void cacheOnlineMedia()}
+                >
+                  オンライン素材を端末に保存
+                </button>
+                {playing && <p>素材の一括保存は再生を停止してから行います。</p>}
+                <hr />
+                <h3>収集済み素材・USBのフォルダー</h3>
+                <p>
+                  収集済みライブラリは「assets」フォルダーを選択してください。catalog.jsonを使い、素材名・タグ・利用条件を引き継いでまとめて接続します。一般の動画フォルダーも選べます。
+                </p>
+                <button
+                  disabled={libraryBusy}
+                  onClick={() => folderInput.current?.click()}
+                >
+                  フォルダーを接続
+                </button>
+                <p>
+                  フォルダー接続は動画をコピーしないため、ブラウザーの保存容量を消費しません。次回起動時には同じフォルダーを選び直します。MOVなど端末で再生できないコーデックは、MP4／H.264へ変換してください。
+                </p>
+                {libraryProgress && <p role="status">{libraryProgress}</p>}
+                {libraryTransfer.current && (
+                  <button onClick={() => libraryTransfer.current?.abort()}>
+                    保存を中止
+                  </button>
+                )}
+              </>
+            ) : modal === "layout" ? (
               <>
                 <h2>画面レイアウト</h2>
                 <p>
@@ -2954,6 +3133,28 @@ function Console() {
                   <p>{asset?.source}</p>
                 )}
                 <p>{asset?.status}</p>
+                {asset?.tags.includes("web-library") && (
+                  <p>
+                    公開版は軽量化・無音化しています。
+                    <a
+                      href="./assets/credits.txt"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      全素材のクレジット
+                    </a>
+                    を確認できます。
+                  </p>
+                )}
+                {asset?.license.includes("CC BY 4.0") && (
+                  <a
+                    href="https://creativecommons.org/licenses/by/4.0/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    CC BY 4.0 利用条件
+                  </a>
+                )}
               </>
             ) : modal === "errors" ? (
               <>

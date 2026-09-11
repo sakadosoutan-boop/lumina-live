@@ -1,4 +1,17 @@
 /* One scroll owner per panel; splitters resize the operator UI only. */
+.library-access {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px;
+  color: #9baaba;
+  font-size: 10px;
+}
+.library-access button {
+  font-size: 10px;
+  min-height: 26px;
+}
 .panel-divider {
   display: none;
   align-items: center;

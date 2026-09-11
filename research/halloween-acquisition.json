@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-09-11T06:58:36.946Z",
+  "mode": "verify-only",
+  "pipeline": "h264-crf24-veryfast-yuv420p-720p30-muted-v1",
+  "limits": {
+    "totalBytes": 200000000,
+    "perSourceBytes": 80000000,
+    "fetchTimeoutMs": 120000,
+    "ffmpegTimeoutMs": 300000,
+    "scope": "Cumulative received source bytes and total managed stock disk, each <=200 MB"
+  },
+  "cumulativeReceivedSourceBytes": 141239377,
+  "receivedSourceBytesThisRun": 0,
+  "items": [
+    {
+      "id": "moon-360",
+      "assetId": "halloween-stock-moon-360",
+      "title": "Moon 360 animation.webm",
+      "author": "Wikideas1",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Moon_360_animation.webm",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Moon_360_animation.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:Moon_360_animation.webm"
+      ],
+      "status": "ready",
+      "startedAt": "2026-09-11T06:58:36.946Z",
+      "acquisition": {
+        "status": "reused",
+        "requestedAt": "2026-09-11T06:56:21.876Z",
+        "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Moon_360_animation.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "receivedBytes": 0,
+        "redirects": "error",
+        "timeoutMs": 120000,
+        "httpStatus": 200,
+        "contentType": "video/webm",
+        "contentLength": "4193120",
+        "originallyReceivedBytes": 4193120,
+        "reusedAt": "2026-09-11T06:58:36.955Z"
+      },
+      "sourceFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-moon-360.source.webm",
+        "bytes": 4193120,
+        "sha256": "6564f277db6ef375cbcc9608e4e23b16d20db078bddbf299da0ee00e05629f2e"
+      },
+      "sourceDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:58:38.747Z",
+        "frames": 900,
+        "durationSeconds": 29.996633,
+        "decodedEndTimestampSeconds": 29.996633,
+        "width": 1920,
+        "height": 1080,
+        "stream": "Stream #0:0: Video: vp9 (Profile 0), yuv420p(tv, bt709, progressive), 1920x1080, SAR 1:1 DAR 16:9, 29.97 fps, 29.97 tbr, 1k tbn (default)",
+        "audioPresent": false,
+        "fullVideoDecode": true
+      },
+      "preparedDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:58:39.475Z",
+        "frames": 901,
+        "durationSeconds": 30.033333333333335,
+        "decodedEndTimestampSeconds": 30,
+        "width": 1280,
+        "height": 720,
+        "stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 527 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+        "audioPresent": false,
+        "fullVideoDecode": true
+      },
+      "pipeline": "h264-crf24-veryfast-yuv420p-720p30-muted-v1",
+      "preparedFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-moon-360.mp4",
+        "bytes": 1993426,
+        "sha256": "d9da5aa87d060e90dfc0c3620a6540cd41bd1950613ce70221ad80f780246d6c",
+        "reused": true
+      },
+      "thumbnailFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-moon-360.jpg",
+        "bytes": 6155,
+        "sha256": "51c3714af9ce01ce526e3999990e71cfd982d2dbf2ec6a22e988ad9289f5af8e"
+      },
+      "thumbnailDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:58:39.535Z"
+      },
+      "changes": "Whole source video; aspect-preserving downscale within 1280x720, square pixels, 30 fps, silent H.264/yuv420p, metadata removed, faststart. No seamless-loop claim.",
+      "completedAt": "2026-09-11T06:58:39.537Z"
+    },
+    {
+      "id": "vetla-fog",
+      "assetId": "halloween-stock-vetla-fog",
+      "title": "Drone video of foggy Vetla village in Estonia.ogv",
+      "author": "Sillerkiil",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Drone_video_of_foggy_Vetla_village_in_Estonia.ogv",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Drone_video_of_foggy_Vetla_village_in_Estonia.ogv?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:Drone_video_of_foggy_Vetla_village_in_Estonia.ogv"
+      ],
+      "status": "ready",
+      "startedAt": "2026-09-11T06:58:39.542Z",
+      "acquisition": {
+        "status": "reused",
+        "requestedAt": "2026-09-11T06:56:30.447Z",
+        "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Drone_video_of_foggy_Vetla_village_in_Estonia.ogv?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "receivedBytes": 0,
+        "redirects": "error",
+        "timeoutMs": 120000,
+        "httpStatus": 200,
+        "contentType": "application/ogg",
+        "contentLength": "24293560",
+        "originallyReceivedBytes": 24293560,
+        "reusedAt": "2026-09-11T06:58:39.575Z"
+      },
+      "sourceFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-vetla-fog.source.ogv",
+        "bytes": 24293560,
+        "sha256": "f2669dcbc77f88270d5b8e946c5f32f85f7babcc5ccbd49f33a9ca2e3c11387a"
+      },
+      "sourceDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:58:43.334Z",
+        "frames": 1396,
+        "durationSeconds": 46.5465,
+        "decodedEndTimestampSeconds": 46.5465,
+        "width": 2720,
+        "height": 1530,
+        "stream": "Stream #0:0(eng): Video: theora, yuv420p, 2720x1530 [SAR 1:1 DAR 16:9], 29.97 tbr, 29.97 tbn",
+        "audioPresent": false,
+        "fullVideoDecode": true
+      },
+      "preparedDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:58:44.390Z",
+        "frames": 1397,
+        "durationSeconds": 46.56666666666667,
+        "decodedEndTimestampSeconds": 46.533333,
+        "width": 1280,
+        "height": 720,
+        "stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x720 [SAR 1:1 DAR 16:9], 487 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+        "audioPresent": false,
+        "fullVideoDecode": true
+      },
+      "pipeline": "h264-crf24-veryfast-yuv420p-720p30-muted-v1",
+      "preparedFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-vetla-fog.mp4",
+        "bytes": 2848587,
+        "sha256": "7ef7a3fe1cb7434bd68ef87709c1c8a2f680be8a9d4c98c3c8fbbc49788e1758",
+        "reused": true
+      },
+      "thumbnailFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-vetla-fog.jpg",
+        "bytes": 7170,
+        "sha256": "32a2919e9b2b6598f0e004b149a1163abaf644bdeb95b3cd7ad830debb18d01a"
+      },
+      "thumbnailDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:58:44.444Z"
+      },
+      "changes": "Whole source video; aspect-preserving downscale within 1280x720, square pixels, 30 fps, silent H.264/yuv420p, metadata removed, faststart. No seamless-loop claim.",
+      "completedAt": "2026-09-11T06:58:44.446Z"
+    },
+    {
+      "id": "misty-river-47",
+      "assetId": "halloween-stock-misty-river-47",
+      "title": "Misty river 47 seconds.webm",
+      "author": "Digitura",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Misty_river_47_seconds.webm",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Misty_river_47_seconds.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:Misty_river_47_seconds.webm"
+      ],
+      "status": "ready",
+      "startedAt": "2026-09-11T06:58:44.451Z",
+      "acquisition": {
+        "status": "reused",
+        "requestedAt": "2026-09-11T06:56:47.396Z",
+        "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Misty_river_47_seconds.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "receivedBytes": 0,
+        "redirects": "error",
+        "timeoutMs": 120000,
+        "httpStatus": 200,
+        "contentType": "video/webm",
+        "contentLength": "62533497",
+        "originallyReceivedBytes": 62533497,
+        "reusedAt": "2026-09-11T06:58:44.521Z"
+      },
+      "sourceFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-misty-river-47.source.webm",
+        "bytes": 62533497,
+        "sha256": "16f793ea8a098a433f753b7e3f4d52e110b8e6ee8c00751baa95eb974586ea9a"
+      },
+      "sourceDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:58:53.456Z",
+        "frames": 2359,
+        "durationSeconds": 47.16,
+        "decodedEndTimestampSeconds": 47.16,
+        "width": 1920,
+        "height": 1080,
+        "stream": "Stream #0:0: Video: vp9 (Profile 0), yuv420p(tv, bt709), 1920x1080, SAR 1:1 DAR 16:9, 50 fps, 50 tbr, 1k tbn",
+        "audioPresent": false,
+        "fullVideoDecode": true
+      },
+      "preparedDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:58:55.027Z",
+        "frames": 1415,
+        "durationSeconds": 47.166666666666664,
+        "decodedEndTimestampSeconds": 47.133333,
+        "width": 1280,
+        "height": 720,
+        "stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 1206 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+        "audioPresent": false,
+        "fullVideoDecode": true
+      },
+      "pipeline": "h264-crf24-veryfast-yuv420p-720p30-muted-v1",
+      "preparedFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-misty-river-47.mp4",
+        "bytes": 7133182,
+        "sha256": "526d316d4f9d8674d91ea4046cd80b97cbeb8009d2eff9c11cd1fece87e43a09",
+        "reused": true
+      },
+      "thumbnailFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-misty-river-47.jpg",
+        "bytes": 4798,
+        "sha256": "82202c53757eae050a6a9cbb2cdeabdf1c4287dd3f50c9cad0068258b0c31b73"
+      },
+      "thumbnailDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:58:55.092Z"
+      },
+      "changes": "Whole source video; aspect-preserving downscale within 1280x720, square pixels, 30 fps, silent H.264/yuv420p, metadata removed, faststart. No seamless-loop claim.",
+      "completedAt": "2026-09-11T06:58:55.094Z"
+    },
+    {
+      "id": "misty-river",
+      "assetId": "halloween-stock-misty-river",
+      "title": "Misty river.webm",
+      "author": "Digitura",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Misty_river.webm",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Misty_river.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:Misty_river.webm"
+      ],
+      "status": "ready",
+      "startedAt": "2026-09-11T06:58:55.098Z",
+      "acquisition": {
+        "status": "reused",
+        "requestedAt": "2026-09-11T06:57:20.716Z",
+        "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Misty_river.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "receivedBytes": 0,
+        "redirects": "error",
+        "timeoutMs": 120000,
+        "httpStatus": 200,
+        "contentType": "video/webm",
+        "contentLength": "46812944",
+        "originallyReceivedBytes": 46812944,
+        "reusedAt": "2026-09-11T06:58:55.154Z"
+      },
+      "sourceFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-misty-river.source.webm",
+        "bytes": 46812944,
+        "sha256": "17dfe6e9154647ab7bb1942227d1a38cdcde2f3afc00bc75684b62c9abc24e39"
+      },
+      "sourceDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:59:02.811Z",
+        "frames": 2439,
+        "durationSeconds": 48.76,
+        "decodedEndTimestampSeconds": 48.76,
+        "width": 1920,
+        "height": 1080,
+        "stream": "Stream #0:0: Video: vp9 (Profile 0), yuv420p(tv, bt709), 1920x1080, SAR 1:1 DAR 16:9, 50 fps, 50 tbr, 1k tbn",
+        "audioPresent": false,
+        "fullVideoDecode": true
+      },
+      "preparedDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:59:04.729Z",
+        "frames": 1463,
+        "durationSeconds": 48.766666666666666,
+        "decodedEndTimestampSeconds": 48.733333,
+        "width": 1280,
+        "height": 720,
+        "stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 2650 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+        "audioPresent": false,
+        "fullVideoDecode": true
+      },
+      "pipeline": "h264-crf24-veryfast-yuv420p-720p30-muted-v1",
+      "preparedFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-misty-river.mp4",
+        "bytes": 16174682,
+        "sha256": "4504d569991c31f748b7ec711df02289ac17fee52006e36453a50f94973a5832",
+        "reused": true
+      },
+      "thumbnailFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-misty-river.jpg",
+        "bytes": 7863,
+        "sha256": "f8a6f0b65b41a1a494a5e15c552a78d9c4cb7f72cd1ccec244e8cdb368ad5eab"
+      },
+      "thumbnailDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:59:04.808Z"
+      },
+      "changes": "Whole source video; aspect-preserving downscale within 1280x720, square pixels, 30 fps, silent H.264/yuv420p, metadata removed, faststart. No seamless-loop claim.",
+      "completedAt": "2026-09-11T06:59:04.810Z"
+    },
+    {
+      "id": "bats-thermal",
+      "assetId": "halloween-stock-bats-thermal",
+      "title": "Bats at Wind Turbines",
+      "author": "U.S. Geological Survey; Paul Cryan is listed as contact (individual camera operator not specified)",
+      "sourcePage": "https://www.usgs.gov/media/videos/bats-wind-turbines",
+      "downloadURL": "https://usgs-ocapsv2-public-input-media.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/batturbines.mp4",
+      "license": "Public Domain (USGS source statement)",
+      "licenseURL": "https://www.usgs.gov/media/videos/bats-wind-turbines",
+      "licenseEvidenceURLs": [
+        "https://www.usgs.gov/media/videos/bats-wind-turbines"
+      ],
+      "status": "ready",
+      "startedAt": "2026-09-11T06:59:04.814Z",
+      "acquisition": {
+        "status": "reused",
+        "requestedAt": "2026-09-11T06:57:48.648Z",
+        "downloadURL": "https://usgs-ocapsv2-public-input-media.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/batturbines.mp4",
+        "receivedBytes": 0,
+        "redirects": "error",
+        "timeoutMs": 120000,
+        "httpStatus": 200,
+        "contentType": "video/mp4",
+        "contentLength": "3406256",
+        "originallyReceivedBytes": 3406256,
+        "reusedAt": "2026-09-11T06:59:04.818Z"
+      },
+      "sourceFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-bats-thermal.source.mp4",
+        "bytes": 3406256,
+        "sha256": "aea65f4514be808f59367c610a708dec8713061403e0e5d5819b69aed269ed96"
+      },
+      "sourceDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:59:05.208Z",
+        "frames": 2299,
+        "durationSeconds": 76.6,
+        "decodedEndTimestampSeconds": 76.6,
+        "width": 486,
+        "height": 360,
+        "stream": "Stream #0:0[0x1](und): Video: h264 (Constrained Baseline) (avc1 / 0x31637661), yuv420p(progressive), 486x360 [SAR 1:1 DAR 27:20], 256 kb/s, 30 fps, 30 tbr, 30 tbn (default)",
+        "audioPresent": true,
+        "fullVideoDecode": true
+      },
+      "preparedDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:59:05.677Z",
+        "frames": 2299,
+        "durationSeconds": 76.63333333333334,
+        "decodedEndTimestampSeconds": 76.6,
+        "width": 486,
+        "height": 360,
+        "stream": "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 486x360 [SAR 1:1 DAR 27:20], 202 kb/s, 30 fps, 30 tbr, 15360 tbn (default)",
+        "audioPresent": false,
+        "fullVideoDecode": true
+      },
+      "pipeline": "h264-crf24-veryfast-yuv420p-720p30-muted-v1",
+      "preparedFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-bats-thermal.mp4",
+        "bytes": 1962881,
+        "sha256": "2217084db38a84d0578b6c604dca41cad5b9101e6a16460e248a0636f8953229",
+        "reused": true
+      },
+      "thumbnailFile": {
+        "path": "assets/media/halloween/stock/halloween-stock-bats-thermal.jpg",
+        "bytes": 3813,
+        "sha256": "74bf63f498b47b93639de099c5ea81250565bf0c6aa10afb88ab9062f0998251"
+      },
+      "thumbnailDecode": {
+        "passed": true,
+        "checkedAt": "2026-09-11T06:59:05.734Z"
+      },
+      "changes": "Whole source video; aspect-preserving downscale within 1280x720, square pixels, 30 fps, silent H.264/yuv420p, metadata removed, faststart. No seamless-loop claim.",
+      "completedAt": "2026-09-11T06:59:05.736Z"
+    }
+  ],
+  "summary": {
+    "requested": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "preparedBytes": 30112758,
+    "retainedSourceBytes": 141239377,
+    "stockDiskBytes": 171381934
+  },
+  "updatedAt": "2026-09-11T06:59:05.740Z",
+  "completedAt": "2026-09-11T06:59:05.740Z"
+}

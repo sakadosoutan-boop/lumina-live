@@ -1,0 +1,631 @@
+{
+  "schemaVersion": 1,
+  "researchedOn": "2026-09-11",
+  "researchStartedOn": "2026-09-10",
+  "purpose": "Lumina Live HTTPS browser media bundle and non-profit band stage visuals",
+  "scope": "Research only. Parent handles media downloads, decoding, edits, attribution UI and hosting. Only the two requested research files are owned by this task.",
+  "candidateCount": 13,
+  "budget": {
+    "limitBytes": 500000000,
+    "estimatedCandidateBytes": 250608050,
+    "basis": "All 13 selected original files; 12 Commons rounded binary sizes plus exact USGS HEAD size.",
+    "excludeHolds": true,
+    "mediaBytesDownloaded": 0
+  },
+  "limitations": [
+    "Metadata and license review only; no video was played through or decoded, so no visual/loop-quality claim is verified.",
+    "Every non-null downloadURL was observed on the source page; no Wikimedia hash path or CDN path was guessed.",
+    "USGS MP4 HEAD returned 200. All 12 Commons Original file links were observed in the normal browser, but urllib HEAD returned 403; do not treat payload availability as verified.",
+    "CC0 is preferred. CC BY/SA assets require retained credits/license notices; distributed adaptations of SA footage require the applicable SA license.",
+    "No high-quality pumpkin/haunted-house/bat-swarm loop with unambiguous bundle redistribution and a directly observed download was established in this bounded search.",
+    "No media files downloaded; no login, CAPTCHA solving, anti-bot bypass, GitHub, deployment or app edits."
+  ],
+  "candidates": [
+    {
+      "id": "moon-360",
+      "title": "Moon 360 animation.webm",
+      "pageURL": "https://commons.wikimedia.org/wiki/File:Moon_360_animation.webm",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Moon_360_animation.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "downloadURLObservedOn": "https://commons.wikimedia.org/wiki/File:Moon_360_animation.webm",
+      "downloadURLObservation": "Browser DOM: public Original file anchor; URL copied as observed, including tracking query.",
+      "author": "Wikideas1",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:Moon_360_animation.webm"
+      ],
+      "licenseEvidence": "Own work; CC0 dedication in the file Licensing section.",
+      "bundleEligibility": "permitted_under_listed_license",
+      "attributionRequired": false,
+      "shareAlikeRequiredForAdaptations": false,
+      "displayedSize": {
+        "value": 4,
+        "label": "MB",
+        "interpretation": "Commons binary MiB"
+      },
+      "estimatedBytes": 4194304,
+      "sizeBasis": "Rounded Commons Original file size; not a completed download.",
+      "durationSeconds": 30,
+      "width": 1920,
+      "height": 1080,
+      "codec": "VP9",
+      "recommendation": "priority",
+      "notes": "A simple rotating moon for dark backgrounds; rotation does not prove a seamless loop.",
+      "downloaded": false,
+      "visualPlaybackReviewed": false,
+      "downloadValidation": {
+        "status": "HEAD_403",
+        "checkedOn": "2026-09-11",
+        "detail": "Public Original file anchor observed in normal browser; separate urllib HEAD returned HTTP 403. No bypass attempted. Payload availability is not verified."
+      },
+      "suggestedCredit": "Moon 360 animation.webm — Wikideas1. CC0-1.0. https://commons.wikimedia.org/wiki/File:Moon_360_animation.webm | https://creativecommons.org/publicdomain/zero/1.0/. Changes: [record actual trim, mute, grade or transcode]."
+    },
+    {
+      "id": "vetla-fog",
+      "title": "Drone video of foggy Vetla village in Estonia.ogv",
+      "pageURL": "https://commons.wikimedia.org/wiki/File:Drone_video_of_foggy_Vetla_village_in_Estonia.ogv",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Drone_video_of_foggy_Vetla_village_in_Estonia.ogv?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "downloadURLObservedOn": "https://commons.wikimedia.org/wiki/File:Drone_video_of_foggy_Vetla_village_in_Estonia.ogv",
+      "downloadURLObservation": "Browser DOM: public Original file anchor; URL copied as observed, including tracking query.",
+      "author": "Sillerkiil",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:Drone_video_of_foggy_Vetla_village_in_Estonia.ogv"
+      ],
+      "licenseEvidence": "Own work; CC0 dedication in the file Licensing section.",
+      "bundleEligibility": "permitted_under_listed_license",
+      "attributionRequired": false,
+      "shareAlikeRequiredForAdaptations": false,
+      "displayedSize": {
+        "value": 23.17,
+        "label": "MB",
+        "interpretation": "Commons binary MiB"
+      },
+      "estimatedBytes": 24295506,
+      "sizeBasis": "Rounded Commons Original file size; not a completed download.",
+      "durationSeconds": 47,
+      "width": 2720,
+      "height": 1530,
+      "codec": "Theora",
+      "recommendation": "priority",
+      "notes": "Fog-covered village and woods; strong atmospheric opening. Convert OGV for browser distribution.",
+      "downloaded": false,
+      "visualPlaybackReviewed": false,
+      "downloadValidation": {
+        "status": "HEAD_403",
+        "checkedOn": "2026-09-11",
+        "detail": "Public Original file anchor observed in normal browser; separate urllib HEAD returned HTTP 403. No bypass attempted. Payload availability is not verified."
+      },
+      "suggestedCredit": "Drone video of foggy Vetla village in Estonia.ogv — Sillerkiil. CC0-1.0. https://commons.wikimedia.org/wiki/File:Drone_video_of_foggy_Vetla_village_in_Estonia.ogv | https://creativecommons.org/publicdomain/zero/1.0/. Changes: [record actual trim, mute, grade or transcode]."
+    },
+    {
+      "id": "misty-river-47",
+      "title": "Misty river 47 seconds.webm",
+      "pageURL": "https://commons.wikimedia.org/wiki/File:Misty_river_47_seconds.webm",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Misty_river_47_seconds.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "downloadURLObservedOn": "https://commons.wikimedia.org/wiki/File:Misty_river_47_seconds.webm",
+      "downloadURLObservation": "Browser DOM: public Original file anchor; URL copied as observed, including tracking query.",
+      "author": "Digitura",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:Misty_river_47_seconds.webm"
+      ],
+      "licenseEvidence": "Own work; CC0 dedication; explicitly described as silent.",
+      "bundleEligibility": "permitted_under_listed_license",
+      "attributionRequired": false,
+      "shareAlikeRequiredForAdaptations": false,
+      "displayedSize": {
+        "value": 59.64,
+        "label": "MB",
+        "interpretation": "Commons binary MiB"
+      },
+      "estimatedBytes": 62537073,
+      "sizeBasis": "Rounded Commons Original file size; not a completed download.",
+      "durationSeconds": 47,
+      "width": 1920,
+      "height": 1080,
+      "codec": "VP9",
+      "recommendation": "priority",
+      "notes": "Mist crossing a wooded riverbank; silent; suitable as an eerie background after grading.",
+      "downloaded": false,
+      "visualPlaybackReviewed": false,
+      "downloadValidation": {
+        "status": "HEAD_403",
+        "checkedOn": "2026-09-11",
+        "detail": "Public Original file anchor observed in normal browser; separate urllib HEAD returned HTTP 403. No bypass attempted. Payload availability is not verified."
+      },
+      "suggestedCredit": "Misty river 47 seconds.webm — Digitura. CC0-1.0. https://commons.wikimedia.org/wiki/File:Misty_river_47_seconds.webm | https://creativecommons.org/publicdomain/zero/1.0/. Changes: [record actual trim, mute, grade or transcode]."
+    },
+    {
+      "id": "lases-fog",
+      "title": "Lago di Lases - Bruma mattutina.webm",
+      "pageURL": "https://commons.wikimedia.org/wiki/File:Lago_di_Lases_-_Bruma_mattutina.webm",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Lago_di_Lases_-_Bruma_mattutina.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "downloadURLObservedOn": "https://commons.wikimedia.org/wiki/File:Lago_di_Lases_-_Bruma_mattutina.webm",
+      "downloadURLObservation": "Browser DOM: public Original file anchor; URL copied as observed, including tracking query.",
+      "author": "Syrio",
+      "license": "CC-BY-SA-4.0",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:Lago_di_Lases_-_Bruma_mattutina.webm"
+      ],
+      "licenseEvidence": "Own work; author applies CC BY-SA 4.0.",
+      "bundleEligibility": "permitted_under_listed_license",
+      "attributionRequired": true,
+      "shareAlikeRequiredForAdaptations": true,
+      "displayedSize": {
+        "value": 31.22,
+        "label": "MB",
+        "interpretation": "Commons binary MiB"
+      },
+      "estimatedBytes": 32736543,
+      "sizeBasis": "Rounded Commons Original file size; not a completed download.",
+      "durationSeconds": 24,
+      "width": 1920,
+      "height": 1080,
+      "codec": "VP9/Opus",
+      "recommendation": "optional",
+      "notes": "Moving lake mist; retain attribution and license for any distributed adaptation; omit audio for band use.",
+      "downloaded": false,
+      "visualPlaybackReviewed": false,
+      "downloadValidation": {
+        "status": "HEAD_403",
+        "checkedOn": "2026-09-11",
+        "detail": "Public Original file anchor observed in normal browser; separate urllib HEAD returned HTTP 403. No bypass attempted. Payload availability is not verified."
+      },
+      "suggestedCredit": "Lago di Lases - Bruma mattutina.webm — Syrio. CC-BY-SA-4.0. https://commons.wikimedia.org/wiki/File:Lago_di_Lases_-_Bruma_mattutina.webm | https://creativecommons.org/licenses/by-sa/4.0/. Changes: [record actual trim, mute, grade or transcode]."
+    },
+    {
+      "id": "obudu-fog",
+      "title": "Fog.ogv",
+      "pageURL": "https://commons.wikimedia.org/wiki/File:Fog.ogv",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Fog.ogv?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "downloadURLObservedOn": "https://commons.wikimedia.org/wiki/File:Fog.ogv",
+      "downloadURLObservation": "Browser DOM: public Original file anchor; URL copied as observed, including tracking query.",
+      "author": "Dotun55",
+      "license": "CC-BY-SA-4.0",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:Fog.ogv"
+      ],
+      "licenseEvidence": "Own work; author applies CC BY-SA 4.0.",
+      "bundleEligibility": "permitted_under_listed_license",
+      "attributionRequired": true,
+      "shareAlikeRequiredForAdaptations": true,
+      "displayedSize": {
+        "value": 2.21,
+        "label": "MB",
+        "interpretation": "Commons binary MiB"
+      },
+      "estimatedBytes": 2317353,
+      "sizeBasis": "Rounded Commons Original file size; not a completed download.",
+      "durationSeconds": 15,
+      "width": 1440,
+      "height": 1080,
+      "codec": "Theora/Vorbis",
+      "recommendation": "optional",
+      "notes": "Small short fog passage; 4:3 composition; use letterboxing or a documented crop.",
+      "downloaded": false,
+      "visualPlaybackReviewed": false,
+      "downloadValidation": {
+        "status": "HEAD_403",
+        "checkedOn": "2026-09-11",
+        "detail": "Public Original file anchor observed in normal browser; separate urllib HEAD returned HTTP 403. No bypass attempted. Payload availability is not verified."
+      },
+      "suggestedCredit": "Fog.ogv — Dotun55. CC-BY-SA-4.0. https://commons.wikimedia.org/wiki/File:Fog.ogv | https://creativecommons.org/licenses/by-sa/4.0/. Changes: [record actual trim, mute, grade or transcode]."
+    },
+    {
+      "id": "falling-fog",
+      "title": "Falling-fog-hillslope.ogv",
+      "pageURL": "https://commons.wikimedia.org/wiki/File:Falling-fog-hillslope.ogv",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/6/66/Falling-fog-hillslope.ogv?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "downloadURLObservedOn": "https://commons.wikimedia.org/wiki/File:Falling-fog-hillslope.ogv",
+      "downloadURLObservation": "Browser DOM: public Original file anchor; URL copied as observed, including tracking query.",
+      "author": "Kreuzschnabel",
+      "license": "CC-BY-SA-3.0",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:Falling-fog-hillslope.ogv"
+      ],
+      "licenseEvidence": "Own work; multiple licenses offered; select CC BY-SA 3.0 (not GFDL or Free Art License).",
+      "bundleEligibility": "permitted_under_listed_license",
+      "attributionRequired": true,
+      "shareAlikeRequiredForAdaptations": true,
+      "displayedSize": {
+        "value": 38.02,
+        "label": "MB",
+        "interpretation": "Commons binary MiB"
+      },
+      "estimatedBytes": 39866860,
+      "sizeBasis": "Rounded Commons Original file size; not a completed download.",
+      "durationSeconds": 104,
+      "width": 1280,
+      "height": 720,
+      "codec": "Theora",
+      "recommendation": "optional",
+      "notes": "Long hillside fog movement; select a short section for spooky woodland atmosphere.",
+      "downloaded": false,
+      "visualPlaybackReviewed": false,
+      "downloadValidation": {
+        "status": "HEAD_403",
+        "checkedOn": "2026-09-11",
+        "detail": "Public Original file anchor observed in normal browser; separate urllib HEAD returned HTTP 403. No bypass attempted. Payload availability is not verified."
+      },
+      "suggestedCredit": "Falling-fog-hillslope.ogv — Kreuzschnabel. CC-BY-SA-3.0. https://commons.wikimedia.org/wiki/File:Falling-fog-hillslope.ogv | https://creativecommons.org/licenses/by-sa/3.0/. Changes: [record actual trim, mute, grade or transcode]."
+    },
+    {
+      "id": "full-moon-clouds",
+      "title": "Full Moon Marki 20110319.ogv",
+      "pageURL": "https://commons.wikimedia.org/wiki/File:Full_Moon_Marki_20110319.ogv",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Full_Moon_Marki_20110319.ogv?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "downloadURLObservedOn": "https://commons.wikimedia.org/wiki/File:Full_Moon_Marki_20110319.ogv",
+      "downloadURLObservation": "Browser DOM: public Original file anchor; URL copied as observed, including tracking query.",
+      "author": "Crusier",
+      "license": "CC-BY-SA-3.0",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:Full_Moon_Marki_20110319.ogv"
+      ],
+      "licenseEvidence": "Own work; select the offered CC BY-SA 3.0 option.",
+      "bundleEligibility": "permitted_under_listed_license",
+      "attributionRequired": true,
+      "shareAlikeRequiredForAdaptations": true,
+      "displayedSize": {
+        "value": 18.08,
+        "label": "MB",
+        "interpretation": "Commons binary MiB"
+      },
+      "estimatedBytes": 18958254,
+      "sizeBasis": "Rounded Commons Original file size; not a completed download.",
+      "durationSeconds": 56,
+      "width": 1280,
+      "height": 720,
+      "codec": "Theora",
+      "recommendation": "priority_with_attribution",
+      "notes": "Full moon through clouds; especially relevant to haunted-night backgrounds.",
+      "downloaded": false,
+      "visualPlaybackReviewed": false,
+      "downloadValidation": {
+        "status": "HEAD_403",
+        "checkedOn": "2026-09-11",
+        "detail": "Public Original file anchor observed in normal browser; separate urllib HEAD returned HTTP 403. No bypass attempted. Payload availability is not verified."
+      },
+      "suggestedCredit": "Full Moon Marki 20110319.ogv — Crusier. CC-BY-SA-3.0. https://commons.wikimedia.org/wiki/File:Full_Moon_Marki_20110319.ogv | https://creativecommons.org/licenses/by-sa/3.0/. Changes: [record actual trim, mute, grade or transcode]."
+    },
+    {
+      "id": "moon-phases",
+      "title": "James St. John - Moon phases & libration over 1.5 months (video).webm",
+      "pageURL": "https://commons.wikimedia.org/wiki/File:James_St._John_-_Moon_phases_&_libration_over_1.5_months_(video).webm",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/7/71/James_St._John_-_Moon_phases_%26_libration_over_1.5_months_%28video%29.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "downloadURLObservedOn": "https://commons.wikimedia.org/wiki/File:James_St._John_-_Moon_phases_&_libration_over_1.5_months_(video).webm",
+      "downloadURLObservation": "Browser DOM: public Original file anchor; URL copied as observed, including tracking query.",
+      "author": "James St. John",
+      "license": "CC-BY-2.0",
+      "licenseURL": "https://creativecommons.org/licenses/by/2.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:James_St._John_-_Moon_phases_&_libration_over_1.5_months_(video).webm"
+      ],
+      "licenseEvidence": "Commons records Flickr CC BY 2.0 review on 2021-06-01; source https://www.flickr.com/photos/jsjgeology/50642191866/.",
+      "bundleEligibility": "permitted_under_listed_license",
+      "attributionRequired": true,
+      "shareAlikeRequiredForAdaptations": false,
+      "displayedSize": {
+        "value": 5.02,
+        "label": "MB",
+        "interpretation": "Commons binary MiB"
+      },
+      "estimatedBytes": 5263852,
+      "sizeBasis": "Rounded Commons Original file size; not a completed download.",
+      "durationSeconds": 11,
+      "width": 1920,
+      "height": 1080,
+      "codec": "VP9/Opus",
+      "recommendation": "reserve",
+      "notes": "Brief moon-phase animation. Page also says provided by NASA; retain that provenance rather than claiming St. John originated the underlying NASA imagery.",
+      "downloaded": false,
+      "visualPlaybackReviewed": false,
+      "downloadValidation": {
+        "status": "HEAD_403",
+        "checkedOn": "2026-09-11",
+        "detail": "Public Original file anchor observed in normal browser; separate urllib HEAD returned HTTP 403. No bypass attempted. Payload availability is not verified."
+      },
+      "suggestedCredit": "James St. John - Moon phases & libration over 1.5 months (video).webm — James St. John. CC-BY-2.0. https://commons.wikimedia.org/wiki/File:James_St._John_-_Moon_phases_&_libration_over_1.5_months_(video).webm | https://creativecommons.org/licenses/by/2.0/. Changes: [record actual trim, mute, grade or transcode]."
+    },
+    {
+      "id": "misty-river",
+      "title": "Misty river.webm",
+      "pageURL": "https://commons.wikimedia.org/wiki/File:Misty_river.webm",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Misty_river.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "downloadURLObservedOn": "https://commons.wikimedia.org/wiki/File:Misty_river.webm",
+      "downloadURLObservation": "Browser DOM: public Original file anchor; URL copied as observed, including tracking query.",
+      "author": "Digitura",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:Misty_river.webm"
+      ],
+      "licenseEvidence": "Own work; CC0 dedication in the file Licensing section.",
+      "bundleEligibility": "permitted_under_listed_license",
+      "attributionRequired": false,
+      "shareAlikeRequiredForAdaptations": false,
+      "displayedSize": {
+        "value": 44.64,
+        "label": "MB",
+        "interpretation": "Commons binary MiB"
+      },
+      "estimatedBytes": 46808433,
+      "sizeBasis": "Rounded Commons Original file size; not a completed download.",
+      "durationSeconds": 49,
+      "width": 1920,
+      "height": 1080,
+      "codec": "VP9",
+      "recommendation": "alternate",
+      "notes": "Alternate foggy-river shot by the same author on the same date; compare with misty-river-47 before using both.",
+      "downloaded": false,
+      "visualPlaybackReviewed": false,
+      "downloadValidation": {
+        "status": "HEAD_403",
+        "checkedOn": "2026-09-11",
+        "detail": "Public Original file anchor observed in normal browser; separate urllib HEAD returned HTTP 403. No bypass attempted. Payload availability is not verified."
+      },
+      "suggestedCredit": "Misty river.webm — Digitura. CC0-1.0. https://commons.wikimedia.org/wiki/File:Misty_river.webm | https://creativecommons.org/publicdomain/zero/1.0/. Changes: [record actual trim, mute, grade or transcode]."
+    },
+    {
+      "id": "ljubljana-moon-june",
+      "title": "2022-06-11 LJUBLJANA Galevica LUNA 2.webm",
+      "pageURL": "https://commons.wikimedia.org/wiki/File:2022-06-11_LJUBLJANA_Galevica_LUNA_2.webm",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/5/56/2022-06-11_LJUBLJANA_Galevica_LUNA_2.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "downloadURLObservedOn": "https://commons.wikimedia.org/wiki/File:2022-06-11_LJUBLJANA_Galevica_LUNA_2.webm",
+      "downloadURLObservation": "Browser DOM: public Original file anchor; URL copied as observed, including tracking query.",
+      "author": "NaIzletuSi ™",
+      "license": "CC-BY-3.0",
+      "licenseURL": "https://creativecommons.org/licenses/by/3.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:2022-06-11_LJUBLJANA_Galevica_LUNA_2.webm"
+      ],
+      "licenseEvidence": "Commons records source YouTube license reviewed by MZaplotnik on 2025-08-08; CC BY 3.0.",
+      "bundleEligibility": "permitted_under_listed_license",
+      "attributionRequired": true,
+      "shareAlikeRequiredForAdaptations": false,
+      "displayedSize": {
+        "value": 1.46,
+        "label": "MB",
+        "interpretation": "Commons binary MiB"
+      },
+      "estimatedBytes": 1530921,
+      "sizeBasis": "Rounded Commons Original file size; not a completed download.",
+      "durationSeconds": 13,
+      "width": 1920,
+      "height": 1080,
+      "codec": "VP9/Opus",
+      "recommendation": "optional",
+      "notes": "Very small 1080p moon shot; assess noise and framing during parent download review.",
+      "downloaded": false,
+      "visualPlaybackReviewed": false,
+      "downloadValidation": {
+        "status": "HEAD_403",
+        "checkedOn": "2026-09-11",
+        "detail": "Public Original file anchor observed in normal browser; separate urllib HEAD returned HTTP 403. No bypass attempted. Payload availability is not verified."
+      },
+      "suggestedCredit": "2022-06-11 LJUBLJANA Galevica LUNA 2.webm — NaIzletuSi ™. CC-BY-3.0. https://commons.wikimedia.org/wiki/File:2022-06-11_LJUBLJANA_Galevica_LUNA_2.webm | https://creativecommons.org/licenses/by/3.0/. Changes: [record actual trim, mute, grade or transcode]."
+    },
+    {
+      "id": "ljubljana-moon-september",
+      "title": "2022-09-13 LJUBLJANA doma Luna 3.webm",
+      "pageURL": "https://commons.wikimedia.org/wiki/File:2022-09-13_LJUBLJANA_doma_Luna_3.webm",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/b/b5/2022-09-13_LJUBLJANA_doma_Luna_3.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "downloadURLObservedOn": "https://commons.wikimedia.org/wiki/File:2022-09-13_LJUBLJANA_doma_Luna_3.webm",
+      "downloadURLObservation": "Browser DOM: public Original file anchor; URL copied as observed, including tracking query.",
+      "author": "NaIzletuSi ™",
+      "license": "CC-BY-3.0",
+      "licenseURL": "https://creativecommons.org/licenses/by/3.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:2022-09-13_LJUBLJANA_doma_Luna_3.webm"
+      ],
+      "licenseEvidence": "Commons records source YouTube license reviewed by MZaplotnik on 2025-11-15; CC BY 3.0.",
+      "bundleEligibility": "permitted_under_listed_license",
+      "attributionRequired": true,
+      "shareAlikeRequiredForAdaptations": false,
+      "displayedSize": {
+        "value": 2.11,
+        "label": "MB",
+        "interpretation": "Commons binary MiB"
+      },
+      "estimatedBytes": 2212495,
+      "sizeBasis": "Rounded Commons Original file size; not a completed download.",
+      "durationSeconds": 26,
+      "width": 1920,
+      "height": 1080,
+      "codec": "VP9/Opus",
+      "recommendation": "optional",
+      "notes": "Second inexpensive moon shot; alternate date and framing; assess visually before including both.",
+      "downloaded": false,
+      "visualPlaybackReviewed": false,
+      "downloadValidation": {
+        "status": "HEAD_403",
+        "checkedOn": "2026-09-11",
+        "detail": "Public Original file anchor observed in normal browser; separate urllib HEAD returned HTTP 403. No bypass attempted. Payload availability is not verified."
+      },
+      "suggestedCredit": "2022-09-13 LJUBLJANA doma Luna 3.webm — NaIzletuSi ™. CC-BY-3.0. https://commons.wikimedia.org/wiki/File:2022-09-13_LJUBLJANA_doma_Luna_3.webm | https://creativecommons.org/licenses/by/3.0/. Changes: [record actual trim, mute, grade or transcode]."
+    },
+    {
+      "id": "pumpkin-carving",
+      "title": "Pumpkin Carving.webm",
+      "pageURL": "https://commons.wikimedia.org/wiki/File:Pumpkin_Carving.webm",
+      "downloadURL": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Pumpkin_Carving.webm?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "downloadURLObservedOn": "https://commons.wikimedia.org/wiki/File:Pumpkin_Carving.webm",
+      "downloadURLObservation": "Browser DOM: public Original file anchor; URL copied as observed, including tracking query.",
+      "author": "Saramarieplew",
+      "license": "CC-BY-SA-3.0",
+      "licenseURL": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "licenseEvidenceURLs": [
+        "https://commons.wikimedia.org/wiki/File:Pumpkin_Carving.webm"
+      ],
+      "licenseEvidence": "Own work; CC BY-SA 3.0 and public VRT confirmation ticket 2013120610014427.",
+      "bundleEligibility": "permitted_under_listed_license",
+      "attributionRequired": true,
+      "shareAlikeRequiredForAdaptations": true,
+      "displayedSize": {
+        "value": 6.18,
+        "label": "MB",
+        "interpretation": "Commons binary MiB"
+      },
+      "estimatedBytes": 6480200,
+      "sizeBasis": "Rounded Commons Original file size; not a completed download.",
+      "durationSeconds": 84,
+      "width": 480,
+      "height": 272,
+      "codec": "VP8/Vorbis",
+      "recommendation": "reserve_low_resolution",
+      "notes": "Actual Halloween pumpkin picking/carving; documentary footage, not a polished VJ loop. Review for suitable pumpkin-only portions and remove audio before band use.",
+      "downloaded": false,
+      "visualPlaybackReviewed": false,
+      "downloadValidation": {
+        "status": "HEAD_403",
+        "checkedOn": "2026-09-11",
+        "detail": "Public Original file anchor observed in normal browser; separate urllib HEAD returned HTTP 403. No bypass attempted. Payload availability is not verified."
+      },
+      "suggestedCredit": "Pumpkin Carving.webm — Saramarieplew. CC-BY-SA-3.0. https://commons.wikimedia.org/wiki/File:Pumpkin_Carving.webm | https://creativecommons.org/licenses/by-sa/3.0/. Changes: [record actual trim, mute, grade or transcode]."
+    },
+    {
+      "id": "bats-thermal",
+      "title": "Bats at Wind Turbines",
+      "pageURL": "https://www.usgs.gov/media/videos/bats-wind-turbines",
+      "downloadURL": "https://usgs-ocapsv2-public-input-media.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/batturbines.mp4",
+      "downloadURLObservedOn": "https://www.usgs.gov/media/videos/bats-wind-turbines",
+      "downloadURLObservation": "Browser DOM: Download Video link.",
+      "author": "U.S. Geological Survey; Paul Cryan is listed as contact (individual camera operator not specified)",
+      "license": "Public Domain (USGS source statement)",
+      "licenseURL": "https://www.usgs.gov/media/videos/bats-wind-turbines",
+      "licenseEvidenceURLs": [
+        "https://www.usgs.gov/media/videos/bats-wind-turbines"
+      ],
+      "licenseEvidence": "Sources/Usage: Public Domain.",
+      "bundleEligibility": "public_domain_per_source",
+      "attributionRequired": false,
+      "shareAlikeRequiredForAdaptations": false,
+      "estimatedBytes": 3406256,
+      "sizeBasis": "HTTP HEAD Content-Length observed 2026-09-11; response 200 video/mp4; no payload downloaded.",
+      "durationSeconds": null,
+      "width": 614,
+      "height": 454,
+      "codec": "MP4 container; video codec unverified",
+      "recommendation": "reserve_low_resolution",
+      "notes": "Thermal surveillance of a bat around a wind turbine at night; unusual ghostly monochrome insert, not a clean silhouette swarm. Credit USGS without implying endorsement. Source PD statement is US-government provenance, not a worldwide CC0 dedication.",
+      "downloaded": false,
+      "visualPlaybackReviewed": false,
+      "downloadValidation": {
+        "status": "HEAD_200",
+        "contentType": "video/mp4",
+        "contentLength": 3406256
+      },
+      "suggestedCredit": "Bats at Wind Turbines — U.S. Geological Survey (contact: Paul Cryan). Public Domain per source. https://www.usgs.gov/media/videos/bats-wind-turbines"
+    }
+  ],
+  "holds": [
+    {
+      "id": "hold-pumpkin-head",
+      "title": "Creepy Halloween Pumpkin Head – Horror Loop Footage",
+      "pageURL": "https://freestockfootagearchive.com/creepy-halloween-pumpkin-head-horror-loop-footage/",
+      "downloadURL": "https://freestockfootagearchive.com/wp-content/uploads/2021/10/Creepy-Halloween-Pumpkin-Head-Horror-Footage-Loop.mp4",
+      "author": "Free Stock Footage Archive (credited publisher; individual creator not specified)",
+      "license": "CC BY 4.0 label with conflicting platform restriction",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "licenseEvidenceURLs": [
+        "https://freestockfootagearchive.com/creepy-halloween-pumpkin-head-horror-loop-footage/",
+        "https://freestockfootagearchive.com/license/"
+      ],
+      "estimatedBytes": null,
+      "reason": "License page also prohibits making footage available on other platforms. Do not bundle until the creator resolves this contradiction.",
+      "recommendation": "do_not_bundle",
+      "width": 1920,
+      "height": 1080,
+      "bundleEligibility": "hold",
+      "downloadURLObservedOn": "https://freestockfootagearchive.com/creepy-halloween-pumpkin-head-horror-loop-footage/",
+      "downloadURLObservation": "MP4 URL printed in indexed media-page content; payload not fetched.",
+      "downloaded": false,
+      "excludedFromBudget": true
+    },
+    {
+      "id": "hold-red-tree",
+      "title": "Red Horror Tree Structure – Mirror Background Loop Effect",
+      "pageURL": "https://freestockfootagearchive.com/red-horror-tree-structure-mirror-background-loop-effect/",
+      "downloadURL": "https://freestockfootagearchive.com/wp-content/uploads/2020/10/Red-Horror-Tree-Structure-Mirror-Background-Loop.mp4",
+      "author": "Free Stock Footage Archive (credited publisher; individual creator not specified)",
+      "license": "CC BY 4.0 label with conflicting platform restriction",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "licenseEvidenceURLs": [
+        "https://freestockfootagearchive.com/red-horror-tree-structure-mirror-background-loop-effect/",
+        "https://freestockfootagearchive.com/license/"
+      ],
+      "estimatedBytes": null,
+      "reason": "Same conflicting prohibition on making footage available on other platforms.",
+      "recommendation": "do_not_bundle",
+      "width": 1920,
+      "height": 1080,
+      "bundleEligibility": "hold",
+      "downloadURLObservedOn": "https://freestockfootagearchive.com/red-horror-tree-structure-mirror-background-loop-effect/",
+      "downloadURLObservation": "MP4 URL printed in indexed media-page content; payload not fetched.",
+      "downloaded": false,
+      "excludedFromBudget": true
+    },
+    {
+      "id": "hold-dark-wood",
+      "title": "Dark Wood – Horror Forest Loop + Glitch Effect",
+      "pageURL": "https://freestockfootagearchive.com/dark-wood-horror-forest/",
+      "downloadURL": "https://freestockfootagearchive.com/wp-content/uploads/2019/10/Dark-Wood-Horror-Forest-Loop-Glitch-Effect.mp4",
+      "author": "Free Stock Footage Archive (credited publisher; individual creator not specified)",
+      "license": "CC BY 4.0 label with conflicting platform restriction",
+      "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+      "licenseEvidenceURLs": [
+        "https://freestockfootagearchive.com/dark-wood-horror-forest/",
+        "https://freestockfootagearchive.com/license/"
+      ],
+      "estimatedBytes": null,
+      "reason": "Same conflicting prohibition on making footage available on other platforms.",
+      "recommendation": "do_not_bundle",
+      "width": null,
+      "height": null,
+      "bundleEligibility": "hold",
+      "downloadURLObservedOn": "https://freestockfootagearchive.com/dark-wood-horror-forest/",
+      "downloadURLObservation": "MP4 URL printed in indexed media-page content; payload not fetched.",
+      "downloaded": false,
+      "excludedFromBudget": true
+    },
+    {
+      "id": "hold-fws-bats-3",
+      "title": "Bats 3",
+      "pageURL": "https://www.fws.gov/remote-video/bats-3",
+      "downloadURL": null,
+      "observedPlayerURL": "https://fws.rev.vbrick.com/sharevideo/762cf581-9d9d-4438-8d20-07c45466d3a8",
+      "author": "U.S. Fish and Wildlife Service, National Conservation Training Center videographers",
+      "license": "Public Domain (FWS source statement)",
+      "licenseURL": "https://www.fws.gov/remote-video/bats-3",
+      "licenseEvidenceURLs": [
+        "https://www.fws.gov/remote-video/bats-3"
+      ],
+      "estimatedBytes": null,
+      "reason": "Public page says HD B-roll/Public Domain but embeds a Vbrick player; no legitimate direct media download URL observed. No sign-in or player extraction attempted.",
+      "recommendation": "hold_no_direct_download",
+      "bundleEligibility": "hold",
+      "downloadURLObservedOn": null,
+      "downloadURLObservation": null,
+      "downloaded": false,
+      "excludedFromBudget": true
+    }
+  ],
+  "excludedProviders": [
+    {
+      "provider": "Pixabay",
+      "evidenceURL": "https://pixabay.com/service/license-summary/",
+      "reason": "Standalone distribution prohibited; a raw clip library/bundle does not establish permitted transformative use. Search tags or a CC0 profile claim do not override conflicting item terms."
+    },
+    {
+      "provider": "Pexels",
+      "evidenceURL": "https://help.pexels.com/hc/en-us/articles/900005880463-What-are-the-Terms-and-Conditions",
+      "reason": "Current official help states standalone sale or distribution is prohibited."
+    }
+  ]
+}

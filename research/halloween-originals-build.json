@@ -1,0 +1,24 @@
+{
+  "createdAt": "2026-09-11T06:55:15.308Z",
+  "method": "Generated still artwork with sinusoidal camera movement; not generated moving subjects",
+  "entries": [
+    {
+      "id": "halloween-pumpkin-gate",
+      "sourceImage": "exec-4dadea63-aa85-4b4e-a426-4b31f5fc6dca.png",
+      "bytes": 1159876,
+      "sha256": "3698a5ae3cc08e4402a951945169e92d8aeea23d02a045df993f5d7040cfce78",
+      "decoded": true,
+      "frames": 360,
+      "duration": 12
+    },
+    {
+      "id": "halloween-moon-castle",
+      "sourceImage": "exec-54bd417b-520d-4499-9f8a-f68290db2c0f.png",
+      "bytes": 591602,
+      "sha256": "d861ebe966a7b863c17ba34e0f703438bb9d828c9dcd13a8b0e020d135f754fd",
+      "decoded": true,
+      "frames": 360,
+      "duration": 12
+    }
+  ]
+}

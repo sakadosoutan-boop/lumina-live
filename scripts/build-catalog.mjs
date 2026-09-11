@@ -97,7 +97,11 @@ await fs.writeFile(
   JSON.stringify(excluded, null, 2) + "\n",
 );
 const state = await read(preparedFile, { version: 1, entries: {} });
-const catalog = [];
+// Independently acquired seasonal sources already include verified playable files.
+const catalog = [
+  ...(await read(path.join(assetsDir, "halloween-catalog.json"), [])),
+  ...(await read(path.join(assetsDir, "halloween-originals.json"), [])),
+];
 let proxyBytes = await size(proxyDir);
 let failed = 0;
 function analyze(raw) {
