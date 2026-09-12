@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-12T15:13:03.739Z",
+  "scope": "Source media, research evidence and public lightweight copies; excludes Git, app dependencies and temporary deployment duplicates",
+  "assetsBytes": 17835460139,
+  "researchBytes": 10916207,
+  "publicBytes": 298665290,
+  "totalBytes": 18145041636,
+  "capBytes": 20000000000,
+  "remainingBytes": 1854958364,
+  "localVideos": 254,
+  "publicVideos": 129,
+  "jrockOriginals": 4,
+  "jrockCollection": 24
+}

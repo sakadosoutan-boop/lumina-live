@@ -101,7 +101,13 @@ const state = await read(preparedFile, { version: 1, entries: {} });
 const catalog = [
   ...(await read(path.join(assetsDir, "halloween-catalog.json"), [])),
   ...(await read(path.join(assetsDir, "halloween-originals.json"), [])),
+  ...(await read(path.join(assetsDir, "jrock-originals.json"), [])),
 ];
+const jrockSelections = new Map(
+  (await read(path.join(root, "research/jrock-selections.json"), [])).map(
+    (s) => [s.id, s],
+  ),
+);
 let proxyBytes = await size(proxyDir);
 let failed = 0;
 function analyze(raw) {
@@ -349,6 +355,7 @@ for (const a of unique) {
           ...a.tags.filter((t) => t !== "needs-transcode"),
           color,
           ...themeTags,
+          ...(jrockSelections.get(a.id)?.tags ?? []),
         ]),
       ],
       hue,

@@ -1687,6 +1687,7 @@ function Console() {
             { id: "nature", label: "Nature / 自然" },
             { id: "glitch", label: "Glitch / 信号" },
             { id: "halloween", label: "Halloween / ハロウィン" },
+            { id: "jrock", label: "邦楽ロック" },
             { id: "web-library", label: "オンライン素材" },
             { id: "folder-connected", label: "接続したフォルダー" },
           ].map((n) => (
@@ -2046,6 +2047,15 @@ function Console() {
                 </div>
                 <div className="library-access">
                   <button
+                    className={category.startsWith("jrock") ? "active" : ""}
+                    onClick={() => {
+                      setCategory("jrock");
+                      setRelated(false);
+                    }}
+                  >
+                    邦楽ロック
+                  </button>
+                  <button
                     className={category === "halloween" ? "active" : ""}
                     onClick={() => {
                       setCategory(
@@ -2084,6 +2094,28 @@ function Console() {
                     </button>
                   )}
                 </div>
+                {category.startsWith("jrock") && (
+                  <div className="library-access" aria-label="邦楽ロックの用途">
+                    {[
+                      ["jrock", "すべて"],
+                      ["jrock-verse", "Aメロ・歌詞中心"],
+                      ["jrock-chorus", "サビ・疾走感"],
+                      ["jrock-dark", "夜・緊張感"],
+                      ["jrock-ending", "余韻・エンディング"],
+                    ].map(([id, label]) => (
+                      <button
+                        key={id}
+                        className={category === id ? "active" : ""}
+                        onClick={() => {
+                          setCategory(id);
+                          setRelated(false);
+                        }}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                )}
                 <div className="library-settings">
                   <div>
                     <span>切替タイミング</span>

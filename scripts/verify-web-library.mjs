@@ -11,6 +11,7 @@ const allowed = new Set(await read("research/web-library-approved-ids.json"));
 for (const file of [
   "assets/halloween-catalog.json",
   "assets/halloween-originals.json",
+  "assets/jrock-originals.json",
 ])
   for (const a of await read(file)) allowed.add(a.id);
 if (

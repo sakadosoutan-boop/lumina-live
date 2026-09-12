@@ -1,0 +1,46 @@
+{
+  "createdAt": "2026-09-12T15:08:26.619Z",
+  "method": "Generated still artwork with looping camera and smooth brightness animation",
+  "entries": [
+    {
+      "id": "jrock-after-school-sky",
+      "bytes": 1032445,
+      "sha256": "21803f39bacfc0653366a1d2c840668d82b0889f188362ccff0259911eaa4e33",
+      "decoded": true,
+      "frames": 480,
+      "width": 1280,
+      "height": 720,
+      "filter": "scale=2560:-2,zoompan=z='1.08+0.045*sin(2*PI*on/480)':x='iw/2-iw/zoom/2+12*sin(2*PI*on/480)':y='ih/2-ih/zoom/2':d=1:s=1280x720:fps=30"
+    },
+    {
+      "id": "jrock-midnight-rain",
+      "bytes": 1630319,
+      "sha256": "bf7a9132c852170b20e5754b1b44d32b963c17aada5fcf12b036b4c13960bdbd",
+      "decoded": true,
+      "frames": 480,
+      "width": 1280,
+      "height": 720,
+      "filter": "scale=2560:-2,zoompan=z='1.08+0.045*sin(2*PI*on/480)':x='iw/2-iw/zoom/2+12*sin(2*PI*on/480)':y='ih/2-ih/zoom/2':d=1:s=1280x720:fps=30"
+    },
+    {
+      "id": "jrock-ocean-dawn",
+      "bytes": 908446,
+      "sha256": "e916391c039960ba7c1cffcaaf5b31007fec553900c07a6c192c437540190a20",
+      "decoded": true,
+      "frames": 480,
+      "width": 1280,
+      "height": 720,
+      "filter": "scale=2560:-2,zoompan=z='1.08+0.045*sin(2*PI*on/480)':x='iw/2-iw/zoom/2+12*sin(2*PI*on/480)':y='ih/2-ih/zoom/2':d=1:s=1280x720:fps=30"
+    },
+    {
+      "id": "jrock-prism-impact",
+      "bytes": 2167756,
+      "sha256": "b001528587ae19add41334dea7c740d2f510aa9edfc4c4cde46007dfbdc5be68",
+      "decoded": true,
+      "frames": 480,
+      "width": 1280,
+      "height": 720,
+      "filter": "scale=2560:-2,zoompan=z='1.08+0.045*sin(2*PI*on/120)':x='iw/2-iw/zoom/2+12*sin(2*PI*on/480)':y='ih/2-ih/zoom/2':d=1:s=1280x720:fps=30,eq=brightness='0.025*sin(2*PI*t/4)':eval=frame"
+    }
+  ]
+}

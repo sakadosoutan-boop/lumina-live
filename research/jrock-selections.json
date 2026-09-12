@@ -1,0 +1,242 @@
+[
+  {
+    "id": "halloween-stock-vetla-fog",
+    "tags": [
+      "jrock",
+      "verse",
+      "quiet",
+      "fog",
+      "landscape",
+      "jrock-verse"
+    ],
+    "use": "静かなAメロ。霧に包まれた森と集落の広い風景で導入し、低めの明るさで長く見せる。"
+  },
+  {
+    "id": "halloween-stock-misty-river-47",
+    "tags": [
+      "jrock",
+      "verse",
+      "quiet",
+      "mist",
+      "water",
+      "jrock-verse"
+    ],
+    "use": "静かなAメロ。水平な水面と対岸の霧を背景に、ボーカル中心の場面を控えめに支える。"
+  },
+  {
+    "id": "open-mantissa-016",
+    "tags": [
+      "jrock",
+      "verse",
+      "quiet",
+      "abstract",
+      "blue",
+      "jrock-verse"
+    ],
+    "use": "静かなAメロ。青い背景と光沢のある連結形状を低輝度で使い、クリーンギターの音の粒を抽象的に表す。"
+  },
+  {
+    "id": "open-mantissa-030",
+    "tags": [
+      "jrock",
+      "verse",
+      "quiet",
+      "abstract",
+      "pastel",
+      "jrock-verse"
+    ],
+    "use": "静かなAメロ。淡い色の小さな球と面の質感を柔らかな背景にする。白い部分が強いので明るさを抑える。"
+  },
+  {
+    "id": "open-mantissa-073",
+    "tags": [
+      "jrock",
+      "verse",
+      "quiet",
+      "abstract",
+      "haze",
+      "jrock-verse"
+    ],
+    "use": "静かなAメロ。紫の雲状の形と細かな光点で内省的な空気を作り、長めのフェードでつなぐ。"
+  },
+  {
+    "id": "open-mantissa-001",
+    "tags": [
+      "jrock",
+      "chorus",
+      "driving",
+      "abstract",
+      "tunnel",
+      "jrock-chorus"
+    ],
+    "use": "疾走するサビ。白く開いた中心へ集まる多角形のトンネル構図を、サビ頭やフレーズの切り替えに使う。"
+  },
+  {
+    "id": "open-mantissa-010",
+    "tags": [
+      "jrock",
+      "chorus",
+      "driving",
+      "abstract",
+      "angular",
+      "jrock-chorus"
+    ],
+    "use": "疾走するサビ。三角形の奥行きと赤・シアンの断片で、ギターリフの鋭さと前へ進む印象を出す。"
+  },
+  {
+    "id": "open-mantissa-058",
+    "tags": [
+      "jrock",
+      "chorus",
+      "driving",
+      "abstract",
+      "gold",
+      "jrock-chorus"
+    ],
+    "use": "疾走するサビ。黄緑から金色の強い光と密な破片状の形を、サビのピークや最後の盛り上がりに使う。"
+  },
+  {
+    "id": "open-mantissa-061",
+    "tags": [
+      "jrock",
+      "chorus",
+      "driving",
+      "abstract",
+      "grid",
+      "jrock-chorus"
+    ],
+    "use": "疾走するサビ。シアンとマゼンタの格子を明るいサビに使い、暗い場面から色を開く。"
+  },
+  {
+    "id": "open-mantissa-095",
+    "tags": [
+      "jrock",
+      "chorus",
+      "driving",
+      "abstract",
+      "radial",
+      "jrock-chorus"
+    ],
+    "use": "疾走するサビ。赤・白・黒の放射状の筋で加速感を演出し、短いフレーズのアクセントに使う。"
+  },
+  {
+    "id": "open-mantissa-014",
+    "tags": [
+      "jrock",
+      "tension",
+      "dark",
+      "abstract",
+      "industrial",
+      "jrock-dark"
+    ],
+    "use": "暗い緊張感。霧の中の柱状シルエットと斜めの光を、低音のリフやサビ前の溜めに合わせる。"
+  },
+  {
+    "id": "open-mantissa-048",
+    "tags": [
+      "jrock",
+      "tension",
+      "dark",
+      "abstract",
+      "organic",
+      "jrock-dark"
+    ],
+    "use": "暗い緊張感。黒地に枝分かれする有機的な形を、歪んだ音や不穏なブレイクの背景に使う。"
+  },
+  {
+    "id": "open-mantissa-050",
+    "tags": [
+      "jrock",
+      "tension",
+      "dark",
+      "abstract",
+      "light-streaks",
+      "jrock-dark"
+    ],
+    "use": "暗い緊張感。暗い縦方向の形とシアンの光、中央の赤い光点を使い、緊張を保ったままサビへつなぐ。"
+  },
+  {
+    "id": "open-mantissa-104",
+    "tags": [
+      "jrock",
+      "tension",
+      "dark",
+      "abstract",
+      "monochrome",
+      "jrock-dark"
+    ],
+    "use": "暗い緊張感。白黒の尖った結晶状の面を、重いリフや音数を落とすブリッジに使う。"
+  },
+  {
+    "id": "open-mantissa-052",
+    "tags": [
+      "jrock",
+      "tension",
+      "dark",
+      "abstract",
+      "cyan",
+      "jrock-dark"
+    ],
+    "use": "暗い緊張感。黒い余白から中央のシアンの光へ伸びる面で、次の展開を待つサビ直前の集中を作る。"
+  },
+  {
+    "id": "open-mantissa-029",
+    "tags": [
+      "jrock",
+      "ending",
+      "afterglow",
+      "abstract",
+      "warm",
+      "jrock-ending"
+    ],
+    "use": "余韻エンディング。暖色の細い柱とシアンの光点を残響のイメージに使い、明るさを段階的に落とす。"
+  },
+  {
+    "id": "open-mantissa-072",
+    "tags": [
+      "jrock",
+      "ending",
+      "afterglow",
+      "abstract",
+      "haze",
+      "jrock-ending"
+    ],
+    "use": "余韻エンディング。青と紫の淡い雲状の広がりを長めに見せ、最後のコードからゆっくり暗転する。"
+  },
+  {
+    "id": "halloween-stock-moon-360",
+    "tags": [
+      "jrock",
+      "ending",
+      "afterglow",
+      "moon",
+      "night",
+      "jrock-ending"
+    ],
+    "use": "余韻エンディング。黒地の月を一つの視覚的な着地点にし、音の残響が消えるまで保って暗転する。"
+  },
+  {
+    "id": "open-eso-milky-way",
+    "tags": [
+      "jrock",
+      "ending",
+      "afterglow",
+      "stars",
+      "night-sky",
+      "jrock-ending"
+    ],
+    "use": "余韻エンディング。低い地平線と天の川で開放感を残す。7.6秒と短いため終端前のフェードを組み、既存クレジットを保持する。"
+  },
+  {
+    "id": "halloween-stock-misty-river",
+    "tags": [
+      "jrock",
+      "ending",
+      "afterglow",
+      "mist",
+      "water",
+      "jrock-ending"
+    ],
+    "use": "余韻エンディング。手前の枝と霧で対岸が隠れた水面を使い、静かなAメロの水辺モチーフへ戻って曲を閉じる。"
+  }
+]

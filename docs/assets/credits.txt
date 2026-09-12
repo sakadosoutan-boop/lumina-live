@@ -747,3 +747,27 @@ AI生成背景 + Lumina Live カメラアニメーション
 AI生成オリジナル · Lumina Liveで利用可
 Lumina Live / OpenAI image generation
 Modified: resized/re-encoded, no audio.
+
+ROCK · 放課後の空
+AI生成背景 + Lumina Live カメラ・光量アニメーション
+AI生成オリジナル · Lumina Liveで利用可
+Lumina Live / OpenAI image generation
+Modified: resized/re-encoded, no audio.
+
+ROCK · 雨のミッドナイト
+AI生成背景 + Lumina Live カメラ・光量アニメーション
+AI生成オリジナル · Lumina Liveで利用可
+Lumina Live / OpenAI image generation
+Modified: resized/re-encoded, no audio.
+
+ROCK · 夜明けの海岸線
+AI生成背景 + Lumina Live カメラ・光量アニメーション
+AI生成オリジナル · Lumina Liveで利用可
+Lumina Live / OpenAI image generation
+Modified: resized/re-encoded, no audio.
+
+ROCK · PRISM IMPACT
+AI生成背景 + Lumina Live カメラ・光量アニメーション
+AI生成オリジナル · Lumina Liveで利用可
+Lumina Live / OpenAI image generation
+Modified: resized/re-encoded, no audio.

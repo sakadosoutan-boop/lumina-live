@@ -17,12 +17,22 @@ const approved = new Set(await read("research/web-library-approved-ids.json"));
 for (const file of [
   "assets/halloween-catalog.json",
   "assets/halloween-originals.json",
+  "assets/jrock-originals.json",
 ]) {
   for (const a of await read(file).catch(() => [])) approved.add(a.id);
 }
-const assets = (await read("assets/catalog.json")).filter((a) =>
-  approved.has(a.id),
+const selections = new Map(
+  (await read("research/jrock-selections.json").catch(() => [])).map((s) => [
+    s.id,
+    s,
+  ]),
 );
+const assets = (await read("assets/catalog.json"))
+  .map((a) => ({
+    ...a,
+    tags: [...new Set([...a.tags, ...(selections.get(a.id)?.tags ?? [])])],
+  }))
+  .filter((a) => approved.has(a.id));
 const old = await read("research/web-library-build.json").catch(() => ({
   entries: [],
 }));

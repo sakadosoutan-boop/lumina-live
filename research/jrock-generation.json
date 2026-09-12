@@ -1,0 +1,66 @@
+{
+  "mode": "built-in image generation",
+  "date": "2026-09-13",
+  "scenes": [
+    {
+      "id": "jrock-after-school-sky",
+      "prompt": "Use case: stylized-concept. A finished 16:9 landscape cinematic VJ backdrop for a Japanese rock band live performance: a quiet Japanese suburban rooftop and silhouettes of utility wires framing the far left and right margins, enormous dramatic summer cumulonimbus clouds glowing amber, peach and pale cyan at sunset, a deep blue distant city horizon, bittersweet youthful freedom. Sophisticated photoreal cinematic landscape with subtle 35mm film texture. Keep the central and lower central half mostly dark blue, uncluttered and low detail for clear white Japanese lyric projection. No people, no recognizable real locations, no lettering, signs, brand names, logos or watermark. Not an album cover and not imitating any existing music video. Rich luminous atmosphere, restrained bloom, expansive sky, strong depth. All key subjects safely inset for a gentle animated camera crop. One full frame, no panels.",
+      "image": "exec-b4e5d28f-95da-4247-aac3-8bd7e7abef0c.png",
+      "name": "放課後の空",
+      "hue": 32,
+      "energy": 0.25,
+      "tags": [
+        "jrock-verse",
+        "jrock-ending",
+        "sunset",
+        "sky"
+      ],
+      "period": 480
+    },
+    {
+      "id": "jrock-midnight-rain",
+      "prompt": "Use case: stylized-concept. Create one finished 16:9 cinematic landscape VJ backdrop: an anonymous quiet Japanese city street at midnight after rain, wet asphalt reflecting saturated cyan and deep crimson lights along the left and right edges, perspective leading toward a small distant warm light, soft rain haze, dark silhouettes of buildings, melancholy yet powerful alternative rock atmosphere. Photoreal high-end film cinematography, elegant restrained color, subtle grain, rich blacks. Central lower half remains dark uncluttered wet road for white Japanese lyric projection. No people, no cars in foreground, no legible signs or text, no logos or watermarks, no named landmarks, no copyrighted characters. No imitation of any artist or music video. Composed for a gentle looping camera push, subjects inset with safe crop margins.",
+      "image": "exec-479835cf-773e-49fb-b7ef-f85058cd7a1a.png",
+      "name": "雨のミッドナイト",
+      "hue": 205,
+      "energy": 0.3,
+      "tags": [
+        "jrock-verse",
+        "jrock-dark",
+        "city",
+        "rain"
+      ],
+      "period": 480
+    },
+    {
+      "id": "jrock-ocean-dawn",
+      "prompt": "Use case: stylized-concept. A finished 16:9 landscape cinematic live rock concert VJ background. Empty coastal road seen low from the center, disappearing toward a brilliant but gentle sunrise at a far ocean horizon. Vast turquoise ocean to the right, dark rugged cliff silhouette to the left, sweeping apricot and blue clouds, epic feeling of departure, resilience and a new beginning. Premium photoreal cinematography with subtle analog film grain and glowing atmospheric depth. Keep the central lower road dark with little detail so white lyrics remain readable. No text, no road signs, no people, no cars, no logos, no watermark, no specific landmark, no existing music-video imitation. Wide balanced frame, crop-safe edges for rhythmic camera motion. A sophisticated emotional rock show visual, not a travel advertisement.",
+      "image": "exec-ee562f14-7542-4cb1-8fc5-12068b00ef47.png",
+      "name": "夜明けの海岸線",
+      "hue": 30,
+      "energy": 0.45,
+      "tags": [
+        "jrock-chorus",
+        "jrock-ending",
+        "ocean",
+        "dawn"
+      ],
+      "period": 480
+    },
+    {
+      "id": "jrock-prism-impact",
+      "prompt": "Use case: stylized-concept. One finished 16:9 full frame premium abstract rock-concert VJ backdrop. A powerful burst of translucent angular glass prisms, luminous red-orange shards and electric blue ribbons radiating outward from a dark central void, dramatic long-exposure light energy, crisp high-end 3D materials, black ink-like atmospheric depth. Dense bright detailed energy on the outer left and right edges and upper corners, dark low-detail negative space in the middle and lower center for large white Japanese lyrics. Graphic powerful rhythm, sophisticated live-stage look, controlled highlights without a large white center. No text, symbols, logos, watermark, instruments, people or recognizable franchise designs. This is original generic music-performance artwork, not an imitation of any music video. Inset important shapes for animated crop.",
+      "image": "exec-9440d37f-4adc-4b7b-9146-653def679027.png",
+      "name": "PRISM IMPACT",
+      "hue": 220,
+      "energy": 0.8,
+      "tags": [
+        "jrock-chorus",
+        "jrock-dark",
+        "abstract",
+        "light"
+      ],
+      "period": 120
+    }
+  ]
+}

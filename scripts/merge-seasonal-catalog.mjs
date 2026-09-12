@@ -8,9 +8,24 @@ const current = await read("assets/catalog.json");
 const seasonal = [
   ...(await read("assets/halloween-catalog.json").catch(() => [])),
   ...(await read("assets/halloween-originals.json").catch(() => [])),
+  ...(await read("assets/jrock-originals.json").catch(() => [])),
 ];
+const selections = new Map(
+  (await read("research/jrock-selections.json").catch(() => [])).map((s) => [
+    s.id,
+    s,
+  ]),
+);
 const merged = [
-  ...new Map([...current, ...seasonal].map((a) => [a.id, a])).values(),
+  ...new Map(
+    [...current, ...seasonal].map((a) => [
+      a.id,
+      {
+        ...a,
+        tags: [...new Set([...a.tags, ...(selections.get(a.id)?.tags ?? [])])],
+      },
+    ]),
+  ).values(),
 ];
 await fs.writeFile(
   path.join(root, "assets/catalog.json"),
