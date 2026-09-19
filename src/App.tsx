@@ -47,6 +47,7 @@ import { defaultLayout } from "./layout";
 import { planFolderLibrary } from "./folder-library";
 import { downloadMediaBlob, mergeAssetCatalog } from "./media-library";
 import { VJRenderer } from "./renderer";
+import { SpatialControls } from "./SpatialControls";
 import {
   Transport,
   TapTempo,
@@ -1839,6 +1840,11 @@ function Console() {
                   </button>
                 ))}
               </div>
+              <SpatialControls
+                fx={show.fx}
+                onChange={(fx) => update({ fx })}
+                compact
+              />
               <div className="deck-loaded">
                 <span className="tiny">LOADED IN {"ABC"[target]}</span>
                 <b>
@@ -2961,7 +2967,20 @@ function Console() {
             ) : modal === "effects" ? (
               <>
                 <h2>エフェクト</h2>
-                {(Object.keys(show.fx) as (keyof Show["fx"])[]).map((k) => (
+                <SpatialControls
+                  fx={show.fx}
+                  onChange={(fx) => update({ fx })}
+                />
+                <h3>色・光のエフェクト</h3>
+                {(
+                  [
+                    "glitch",
+                    "bloom",
+                    "vignette",
+                    "chromatic",
+                    "pixelate",
+                  ] as const
+                ).map((k) => (
                   <Range
                     key={k}
                     label={k.toUpperCase()}
@@ -2992,6 +3011,9 @@ function Console() {
                         vignette: 0,
                         chromatic: 0,
                         pixelate: 0,
+                        depth: 0,
+                        mapping: 0,
+                        motionBeats: 8,
                       },
                     })
                   }

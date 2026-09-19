@@ -93,6 +93,24 @@ afterEach(() => {
 });
 
 describe("show files at the live-app boundary", () => {
+  it("round-trips depth direction, mapping strength, and motion tempo", () => {
+    const input = show();
+    input.fx = { ...input.fx, depth: -0.8, mapping: 0.6, motionBeats: 16 };
+    expect(validateShow(serializeShow(input)).fx).toEqual(input.fx);
+    for (const [key, value] of [
+      ["depth", -1.01],
+      ["depth", 1.01],
+      ["mapping", -0.01],
+      ["mapping", 1.01],
+      ["motionBeats", 0],
+      ["motionBeats", 33],
+      ["depth", null],
+    ] as const) {
+      expect(() =>
+        read({ ...input, fx: { ...input.fx, [key]: value } }),
+      ).toThrow();
+    }
+  });
   it("accepts the real initial catalog and round-trips the set without losing cues or seeds", () => {
     const original = show();
     const result = validateShow(serializeShow(original));
@@ -143,7 +161,12 @@ describe("show files at the live-app boundary", () => {
       favorite: false,
     });
     expect(result.lyricStyle).toEqual(show().lyricStyle);
-    expect(result.fx).toEqual(show().fx);
+    expect(result.fx).toEqual({
+      ...show().fx,
+      depth: 0,
+      mapping: 0,
+      motionBeats: 8,
+    });
     input.lyricStyle = {
       ...show().lyricStyle,
       enabled: false,
@@ -377,7 +400,12 @@ describe("show files at the live-app boundary", () => {
     const result = read(input);
     expect(Object.prototype).not.toHaveProperty("poisoned");
     expect(Object.hasOwn(result, "__proto__")).toBe(false);
-    expect(result.fx).toEqual(show().fx);
+    expect(result.fx).toEqual({
+      ...show().fx,
+      depth: 0,
+      mapping: 0,
+      motionBeats: 8,
+    });
     expect(JSON.stringify(result)).not.toMatch(
       /nativePath|audioBuffer|metadata|poisoned/,
     );

@@ -2423,3 +2423,62 @@ hr {
     padding-top: 16px;
   }
 }
+.spatial-controls {
+  border: 1px solid #30414e;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 12px 0;
+  background: #101c25;
+}
+.spatial-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 9px;
+}
+.spatial-heading button {
+  font-size: 13px;
+  padding: 5px 7px;
+}
+.spatial-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+.spatial-buttons button {
+  padding: 10px 4px;
+  min-height: 40px;
+  font-size: 14px;
+  white-space: normal;
+}
+.spatial-buttons button[aria-pressed="true"] {
+  background: #153f4e;
+  color: #89ecff;
+  border-color: #53cbdc;
+  box-shadow: inset 0 -2px #53cbdc;
+}
+.spatial-controls.compact {
+  margin: 8px 12px;
+  padding: 9px;
+}
+.spatial-range {
+  display: block;
+  margin: 18px 0;
+  font-size: 14px;
+}
+.spatial-range output {
+  float: right;
+  color: #89ecff;
+  font-variant-numeric: tabular-nums;
+}
+.spatial-range input {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  accent-color: #6cdae9;
+}
+.spatial-controls p {
+  line-height: 1.65;
+}

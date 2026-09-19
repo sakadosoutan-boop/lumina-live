@@ -383,6 +383,9 @@ function readShow(value: unknown): Show {
       vignette: number(fallback(fx.vignette, 0.25), "fx.vignette", 0, 1),
       chromatic: number(fallback(fx.chromatic, 0), "fx.chromatic", 0, 1),
       pixelate: number(fallback(fx.pixelate, 0), "fx.pixelate", 0, 1),
+      depth: number(fallback(fx.depth, 0), "fx.depth", -1, 1),
+      mapping: number(fallback(fx.mapping, 0), "fx.mapping", 0, 1),
+      motionBeats: number(fallback(fx.motionBeats, 8), "fx.motionBeats", 2, 32),
     },
   };
 }

@@ -91,6 +91,10 @@ export interface RenderState {
     vignette: number;
     chromatic: number;
     pixelate: number;
+    /** Negative: sink into depth; positive: fly toward the audience. */
+    depth?: number;
+    mapping?: number;
+    motionBeats?: number;
   };
   lyric: string;
   lyricProgress: number;

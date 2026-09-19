@@ -5,6 +5,7 @@ import type {
   RenderStats,
   VisualKind,
 } from "./types";
+import { spatialUniforms, SPATIAL_GLSL } from "./spatial-fx";
 
 type GL = WebGLRenderingContext | WebGL2RenderingContext;
 type Program = {
@@ -303,6 +304,16 @@ uniform sampler2D uScene, uBloom, uLyric;
 uniform vec2 uResolution;
 uniform vec4 uFX, uLyricRect;
 uniform float uPixelate, uTime, uMaster, uHasLyric;
+vec3 sourceScene(vec2 uv) {
+  vec3 c;
+  if(uFX.w>0.001) {
+    vec2 shift=(uv-0.5)*uFX.w*0.022;
+    c=vec3(texture2D(uScene,uv+shift).r,texture2D(uScene,uv).g,texture2D(uScene,uv-shift).b);
+  } else c=texture2D(uScene,uv).rgb;
+  if(uFX.y>0.001) c+=texture2D(uBloom,uv).rgb*uFX.y*0.85;
+  return c;
+}
+${SPATIAL_GLSL}
 void main() {
   vec2 uv=vUV;
   if(uPixelate>0.001) {
@@ -314,12 +325,7 @@ void main() {
     float gate=step(1.0-uFX.x*0.32,hash21(vec2(tick,row)));
     uv.x+=(hash21(vec2(row,tick+2.0))-0.5)*uFX.x*0.24*gate;
   }
-  vec3 c;
-  if(uFX.w>0.001) {
-    vec2 shift=(uv-0.5)*uFX.w*0.022;
-    c=vec3(texture2D(uScene,uv+shift).r,texture2D(uScene,uv).g,texture2D(uScene,uv-shift).b);
-  } else c=texture2D(uScene,uv).rgb;
-  if(uFX.y>0.001) c+=texture2D(uBloom,uv).rgb*uFX.y*0.85;
+  vec3 c=spatialScene(uv);
   float vignette=smoothstep(0.15,0.72,length(vUV-0.5));
   c*=1.0-vignette*uFX.z*0.95;
   // Lyrics are composed after every visual effect, before the master dimmer.
@@ -603,6 +609,7 @@ export class VJRenderer {
         ...(this.lyricRect as [number, number, number, number]),
       );
       this.f(program, "uPixelate", clamp(state.fx.pixelate));
+      this.v4(program, "uSpatial", ...spatialUniforms(state.fx, state.beat));
       this.f(program, "uTime", modulo(finite(state.time), 3600));
       this.f(program, "uMaster", clamp(state.master, 0, 4));
       this.f(program, "uHasLyric", hasLyric ? 1 : 0);

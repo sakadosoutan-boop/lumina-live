@@ -34,6 +34,35 @@ function rig(assets = builtInAssets, options = {}) {
 }
 
 describe("renderer cadence and lifecycle", () => {
+  it("sends bounded, beat-locked spatial effects to the final compositor and clears legacy state", () => {
+    const r = rig();
+    r.current.fx = {
+      ...r.current.fx,
+      depth: -0.8,
+      mapping: 0.85,
+      motionBeats: 16,
+    };
+    r.current.beat = 20;
+    r.renderer.render(r.current);
+    const final = () =>
+      r.gl.draws.filter((d) => d.uniforms.has("uSpatial")).at(-1)!;
+    expect(final().uniforms.get("uSpatial")).toEqual([-0.8, 0.85, 0.25, 0]);
+    r.current.fx.depth = 0.8;
+    r.current.beat = 36;
+    r.renderer.render(r.current);
+    expect(final().uniforms.get("uSpatial")).toEqual([0.8, 0.85, 0.25, 0]);
+    r.current.fx = {
+      glitch: 0,
+      bloom: 0,
+      vignette: 0,
+      chromatic: 0,
+      pixelate: 0,
+    };
+    r.current.beat = 0;
+    r.renderer.render(r.current);
+    expect(final().uniforms.get("uSpatial")).toEqual([0, 0, 0, 0]);
+    r.renderer.dispose();
+  });
   it("retires a missing-asset diagnostic only when that asset arrives", () => {
     const r = rig();
     r.current.decks[0].assetId = "loading-a";
