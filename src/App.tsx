@@ -48,6 +48,14 @@ import { planFolderLibrary } from "./folder-library";
 import { downloadMediaBlob, mergeAssetCatalog } from "./media-library";
 import { VJRenderer } from "./renderer";
 import { SpatialControls } from "./SpatialControls";
+import { BpmInput } from "./BpmInput";
+import {
+  initialLyricClock,
+  lyricTimeAt,
+  lyricCueAt,
+  lyricEnded,
+  type LyricClock,
+} from "./lyric-clock";
 import { MEDIA_ACCEPT, prepareImportedMedia } from "./import-media";
 import {
   Transport,
@@ -59,7 +67,6 @@ import {
   parseSrt,
   exportLrc,
   exportSrt,
-  activeCue,
   quantizeTime,
   similarAssets,
 } from "./sync";
@@ -142,6 +149,7 @@ type Snapshot = {
   song: Song;
   rate: number;
   fps: number;
+  lyricClock: LyricClock;
 };
 const baseState = (s: Show, song: Song): RenderState => ({
   time: 0,
@@ -205,11 +213,14 @@ function Output() {
         const age = Date.now() - last.sent,
           stale = age > 6000;
         const dt = last.state.playing && !stale ? Math.max(0, age) / 1000 : 0;
-        const time = Math.min(
-          last.song.duration,
-          last.state.time + dt * (last.rate || 1),
-        );
-        const cue = activeCue(last.song.cues, time + last.song.offset);
+        const extrapolated = last.state.time + dt * (last.rate || 1);
+        const time = last.lyricClock?.waiting
+          ? extrapolated
+          : Math.min(
+              last.song.duration + (last.lyricClock?.start ?? 0),
+              extrapolated,
+            );
+        const cue = lyricCueAt(last.song, time, last.lyricClock);
         renderer.setTargetFps(last.fps || 30);
         renderer.render({
           ...last.state,
@@ -367,6 +378,7 @@ function Console() {
   const [songId, setSongId] = useState("");
   const [playing, setPlaying] = useState(false);
   const [time, setTime] = useState(0);
+  const [lyricClock, setLyricClock] = useState<LyricClock>(initialLyricClock);
   const [blackout, setBlackout] = useState(false);
   const [freeze, setFreeze] = useState(false);
   const [mode, setMode] = useState<"live" | "audio">("live");
@@ -459,7 +471,8 @@ function Console() {
   useEffect(() => () => libraryTransfer.current?.abort(), []);
   const song = show.songs.find((s) => s.id === songId) ?? show.songs[0];
   const asset = show.assets.find((a) => a.id === selected) ?? show.assets[0];
-  const cue = activeCue(song.cues, time + song.offset);
+  const lyricTime = lyricTimeAt(time, lyricClock);
+  const cue = lyricCueAt(song, time, lyricClock);
   const canvas = useRef<HTMLCanvasElement>(null),
     fileInput = useRef<HTMLInputElement>(null),
     showInput = useRef<HTMLInputElement>(null),
@@ -488,6 +501,7 @@ function Console() {
     autoIndex = useRef(-1),
     latest = useRef({
       show,
+      lyricClock,
       song,
       playing,
       blackout,
@@ -505,6 +519,7 @@ function Console() {
     });
   latest.current = {
     show,
+    lyricClock,
     song,
     playing,
     blackout,
@@ -572,8 +587,32 @@ function Console() {
       ...s,
       decks: s.decks.map((d, n) => (n === i ? { ...d, ...patch } : d)),
     }));
+  const changeLyricClock = (next: LyricClock) => {
+    latest.current.lyricClock = next;
+    setLyricClock(next);
+  };
+  const waitLyrics = () => {
+    changeLyricClock({ waiting: true, start: 0 });
+    announce(
+      "歌詞を先頭で待機。映像は再生を続けます。演奏開始時に「歌詞スタート」を押してください。",
+    );
+  };
+  const startLyrics = () => {
+    changeLyricClock({
+      waiting: false,
+      start: transport.current.getTime(performance.now()),
+    });
+    announce("歌詞のタイムラインを先頭から開始しました");
+  };
   const seek = (t: number) => {
     const next = clamp(t, 0, latest.current.song.duration);
+    changeLyricClock({
+      waiting:
+        latest.current.lyricClock.waiting &&
+        next === 0 &&
+        latest.current.mode === "live",
+      start: 0,
+    });
     transport.current.seek(next, performance.now());
     beatAnchor.current = {
       time: 0,
@@ -621,8 +660,11 @@ function Console() {
     }
     try {
       if (
-        transport.current.getTime(performance.now()) >=
-        latest.current.song.duration - 0.01
+        lyricEnded(
+          transport.current.getTime(performance.now()),
+          latest.current.song.duration - 0.01,
+          latest.current.lyricClock,
+        )
       )
         seek(0);
       transport.current.setRate(
@@ -645,9 +687,10 @@ function Console() {
   };
   const cueJump = (delta: number) => {
     const c = latest.current;
-    const a = activeCue(
-      c.song.cues,
-      transport.current.getTime(performance.now()) + c.song.offset,
+    const a = lyricCueAt(
+      c.song,
+      transport.current.getTime(performance.now()),
+      c.lyricClock,
     );
     const ix = clamp(a.index + delta, 0, c.song.cues.length - 1);
     if (c.song.cues[ix]) {
@@ -655,7 +698,12 @@ function Console() {
         seek(c.song.cues[ix].start - c.song.offset);
       } else {
         const now = transport.current.getTime(performance.now());
-        updateSong({ offset: c.song.cues[ix].start - now });
+        if (c.lyricClock.waiting)
+          changeLyricClock({ waiting: false, start: now });
+        updateSong({
+          offset:
+            c.song.cues[ix].start - lyricTimeAt(now, latest.current.lyricClock),
+        });
       }
     }
   };
@@ -674,7 +722,13 @@ function Console() {
       );
     } else {
       const a = c.show.assets.find((a) => a.id === id);
-      changeDeck(slot, { assetId: id, beats: a?.beats ?? 8 });
+      changeDeck(slot, {
+        assetId: id,
+        beats: a?.beats ?? 8,
+        ...(a?.kind === "video" && !a.beats
+          ? { beatSync: false, speed: 1 }
+          : {}),
+      });
     }
   };
   const autoMix = () => {
@@ -717,6 +771,7 @@ function Console() {
       const s = validateShow(raw);
       transport.current.pause(performance.now());
       transport.current.seek(0, performance.now());
+      changeLyricClock(initialLyricClock);
       setPlaying(false);
       audio.current.stopInput();
       setAudioReady(false);
@@ -947,6 +1002,7 @@ function Console() {
       setAudioReady(true);
       setMicOn(false);
       seek(0);
+      changeLyricClock(initialLyricClock);
       setMode("audio");
       setPlaying(false);
       transport.current.pause(performance.now());
@@ -957,9 +1013,15 @@ function Console() {
   };
   const changeMode = (m: "live" | "audio") => {
     const now = performance.now(),
-      t = transport.current.getTime(now),
+      t = lyricTimeAt(
+        transport.current.getTime(now),
+        latest.current.lyricClock,
+      ),
       rate = timelineRate(song, m);
     transport.current.pause(now);
+    transport.current.seek(t, now);
+    changeLyricClock(initialLyricClock);
+    setTime(t);
     audio.current.element?.pause();
     beatAnchor.current = {
       time: t,
@@ -1213,7 +1275,7 @@ function Console() {
           ? audio.current.element.currentTime
           : transport.current.getTime(now);
       if (c.mode === "audio") transport.current.seek(t, now);
-      if (c.playing && t >= c.song.duration) {
+      if (c.playing && lyricEnded(t, c.song.duration, c.lyricClock)) {
         if (c.loopSong) {
           seek(0);
           t = 0;
@@ -1226,7 +1288,7 @@ function Console() {
           transport.current.pause(now);
           audio.current.element?.pause();
           setPlaying(false);
-          t = c.song.duration;
+          t = c.song.duration + c.lyricClock.start;
           transport.current.seek(t, now);
         }
       }
@@ -1234,7 +1296,13 @@ function Console() {
         const p = pending.current;
         pending.current = null;
         const a = c.show.assets.find((a) => a.id === p.id);
-        changeDeck(p.slot, { assetId: p.id, beats: a?.beats ?? 8 });
+        changeDeck(p.slot, {
+          assetId: p.id,
+          beats: a?.beats ?? 8,
+          ...(a?.kind === "video" && !a.beats
+            ? { beatSync: false, speed: 1 }
+            : {}),
+        });
         setQueueLabel("");
       }
       if (c.autoBars > 0 && c.playing) {
@@ -1255,7 +1323,13 @@ function Console() {
               );
               const next = candidates[bar % Math.max(1, candidates.length)];
               if (next) {
-                changeDeck(slot, { assetId: next.id, beats: next.beats ?? 8 });
+                changeDeck(slot, {
+                  assetId: next.id,
+                  beats: next.beats ?? 8,
+                  ...(next.kind === "video" && !next.beats
+                    ? { beatSync: false, speed: 1 }
+                    : {}),
+                });
                 fade.current = {
                   start: now,
                   from: c.show.crossfade,
@@ -1272,7 +1346,7 @@ function Console() {
       if (now - last >= 1000 / c.fpsLimit - 1) {
         last = now;
         const a = audio.current.levels();
-        const active = activeCue(c.song.cues, t + c.song.offset);
+        const active = lyricCueAt(c.song, t, c.lyricClock);
         const beat = beatAt(t, beatAnchor.current);
         const state: RenderState = {
           ...baseState(c.show, c.song),
@@ -1327,6 +1401,7 @@ function Console() {
             type: "state",
             state,
             song: c.song,
+            lyricClock: c.lyricClock,
             sent: Date.now(),
             rate: transport.current.rate,
             fps: c.fpsLimit,
@@ -1350,7 +1425,7 @@ function Console() {
             c.mode === "audio" && audio.current.element
               ? audio.current.element.currentTime
               : transport.current.getTime(performance.now());
-        const active = activeCue(c.song.cues, t + c.song.offset);
+        const active = lyricCueAt(c.song, t, c.lyricClock);
         publish({
           type: "state",
           state: {
@@ -1366,6 +1441,7 @@ function Console() {
             height: Math.round((c.resolution * 9) / 16),
           },
           song: c.song,
+          lyricClock: c.lyricClock,
           sent: Date.now(),
           rate: transport.current.rate,
           fps: c.fpsLimit,
@@ -1492,6 +1568,7 @@ function Console() {
     setMicOn(false);
     setPlaying(false);
     setSongId(id);
+    changeLyricClock(initialLyricClock);
     transport.current.seek(0, performance.now());
     setTime(0);
     beatAnchor.current = {
@@ -1510,7 +1587,7 @@ function Console() {
     setQueueLabel("");
   };
   const stampCue = (id: string) => {
-    const at = time + song.offset;
+    const at = lyricTime + song.offset;
     const cues = song.cues
       .map((c) =>
         c.id === id ? { ...c, start: Math.max(0, at), section: "manual" } : c,
@@ -1624,21 +1701,13 @@ function Console() {
           </button>
         </div>
         <div className="time-display">
-          <b>{clock(time)}</b>
+          <b>{clock(lyricTime)}</b>
           <span>/ {clock(song.duration)}</span>
         </div>
         <div className="bpm-control">
           <label>
             BPM
-            <input
-              aria-label="BPM"
-              type="number"
-              min="20"
-              max="400"
-              step=".1"
-              value={song.bpm}
-              onChange={(e) => setBpm(Number(e.target.value) || 120)}
-            />
+            <BpmInput key={song.id} value={song.bpm} onCommit={setBpm} />
           </label>
           <button onClick={tap}>
             TAP <kbd>T</kbd>
@@ -1670,6 +1739,29 @@ function Console() {
           <option value="live">LIVE · 手動補正</option>
           <option value="audio">AUDIO · 音源同期</option>
         </select>
+        {mode === "live" && (
+          <div className="lyric-transport">
+            <button
+              className={lyricClock.waiting ? "active" : ""}
+              aria-pressed={lyricClock.waiting}
+              onClick={waitLyrics}
+              title="歌詞を消して先頭で待機。映像の再生は続きます。"
+            >
+              歌詞を先頭で待機
+            </button>
+            <button
+              disabled={!lyricClock.waiting || !playing}
+              onClick={startLyrics}
+              title={
+                playing
+                  ? "今を曲の開始時刻にして歌詞を進める"
+                  : "先に再生を押すと映像が動き、歌詞だけ待機します"
+              }
+            >
+              歌詞スタート
+            </button>
+          </div>
+        )}
         <button
           className={blackout ? "danger active" : "danger"}
           onClick={() => setBlackout((v) => !v)}
@@ -2566,7 +2658,11 @@ function Console() {
           </div>
           <div className="current-lyric">
             <span className="tiny">ON AIR</span>
-            <p>{cue.cue?.text || "INSTRUMENTAL"}</p>
+            <p>
+              {lyricClock.waiting
+                ? "歌詞待機中 · 映像のみ"
+                : cue.cue?.text || "INSTRUMENTAL"}
+            </p>
             <div className="cue-progress">
               <i style={{ width: `${cue.progress * 100}%` }} />
             </div>
@@ -2624,9 +2720,15 @@ function Console() {
                 key={c.id}
                 onClick={() => {
                   if (cueEdit) stampCue(c.id);
-                  else if (mode === "live")
-                    updateSong({ offset: c.start - time });
-                  else seek(c.start - song.offset);
+                  else if (mode === "live") {
+                    const now = transport.current.getTime(performance.now());
+                    if (lyricClock.waiting)
+                      changeLyricClock({ waiting: false, start: now });
+                    updateSong({
+                      offset:
+                        c.start - lyricTimeAt(now, latest.current.lyricClock),
+                    });
+                  } else seek(c.start - song.offset);
                 }}
               >
                 <span>{clock(c.start)}</span>
@@ -2664,7 +2766,7 @@ function Console() {
       <footer className="timeline" id="transport-timeline">
         <div className="timeline-time">
           <span>TRANSPORT</span>
-          <b>{clock(time)}</b>
+          <b>{clock(lyricTime)}</b>
         </div>
         <div className="timeline-track">
           <div className="timeline-cues">
@@ -2687,7 +2789,7 @@ function Console() {
             min="0"
             max={song.duration}
             step=".01"
-            value={time}
+            value={lyricTime}
             onChange={(e) => seek(Number(e.target.value))}
           />
           <div className="timeline-ruler">

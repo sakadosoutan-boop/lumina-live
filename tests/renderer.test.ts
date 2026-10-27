@@ -312,6 +312,42 @@ describe("video clock and resource handling", () => {
     expect(video.onerror).toBeNull();
   });
 
+  it("updates video frames when frame callbacks stall but the media clock advances", () => {
+    const r = rig([videoAsset]);
+    r.current.decks[0].beatSync = false;
+    r.current.playing = true;
+    r.renderer.render(r.current);
+    const video = document.videos[0];
+    const before = r.gl.api.texSubImage2D.mock.calls.length;
+    video.currentTime = 0.1;
+    r.current.time = 0.1;
+    r.renderer.render(r.current); // no frame callback delivered
+    expect(r.gl.api.texSubImage2D.mock.calls.length).toBe(before + 1);
+    r.renderer.dispose();
+  });
+
+  it("uses a seek clock matching capped video speed instead of continuously seeking", () => {
+    let now = 0;
+    vi.spyOn(performance, "now").mockImplementation(() => now);
+    const r = rig([videoAsset]);
+    r.current.playing = true;
+    r.current.decks[0].beats = 8;
+    r.renderer.render(r.current);
+    const video = document.videos[0];
+    video.duration = 240; // requested speed 60x at 120 BPM; decoder cap is 16x
+    for (let i = 1; i < 60; i++) {
+      now = (i * 1000) / 30;
+      r.current.time = i / 30;
+      r.current.beat = i / 15;
+      const decodedTime = (i * 16) / 30;
+      video.currentTime = decodedTime;
+      r.renderer.render(r.current);
+      expect(video.playbackRate).toBe(16);
+      expect(video.currentTime).toBe(decodedTime);
+    }
+    r.renderer.dispose();
+  });
+
   it("pauses late play promises, releases changed clips during blackout, and avoids starting hidden decoders", async () => {
     const r = rig([videoAsset]);
     // Blackout must not instantiate a decoder or allocate render targets.

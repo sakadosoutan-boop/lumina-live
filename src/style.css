@@ -223,6 +223,22 @@ hr {
   background: var(--border);
   margin: 0 9px;
 }
+.lyric-transport {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.lyric-transport button {
+  min-height: 36px;
+  font-size: 12px;
+}
+.bpm-control input[aria-invalid="true"] {
+  outline: 1px solid #ffb580;
+}
+.bpm-control small {
+  color: #ffb580;
+  font-size: 10px;
+}
 .transport {
   min-height: 72px;
   background: #111722;

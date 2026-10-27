@@ -1298,11 +1298,9 @@ export class VJRenderer {
       const video = element as HTMLVideoElement;
       this.syncVideo(media, video, deck, state, now);
       if (video.readyState < 2 || video.seeking || !video.videoWidth) return;
-      if (
-        media.frameCallback === null &&
-        video.currentTime !== media.uploadedTime
-      )
-        media.dirty = true;
+      // Some devices stall frame callbacks for off-DOM video elements. The
+      // media clock is a second signal, even when the callback API exists.
+      if (video.currentTime !== media.uploadedTime) media.dirty = true;
       width = video.videoWidth;
       height = video.videoHeight;
     } else {
@@ -1398,6 +1396,9 @@ export class VJRenderer {
     const playing =
       state.playing && speed > 0 && !state.freeze && !state.blackout;
     const playbackRate = clamp(rate, 0.0625, 16);
+    // A clamped decoder speed must have a matching seek clock. Otherwise a
+    // long clip squeezed into a few beats seeks every frame and never decodes.
+    if (rate > 0 && playbackRate !== rate) clock *= playbackRate / rate;
     if (Math.abs(video.playbackRate - playbackRate) > 0.001) {
       try {
         video.playbackRate = playbackRate;
