@@ -607,6 +607,26 @@ async function openDatabase(
 }
 
 describe("IndexedDB restoration and media ownership", () => {
+  it("never restores stale cached bytes for session-only replacements across repeated saves", async () => {
+    const h = databaseHarness();
+    let input = show();
+    input.assets.push(
+      asset("clip", {
+        tags: ["imported", "session-only"],
+        url: "indexeddb:clip",
+      }),
+    );
+    for (let i = 0; i < 3; i++) {
+      input = validateShow(serializeShow(input));
+      input.assets = await restoreMedia(input.assets);
+      expect(input.assets.at(-1)).toMatchObject({
+        url: undefined,
+        status: "ファイルの再リンクが必要",
+      });
+      expect(input.assets.at(-1)?.tags).toContain("session-only");
+    }
+    expect(h.open).not.toHaveBeenCalled();
+  });
   it("recovers a missing DB reference, transfers actual bytes, and keeps output alive after source retirement", async () => {
     vi.stubGlobal("indexedDB", undefined);
     const missing = await restoreMedia([

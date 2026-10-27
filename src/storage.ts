@@ -411,8 +411,10 @@ export function serializeShow(show: Show): string {
       ...a,
       // Directory selections are session-scoped, even if a prior cached copy exists.
       tags: a.tags.filter((tag) => tag !== "folder-connected"),
-      url:
-        a.url?.startsWith("blob:") || (!a.url && a.status === MISSING_MEDIA)
+      status: a.tags.includes("session-only") ? MISSING_MEDIA : a.status,
+      url: a.tags.includes("session-only")
+        ? undefined
+        : a.url?.startsWith("blob:") || (!a.url && a.status === MISSING_MEDIA)
           ? "indexeddb:" + a.id
           : a.url,
       thumbnail:
@@ -542,10 +544,18 @@ export async function storeMedia(assetId: string, file: Blob): Promise<void> {
 }
 
 export async function restoreMedia(assets: Asset[]): Promise<Asset[]> {
+  if (assets.some((a) => a.tags.includes("session-only"))) {
+    assets = assets.map((a) =>
+      a.tags.includes("session-only")
+        ? { ...a, url: undefined, status: MISSING_MEDIA }
+        : a,
+    );
+  }
   const needsBlob = (a: Asset) =>
-    a.url?.startsWith("blob:") ||
-    a.url?.startsWith("indexeddb:") ||
-    (!a.url && a.status === MISSING_MEDIA);
+    !a.tags.includes("session-only") &&
+    (a.url?.startsWith("blob:") ||
+      a.url?.startsWith("indexeddb:") ||
+      (!a.url && a.status === MISSING_MEDIA));
   const pending = assets.filter(needsBlob);
   if (!pending.length) return assets;
   const blobs = new Map<string, Blob>();

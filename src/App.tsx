@@ -48,6 +48,7 @@ import { planFolderLibrary } from "./folder-library";
 import { downloadMediaBlob, mergeAssetCatalog } from "./media-library";
 import { VJRenderer } from "./renderer";
 import { SpatialControls } from "./SpatialControls";
+import { MEDIA_ACCEPT, prepareImportedMedia } from "./import-media";
 import {
   Transport,
   TapTempo,
@@ -450,6 +451,9 @@ function Console() {
   const [audioReady, setAudioReady] = useState(false);
   const [libraryBusy, setLibraryBusy] = useState(false);
   const [libraryProgress, setLibraryProgress] = useState("");
+  const [importBusy, setImportBusy] = useState(false);
+  const importLock = useRef(false);
+  const [importReport, setImportReport] = useState("");
   const folderInput = useRef<HTMLInputElement>(null);
   const libraryTransfer = useRef<AbortController | null>(null);
   useEffect(() => () => libraryTransfer.current?.abort(), []);
@@ -746,46 +750,67 @@ function Console() {
     }
   };
   const importFiles = async (files: FileList | null) => {
-    if (!files) return;
+    if (!files?.length || importLock.current) return;
+    const chosen = Array.from(files);
+    importLock.current = true;
+    setImportBusy(true);
     const added: Asset[] = [];
-    for (const file of Array.from(files)) {
-      if (!/^(video|image)\//.test(file.type)) {
-        announce(`${file.name}: 未対応形式`);
-        continue;
-      }
-      const existing = show.assets.find(
-        (a) => a.name === file.name && a.bytes === file.size,
-      );
-      const id = existing?.id ?? uid();
-      try {
-        await storeMedia(id, file);
-        added.push({
-          id,
-          name: file.name,
-          kind: file.type.startsWith("video") ? "video" : "image",
-          url: URL.createObjectURL(file),
-          tags: ["imported"],
-          hue: 210,
-          energy: 0.5,
-          license: "利用条件を確認してください",
-          bytes: file.size,
-          status: "local",
-        });
-      } catch {
-        announce(
-          "保存容量が足りないため取り込めません。空き容量を確認してください。",
+    const replacements = new Map<string, string>();
+    const failures: string[] = [];
+    let savedCount = 0;
+    try {
+      for (const [index, file] of chosen.entries()) {
+        setImportReport(
+          `取り込み中 ${index + 1}/${chosen.length}：${file.name}`,
         );
-        break;
+        const existing = latest.current.show.assets.find(
+          (a) => a.name === file.name && a.bytes === file.size,
+        );
+        try {
+          const result = await prepareImportedMedia(file, existing);
+          added.push(result.asset);
+          if (result.saved) savedCount++;
+          if (existing) replacements.set(existing.id, result.asset.id);
+        } catch (e) {
+          failures.push(
+            `${file.name}：${e instanceof Error ? e.message : String(e)}`,
+          );
+        }
       }
+      if (added.length) {
+        setShow((s) => ({
+          ...s,
+          assets: [
+            ...added,
+            ...s.assets.filter((a) => !replacements.has(a.id)),
+          ],
+          decks: s.decks.map((d) => ({
+            ...d,
+            assetId: replacements.get(d.assetId) ?? d.assetId,
+          })),
+        }));
+        setTab("library");
+        setCategory("imported");
+        setSearch("");
+        setRelated(false);
+        setPage(0);
+        setSelected(added[0].id);
+      }
+      const sessionCount = added.length - savedCount;
+      const report =
+        `${added.length}本を取り込みました（端末保存 ${savedCount}本）。` +
+        (sessionCount
+          ? ` ${sessionCount}本は端末保存できなかったため、画面を開いている間だけ利用できます。次回は同じファイルを選び直してください。`
+          : "") +
+        (failures.length
+          ? ` 未取り込み ${failures.length}本：${failures.slice(0, 3).join(" / ")}`
+          : "");
+      setImportReport(report);
+      announce(report);
+    } finally {
+      importLock.current = false;
+      setImportBusy(false);
     }
-    setShow((s) => ({
-      ...s,
-      assets: [
-        ...s.assets.filter((a) => !added.some((b) => a.id === b.id)),
-        ...added,
-      ],
-    }));
-    if (added.length) announce(`${added.length}本をローカルに保存しました`);
   };
   const importMedia = async () => {
     if (window.lumina) {
@@ -1682,6 +1707,7 @@ function Console() {
             { id: "all", label: "すべての素材" },
             { id: "favorites", label: "お気に入り" },
             { id: "procedural", label: "生成パターン" },
+            { id: "imported", label: "取り込んだ素材" },
             { id: "video", label: "動画ファイル" },
             { id: "ambient", label: "Ambient / 浮遊" },
             { id: "geometric", label: "Geometry / 幾何学" },
@@ -2042,9 +2068,12 @@ function Console() {
                     <Shuffle size={14} />
                     類似素材
                   </button>
-                  <button onClick={() => void importMedia()}>
+                  <button
+                    disabled={importBusy}
+                    onClick={() => void importMedia()}
+                  >
                     <Plus size={15} />
-                    取り込む
+                    {importBusy ? "取り込み中…" : "取り込む"}
                   </button>
                   <button onClick={() => setModal("library")}>
                     <FolderOpen size={15} />
@@ -2100,6 +2129,19 @@ function Console() {
                     </button>
                   )}
                 </div>
+                {importReport && (
+                  <div className="import-report" role="status">
+                    <span>{importReport}</span>
+                    {!importBusy && (
+                      <button
+                        aria-label="取り込み結果を閉じる"
+                        onClick={() => setImportReport("")}
+                      >
+                        閉じる
+                      </button>
+                    )}
+                  </div>
+                )}
                 {category.startsWith("jrock") && (
                   <div className="library-access" aria-label="邦楽ロックの用途">
                     {[
@@ -2681,7 +2723,7 @@ function Console() {
         ref={fileInput}
         type="file"
         multiple
-        accept="video/*,image/*"
+        accept={MEDIA_ACCEPT}
         onChange={(e) => {
           void importFiles(e.target.files);
           e.target.value = "";

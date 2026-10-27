@@ -2482,3 +2482,23 @@ hr {
 .spatial-controls p {
   line-height: 1.65;
 }
+.import-report {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  margin: 8px 12px;
+  border: 1px solid #375568;
+  border-radius: 6px;
+  color: #dcecf3;
+  background: #172630;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.import-report span {
+  flex: 1;
+}
+.import-report button {
+  flex-shrink: 0;
+}
