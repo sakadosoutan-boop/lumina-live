@@ -46,6 +46,13 @@ import { PanelDivider, usePanelLayout } from "./PanelLayout";
 import { defaultLayout } from "./layout";
 import { planFolderLibrary } from "./folder-library";
 import { downloadMediaBlob, mergeAssetCatalog } from "./media-library";
+import {
+  SETLIST_SCENE_TAG,
+  setlistSceneSongs,
+  setlistSceneSections,
+  hasSetlistScenes,
+  filterLibraryAssets,
+} from "./setlist-scenes";
 import { VJRenderer } from "./renderer";
 import { SpatialControls } from "./SpatialControls";
 import { BpmInput } from "./BpmInput";
@@ -394,6 +401,8 @@ function Console() {
   const [tab, setTab] = useState("library");
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("all");
+  const [sceneSong, setSceneSong] = useState("");
+  const [sceneSection, setSceneSection] = useState("");
   const [target, setTarget] = useState(0);
   const [selected, setSelected] = useState(builtInAssets[0].id);
   const [related, setRelated] = useState(false);
@@ -405,7 +414,7 @@ function Console() {
   const [modal, setModal] = useState("");
   useEffect(() => {
     contentPanel.current?.scrollTo({ top: 0 });
-  }, [tab, page, search, category, related]);
+  }, [tab, page, search, category, related, sceneSong, sceneSection]);
   useEffect(() => {
     if (!modal) return;
     const previous = document.activeElement as HTMLElement | null;
@@ -1536,24 +1545,30 @@ function Console() {
       else actions.current(name, event.args[0]);
     });
   }, []);
+  const scenesAvailable = useMemo(
+    () => hasSetlistScenes(show.assets),
+    [show.assets],
+  );
+  useEffect(() => {
+    if (!scenesAvailable && category === SETLIST_SCENE_TAG) setCategory("all");
+  }, [scenesAvailable, category]);
   const filtered = useMemo(() => {
-    let list =
+    const list =
       related && asset ? similarAssets(asset, show.assets, 48) : show.assets;
-    const q = search.toLowerCase();
-    return list.filter(
-      (a) =>
-        (category === "all" ||
-          (category === "favorites" && a.favorite) ||
-          (category === "video" && a.kind === "video") ||
-          (category === "procedural" && a.kind === "procedural") ||
-          a.tags.includes(category)) &&
-        (!q ||
-          `${a.name} ${a.tags.join(" ")} ${a.license}`
-            .toLowerCase()
-            .includes(q)),
-    );
-  }, [show.assets, search, category, related, selected]);
-  useEffect(() => setPage(0), [search, category, related]);
+    return filterLibraryAssets(list, category, search, sceneSong, sceneSection);
+  }, [
+    show.assets,
+    search,
+    category,
+    related,
+    selected,
+    sceneSong,
+    sceneSection,
+  ]);
+  useEffect(
+    () => setPage(0),
+    [search, category, related, sceneSong, sceneSection],
+  );
   useEffect(
     () =>
       setPage((p) =>
@@ -2173,6 +2188,22 @@ function Console() {
                   </button>
                 </div>
                 <div className="library-access">
+                  {scenesAvailable && (
+                    <button
+                      className={category === SETLIST_SCENE_TAG ? "active" : ""}
+                      aria-pressed={category === SETLIST_SCENE_TAG}
+                      onClick={() => {
+                        setCategory(
+                          category === SETLIST_SCENE_TAG
+                            ? "all"
+                            : SETLIST_SCENE_TAG,
+                        );
+                        setRelated(false);
+                      }}
+                    >
+                      曲別シーン
+                    </button>
+                  )}
                   <button
                     className={category.startsWith("jrock") ? "active" : ""}
                     onClick={() => {
@@ -2221,6 +2252,40 @@ function Console() {
                     </button>
                   )}
                 </div>
+                {scenesAvailable && category === SETLIST_SCENE_TAG && (
+                  <div
+                    className="library-access"
+                    role="group"
+                    aria-label="曲別シーンの絞り込み"
+                  >
+                    <label htmlFor="scene-song">曲</label>
+                    <select
+                      id="scene-song"
+                      value={sceneSong}
+                      onChange={(e) => setSceneSong(e.target.value)}
+                    >
+                      <option value="">すべての曲</option>
+                      {setlistSceneSongs.map(({ slug, name }) => (
+                        <option key={slug} value={slug}>
+                          {name}
+                        </option>
+                      ))}
+                    </select>
+                    <span>セクション</span>
+                    {[{ id: "", label: "すべて" }, ...setlistSceneSections].map(
+                      ({ id, label }) => (
+                        <button
+                          key={id}
+                          className={sceneSection === id ? "active" : ""}
+                          aria-pressed={sceneSection === id}
+                          onClick={() => setSceneSection(id)}
+                        >
+                          {label}
+                        </button>
+                      ),
+                    )}
+                  </div>
+                )}
                 {importReport && (
                   <div className="import-report" role="status">
                     <span>{importReport}</span>
