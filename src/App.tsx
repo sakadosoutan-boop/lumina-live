@@ -1191,7 +1191,9 @@ function Console() {
       try {
         if (window.lumina) imported = await window.lumina.getAssets();
         else {
-          const r = await fetch("./assets/catalog.json");
+          // Revalidate the small catalog so newly published media appears even
+          // when GitHub Pages' earlier response is still in the browser cache.
+          const r = await fetch("./assets/catalog.json", { cache: "no-cache" });
           if (r.ok) {
             const j = await r.json();
             imported = validateAssetCatalog(
