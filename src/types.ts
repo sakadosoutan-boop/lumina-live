@@ -65,6 +65,14 @@ export interface Song {
   audioName?: string;
   offset: number;
   beatsPerBar: number;
+  scenes?: SongScene[];
+}
+export interface SongScene {
+  id: string;
+  name: string;
+  decks: Deck[];
+  crossfade: number;
+  fx: Show["fx"];
 }
 export interface LyricStyle {
   enabled: boolean;

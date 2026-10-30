@@ -56,6 +56,8 @@ import {
 import { VJRenderer } from "./renderer";
 import { SpatialControls } from "./SpatialControls";
 import { BpmInput } from "./BpmInput";
+import { SongSceneEditor } from "./SongSceneEditor";
+import { applySongScene, missingSceneAssetIds } from "./song-scenes";
 import {
   initialLyricClock,
   lyricTimeAt,
@@ -403,6 +405,11 @@ function Console() {
   const [category, setCategory] = useState("all");
   const [sceneSong, setSceneSong] = useState("");
   const [sceneSection, setSceneSection] = useState("");
+  const [sceneEditorSongId, setSceneEditorSongId] = useState("");
+  const [activeVisualScene, setActiveVisualScene] = useState<{
+    songId: string;
+    id: string;
+  } | null>(null);
   const [target, setTarget] = useState(0);
   const [selected, setSelected] = useState(builtInAssets[0].id);
   const [related, setRelated] = useState(false);
@@ -479,6 +486,18 @@ function Console() {
   const libraryTransfer = useRef<AbortController | null>(null);
   useEffect(() => () => libraryTransfer.current?.abort(), []);
   const song = show.songs.find((s) => s.id === songId) ?? show.songs[0];
+  const sceneEditorSong =
+    show.songs.find((s) => s.id === sceneEditorSongId) ?? song;
+  const currentScenes = song.scenes ?? [];
+  const activeVisualSceneId =
+    activeVisualScene?.songId === song.id &&
+    currentScenes.some((s) => s.id === activeVisualScene.id)
+      ? activeVisualScene.id
+      : "";
+  const nextVisualScene =
+    currentScenes[
+      currentScenes.findIndex((s) => s.id === activeVisualSceneId) + 1
+    ];
   const asset = show.assets.find((a) => a.id === selected) ?? show.assets[0];
   const lyricTime = lyricTimeAt(time, lyricClock);
   const cue = lyricCueAt(song, time, lyricClock);
@@ -792,6 +811,8 @@ function Console() {
       setShow(s);
       setSaved(true);
       setSongId(s.songs[0].id);
+      setActiveVisualScene(null);
+      setSceneEditorSongId(s.songs[0].id);
       setTime(0);
       setSelected(s.assets[0].id);
       beatAnchor.current = {
@@ -1607,6 +1628,8 @@ function Console() {
     setMicOn(false);
     setPlaying(false);
     setSongId(id);
+    setSceneEditorSongId(id);
+    setActiveVisualScene(null);
     changeLyricClock(initialLyricClock);
     transport.current.seek(0, performance.now());
     setTime(0);
@@ -1624,6 +1647,36 @@ function Console() {
     autoIndex.current = -1;
     pending.current = null;
     setQueueLabel("");
+  };
+  const recallSongScene = (id: string, ownerId = latest.current.song.id) => {
+    const current = latest.current;
+    if (ownerId !== current.song.id) {
+      announce("この曲をロードしてからシーンを呼び出してください。");
+      return;
+    }
+    const scene = current.song.scenes?.find((s) => s.id === id);
+    if (!scene) return;
+    const missing = missingSceneAssetIds(scene, current.show.assets);
+    if (missing.length) {
+      announce(
+        "シーンの素材が未接続です。素材を再接続するか、シーン設定で割り当てを直してください。",
+      );
+      return;
+    }
+    const next = applySongScene(current.show, scene);
+    fade.current = null;
+    pending.current = null;
+    autoIndex.current = -1;
+    setAutoBars(0);
+    latest.current.autoBars = 0;
+    setQueueLabel("");
+    latest.current.show = next;
+    setShow(next);
+    const visibleDeck = next.crossfade < 0.5 ? 0 : 1;
+    setTarget(visibleDeck);
+    setSelected(next.decks[visibleDeck].assetId);
+    setActiveVisualScene({ songId: ownerId, id });
+    announce(`${current.song.title} / ${scene.name} を呼び出しました`);
   };
   const stampCue = (id: string) => {
     const at = lyricTime + song.offset;
@@ -1801,6 +1854,49 @@ function Console() {
             </button>
           </div>
         )}
+        <div
+          className="song-scene-transport"
+          role="group"
+          aria-label="曲の保存シーン"
+        >
+          <label>
+            シーン
+            <select
+              aria-label="保存シーンを呼び出す"
+              value={activeVisualSceneId}
+              disabled={!currentScenes.length}
+              onChange={(e) => recallSongScene(e.target.value)}
+            >
+              <option value="">
+                {currentScenes.length
+                  ? "シーンを選択"
+                  : "未登録（シーン設定へ）"}
+              </option>
+              {currentScenes.map((s, i) => (
+                <option key={s.id} value={s.id}>
+                  {i + 1}. {s.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button
+            disabled={!nextVisualScene}
+            title="保存した順で映像を即時に切り替えます。曲と歌詞の再生は続きます。"
+            onClick={() => {
+              if (nextVisualScene) recallSongScene(nextVisualScene.id);
+            }}
+          >
+            次のシーン
+          </button>
+          <button
+            onClick={() => {
+              setSceneEditorSongId(song.id);
+              setTab("setlist");
+            }}
+          >
+            シーン設定
+          </button>
+        </div>
         <button
           className={blackout ? "danger active" : "danger"}
           onClick={() => setBlackout((v) => !v)}
@@ -2708,6 +2804,10 @@ function Console() {
                       <span>{s.bpm} BPM</span>
                       <span>{clock(s.duration)}</span>
                       <button onClick={() => switchSong(s.id)}>ロード</button>
+                      <button onClick={() => setSceneEditorSongId(s.id)}>
+                        シーン設定
+                        {s.scenes?.length ? ` (${s.scenes.length})` : ""}
+                      </button>
                       <button
                         disabled={!i}
                         onClick={() => {
@@ -2736,6 +2836,44 @@ function Console() {
                     </div>
                   ))}
                 </div>
+                <label className="song-scene-song-picker">
+                  シーンを編集する曲
+                  <select
+                    aria-label="シーンを編集する曲"
+                    value={sceneEditorSong.id}
+                    onChange={(e) => setSceneEditorSongId(e.target.value)}
+                  >
+                    {show.songs.map((s, i) => (
+                      <option key={s.id} value={s.id}>
+                        {i + 1}. {s.title}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <SongSceneEditor
+                  key={sceneEditorSong.id}
+                  song={sceneEditorSong}
+                  show={show}
+                  currentSongId={song.id}
+                  activeSceneId={
+                    activeVisualScene?.songId === sceneEditorSong.id
+                      ? activeVisualScene.id
+                      : ""
+                  }
+                  thumbnails={thumbnails}
+                  createId={uid}
+                  onChange={(scenes) =>
+                    setShow((s) => ({
+                      ...s,
+                      songs: s.songs.map((x) =>
+                        x.id === sceneEditorSong.id ? { ...x, scenes } : x,
+                      ),
+                    }))
+                  }
+                  onRecall={(id) => recallSongScene(id, sceneEditorSong.id)}
+                  onNotice={announce}
+                  onSave={() => void save()}
+                />
               </>
             )}
           </section>

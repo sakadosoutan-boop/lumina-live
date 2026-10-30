@@ -1,4 +1,13 @@
-import type { Asset, Deck, LyricCue, Show, Song, VisualKind } from "./types";
+import type {
+  Asset,
+  Deck,
+  LyricCue,
+  Show,
+  Song,
+  SongScene,
+  VisualKind,
+} from "./types";
+import { MAX_SONG_SCENES } from "./song-scenes";
 
 const DB = "lumina-live-v1";
 const DB_TIMEOUT = 5000;
@@ -312,7 +321,78 @@ function readSong(value: unknown, index: number): Song {
     song.audioName = string(s.audioName, field + ".audioName");
   // Session audio URLs cannot restore the audio engine; retain only the relink name.
   if (s.audioUrl !== undefined) mediaUrl(s.audioUrl, field + ".audioUrl");
+  if (s.scenes !== undefined)
+    song.scenes = unique(
+      array(s.scenes, field + ".scenes", 0, MAX_SONG_SCENES).map((value, i) =>
+        readSongScene(value, field + ".scenes[" + i + "]"),
+      ),
+      field + ".scenes",
+    );
   return song;
+}
+
+function readDeck(
+  value: unknown,
+  field: string,
+  assetIds?: ReadonlySet<string>,
+): Deck {
+  const d = object(value, field);
+  const assetId = id(d.assetId, field + ".assetId");
+  if (assetIds && !assetIds.has(assetId))
+    invalid(field + ".assetId (missing asset)");
+  return {
+    assetId,
+    opacity: number(d.opacity, field + ".opacity", 0, 1),
+    speed: number(d.speed, field + ".speed", 0.25, 4),
+    scale: number(d.scale, field + ".scale", 0.25, 4),
+    rotation: number(d.rotation, field + ".rotation", -180, 180),
+    mirror: boolean(fallback(d.mirror, false), field + ".mirror"),
+    beatSync: boolean(fallback(d.beatSync, true), field + ".beatSync"),
+    beats: number(d.beats, field + ".beats", 1, 128, true),
+    hue: number(d.hue, field + ".hue", -180, 180),
+    saturation: number(d.saturation, field + ".saturation", 0, 2),
+    brightness: number(d.brightness, field + ".brightness", 0, 2),
+    blend: enumeration(fallback(d.blend, "normal"), field + ".blend", [
+      "normal",
+      "screen",
+      "add",
+      "multiply",
+      "difference",
+    ]),
+  };
+}
+
+function readFx(value: unknown, field: string): Show["fx"] {
+  const fx = object(value, field);
+  return {
+    glitch: number(fallback(fx.glitch, 0), field + ".glitch", 0, 1),
+    bloom: number(fallback(fx.bloom, 0.15), field + ".bloom", 0, 1),
+    vignette: number(fallback(fx.vignette, 0.25), field + ".vignette", 0, 1),
+    chromatic: number(fallback(fx.chromatic, 0), field + ".chromatic", 0, 1),
+    pixelate: number(fallback(fx.pixelate, 0), field + ".pixelate", 0, 1),
+    depth: number(fallback(fx.depth, 0), field + ".depth", -1, 1),
+    mapping: number(fallback(fx.mapping, 0), field + ".mapping", 0, 1),
+    motionBeats: number(
+      fallback(fx.motionBeats, 8),
+      field + ".motionBeats",
+      2,
+      32,
+    ),
+  };
+}
+
+function readSongScene(value: unknown, field: string): SongScene {
+  const scene = object(value, field);
+  return {
+    id: id(scene.id, field + ".id"),
+    name: string(scene.name, field + ".name", 256),
+    // Missing IDs are kept for relinking; only the current live decks are strict.
+    decks: array(scene.decks, field + ".decks", 3, 3).map((value, i) =>
+      readDeck(value, field + ".decks[" + i + "]"),
+    ),
+    crossfade: number(scene.crossfade, field + ".crossfade", 0, 1),
+    fx: readFx(scene.fx, field + ".fx"),
+  };
 }
 
 function readShow(value: unknown): Show {
@@ -323,34 +403,10 @@ function readShow(value: unknown): Show {
     "assets",
   );
   const assetIds = new Set(assets.map((a) => a.id));
-  const decks = array(s.decks, "decks", 3, 3).map((value, i): Deck => {
-    const field = "decks[" + i + "]",
-      d = object(value, field);
-    const assetId = id(d.assetId, field + ".assetId");
-    if (!assetIds.has(assetId)) invalid(field + ".assetId (missing asset)");
-    return {
-      assetId,
-      opacity: number(d.opacity, field + ".opacity", 0, 1),
-      speed: number(d.speed, field + ".speed", 0.25, 4),
-      scale: number(d.scale, field + ".scale", 0.25, 4),
-      rotation: number(d.rotation, field + ".rotation", -180, 180),
-      mirror: boolean(fallback(d.mirror, false), field + ".mirror"),
-      beatSync: boolean(fallback(d.beatSync, true), field + ".beatSync"),
-      beats: number(d.beats, field + ".beats", 1, 128, true),
-      hue: number(d.hue, field + ".hue", -180, 180),
-      saturation: number(d.saturation, field + ".saturation", 0, 2),
-      brightness: number(d.brightness, field + ".brightness", 0, 2),
-      blend: enumeration(fallback(d.blend, "normal"), field + ".blend", [
-        "normal",
-        "screen",
-        "add",
-        "multiply",
-        "difference",
-      ]),
-    };
-  });
-  const l = object(s.lyricStyle, "lyricStyle"),
-    fx = object(s.fx, "fx");
+  const decks = array(s.decks, "decks", 3, 3).map((value, i) =>
+    readDeck(value, "decks[" + i + "]", assetIds),
+  );
+  const l = object(s.lyricStyle, "lyricStyle");
   const color = string(fallback(l.color, "#ffffff"), "lyricStyle.color");
   if (!/^#[0-9a-f]{6}$/i.test(color)) invalid("lyricStyle.color");
   return {
@@ -378,16 +434,7 @@ function readShow(value: unknown): Show {
       ]),
       shadow: boolean(fallback(l.shadow, true), "lyricStyle.shadow"),
     },
-    fx: {
-      glitch: number(fallback(fx.glitch, 0), "fx.glitch", 0, 1),
-      bloom: number(fallback(fx.bloom, 0.15), "fx.bloom", 0, 1),
-      vignette: number(fallback(fx.vignette, 0.25), "fx.vignette", 0, 1),
-      chromatic: number(fallback(fx.chromatic, 0), "fx.chromatic", 0, 1),
-      pixelate: number(fallback(fx.pixelate, 0), "fx.pixelate", 0, 1),
-      depth: number(fallback(fx.depth, 0), "fx.depth", -1, 1),
-      mapping: number(fallback(fx.mapping, 0), "fx.mapping", 0, 1),
-      motionBeats: number(fallback(fx.motionBeats, 8), "fx.motionBeats", 2, 32),
-    },
+    fx: readFx(s.fx, "fx"),
   };
 }
 

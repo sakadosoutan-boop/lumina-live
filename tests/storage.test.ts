@@ -11,6 +11,12 @@ import {
   validateShow,
 } from "../src/storage";
 import { OutputMediaBridge } from "../src/output-media";
+import {
+  applySongScene,
+  captureSongScene,
+  MAX_SONG_SCENES,
+  missingSceneAssetIds,
+} from "../src/song-scenes";
 
 const asset = (id = "clip", patch: Partial<Asset> = {}): Asset => ({
   id,
@@ -579,6 +585,280 @@ describe("URL and autosave contracts", () => {
     expect(serializeShow(result)).toBe(json);
     expect(input).toEqual(before);
     expect(revoke).not.toHaveBeenCalled();
+  });
+});
+
+describe("bounded per-song scene persistence", () => {
+  function withScene(): Show {
+    const input = show();
+    input.fx = { ...input.fx, depth: -0.6, mapping: 0.7, motionBeats: 16 };
+    input.songs[0].scenes = [captureSongScene(input, "基本", "scene-1")];
+    return input;
+  }
+  function sceneChange(path: string, value: unknown): Show {
+    const input = withScene();
+    let target = input.songs[0].scenes![0] as unknown as Record<
+      string,
+      unknown
+    >;
+    const parts = path.split(".");
+    for (const part of parts.slice(0, -1))
+      target = target[part] as Record<string, unknown>;
+    target[parts.at(-1)!] = value;
+    return input;
+  }
+  function rejects(input: Show): void {
+    expect(() => read(input)).toThrow(/songs\[0\]\.scenes/);
+    expect(() => serializeShow(input)).toThrow(/songs\[0\]\.scenes/);
+  }
+
+  it("preserves absent scenes in old files and explicit empty collections", () => {
+    for (const input of [show(), withScene()]) {
+      if (input.songs[0].scenes) input.songs[0].scenes = [];
+      for (const result of [read(input), validateShow(serializeShow(input))]) {
+        if (input.songs[0].scenes) expect(result.songs[0].scenes).toEqual([]);
+        else expect(result.songs[0]).not.toHaveProperty("scenes");
+      }
+      const saved = JSON.parse(serializeShow(input));
+      expect("scenes" in saved.songs[0]).toBe("scenes" in input.songs[0]);
+    }
+  });
+
+  it("round-trips all visual fields in scene order per song without changing live settings", () => {
+    const input = withScene();
+    const first = input.songs[0].scenes![0];
+    first.decks[0] = {
+      ...first.decks[0],
+      opacity: 0.3,
+      speed: 1.75,
+      scale: 2.2,
+      rotation: -45,
+      mirror: true,
+      beatSync: false,
+      beats: 16,
+      hue: 120,
+      saturation: 1.6,
+      brightness: 0.9,
+      blend: "difference",
+    };
+    first.crossfade = 0.7;
+    first.fx = {
+      glitch: 0.1,
+      bloom: 0.2,
+      vignette: 0.3,
+      chromatic: 0.4,
+      pixelate: 0.5,
+      depth: -1,
+      mapping: 1,
+      motionBeats: 32,
+    };
+    input.songs[0].scenes!.push(captureSongScene(input, "Aメロ", "scene-2"));
+    const secondSong = {
+      ...input.songs[0],
+      id: "song-2",
+      title: "Second",
+      scenes: [captureSongScene(input, "Second scene", "scene-1")],
+    };
+    input.songs.push(secondSong);
+    const before = structuredClone(input);
+    const json = serializeShow(input),
+      loaded = validateShow(json);
+    expect(loaded.songs).toEqual(input.songs);
+    expect(loaded.decks).toEqual(input.decks);
+    expect(loaded.crossfade).toBe(input.crossfade);
+    expect(loaded.fx).toEqual(input.fx);
+    expect(serializeShow(loaded)).toBe(json);
+    expect(input).toEqual(before);
+    const scenes = loaded.songs[0].scenes!;
+    scenes[0].decks[0].opacity = 0;
+    scenes[0].fx.bloom = 1;
+    expect(scenes[1].decks[0].opacity).toBe(1);
+    expect(scenes[1].fx.bloom).toBe(0.15);
+    expect(loaded.songs[1].scenes![0].decks[0].opacity).toBe(1);
+    expect(loaded.songs[1].scenes![0].fx.bloom).toBe(0.15);
+    expect(loaded.decks[0].opacity).toBe(1);
+    expect(loaded.fx.bloom).toBe(0.15);
+    expect(input).toEqual(before);
+  });
+
+  it("keeps missing scene-only asset IDs for relinking while rejecting absent live deck IDs", () => {
+    const input = withScene();
+    input.assets.push(
+      asset("unresolved", { url: "indexeddb:unresolved" }),
+      asset("no-file"),
+    );
+    const scene = input.songs[0].scenes![0];
+    scene.decks = [
+      deck("removed"),
+      { ...deck("unresolved"), opacity: 0 },
+      { ...deck("no-file"), opacity: 0 },
+    ];
+    const before = structuredClone(input);
+    for (const loaded of [read(input), validateShow(serializeShow(input))]) {
+      const saved = loaded.songs[0].scenes![0];
+      expect(saved.decks.map((d) => d.assetId)).toEqual([
+        "removed",
+        "unresolved",
+        "no-file",
+      ]);
+      expect(missingSceneAssetIds(saved, loaded.assets)).toEqual([
+        "removed",
+        "unresolved",
+        "no-file",
+      ]);
+      const liveBefore = structuredClone(loaded);
+      expect(() => applySongScene(loaded, saved)).toThrow();
+      expect(loaded).toEqual(liveBefore);
+    }
+    expect(input).toEqual(before);
+    input.decks[0].assetId = "removed";
+    expect(() => read(input)).toThrow(/decks\[0\].*missing asset/);
+    expect(() => serializeShow(input)).toThrow(/decks\[0\].*missing asset/);
+  });
+
+  it("accepts 128 scenes per song, bounded IDs/names, and a separate ID namespace per song", () => {
+    const input = withScene();
+    input.songs[0].scenes = Array.from({ length: MAX_SONG_SCENES }, (_, i) =>
+      captureSongScene(
+        input,
+        "名".repeat(256),
+        i === 0 ? "x".repeat(256) : `scene-${i}`,
+      ),
+    );
+    input.songs.push({ ...input.songs[0], id: "song-2" });
+    const loaded = validateShow(serializeShow(input));
+    expect(loaded.songs.map((s) => s.scenes?.length)).toEqual([128, 128]);
+    expect(loaded.songs[0].scenes).toEqual(input.songs[0].scenes);
+    input.songs[0].scenes.push(captureSongScene(input, "Extra", "extra"));
+    rejects(input);
+  });
+
+  it("rejects duplicate IDs within a song and malformed scene arrays", () => {
+    const input = withScene();
+    input.songs[0].scenes!.push(captureSongScene(input, "Other", "scene-1"));
+    rejects(input);
+    for (const scenes of [null, {}, "scenes", 1, [null], [[]], [false]]) {
+      const malformed = withScene();
+      Object.assign(malformed.songs[0], { scenes });
+      rejects(malformed);
+    }
+  });
+
+  it.each([
+    ["id", ""],
+    ["id", " id "],
+    ["id", "bad\n"],
+    ["id", "x".repeat(257)],
+    ["id", 4],
+    ["name", "x".repeat(257)],
+    ["name", null],
+    ["name", {}],
+    ["name", undefined],
+    ["crossfade", -0.01],
+    ["crossfade", 1.01],
+    ["crossfade", NaN],
+    ["crossfade", Infinity],
+    ["crossfade", "0"],
+    ["decks", []],
+    ["decks", [deck("a"), deck("b")]],
+    ["decks", Array.from({ length: 4 }, () => deck("a"))],
+    ["decks", null],
+    ["decks.0", null],
+    ["decks.0.assetId", ""],
+    ["decks.0.assetId", 4],
+    ["decks.0.opacity", -0.01],
+    ["decks.0.opacity", 1.01],
+    ["decks.0.speed", 0.24],
+    ["decks.0.speed", 4.01],
+    ["decks.0.scale", 0.24],
+    ["decks.0.scale", 4.01],
+    ["decks.0.rotation", -181],
+    ["decks.0.rotation", 181],
+    ["decks.0.mirror", "false"],
+    ["decks.0.beatSync", null],
+    ["decks.0.beats", 0],
+    ["decks.0.beats", 129],
+    ["decks.0.beats", 2.5],
+    ["decks.0.hue", -181],
+    ["decks.0.hue", 181],
+    ["decks.0.saturation", -0.01],
+    ["decks.0.saturation", 2.01],
+    ["decks.0.brightness", -0.01],
+    ["decks.0.brightness", 2.01],
+    ["decks.0.blend", "unknown"],
+    ["decks.0.opacity", Infinity],
+    ["fx", null],
+    ["fx", []],
+    ["fx", undefined],
+    ["fx.glitch", -0.01],
+    ["fx.glitch", 1.01],
+    ["fx.glitch", null],
+    ["fx.bloom", -0.01],
+    ["fx.bloom", 1.01],
+    ["fx.bloom", "0"],
+    ["fx.vignette", -0.01],
+    ["fx.vignette", 1.01],
+    ["fx.chromatic", -0.01],
+    ["fx.chromatic", 1.01],
+    ["fx.pixelate", -0.01],
+    ["fx.pixelate", 1.01],
+    ["fx.depth", -1.01],
+    ["fx.depth", 1.01],
+    ["fx.depth", null],
+    ["fx.mapping", -0.01],
+    ["fx.mapping", 1.01],
+    ["fx.mapping", false],
+    ["fx.motionBeats", 1.99],
+    ["fx.motionBeats", 32.01],
+    ["fx.motionBeats", NaN],
+  ])(
+    "rejects malformed scene %s = %j at both save and load boundaries",
+    (path, value) => {
+      rejects(sceneChange(path as string, value));
+    },
+  );
+
+  it("uses the same legacy deck/FX defaults in scenes as live state, preserving zero/false", () => {
+    const input = withScene(),
+      scene = input.songs[0].scenes![0];
+    Object.assign(scene.decks[0], {
+      mirror: undefined,
+      beatSync: undefined,
+      blend: undefined,
+    });
+    scene.fx = {} as Show["fx"];
+    const loaded = validateShow(serializeShow(input)).songs[0].scenes![0];
+    expect(loaded.decks[0]).toMatchObject({
+      mirror: false,
+      beatSync: true,
+      blend: "normal",
+    });
+    expect(loaded.fx).toEqual({
+      ...show().fx,
+      depth: 0,
+      mapping: 0,
+      motionBeats: 8,
+    });
+    scene.decks[0] = {
+      ...scene.decks[0],
+      opacity: 0,
+      mirror: false,
+      beatSync: false,
+      blend: "normal",
+    };
+    scene.fx = {
+      glitch: 0,
+      bloom: 0,
+      vignette: 0,
+      chromatic: 0,
+      pixelate: 0,
+      depth: 0,
+      mapping: 0,
+      motionBeats: 2,
+    };
+    expect(validateShow(serializeShow(input)).songs[0].scenes![0]).toEqual(
+      scene,
+    );
   });
 });
 
