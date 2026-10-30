@@ -1712,7 +1712,12 @@ export class VJRenderer {
     );
     const rectWidth = canvas.width / this.width,
       rectHeight = canvas.height / this.height;
-    const left = style.align === "left" ? 0.04 : (1 - rectWidth) / 2;
+    const left =
+      style.x === undefined
+        ? style.align === "left"
+          ? 0.04
+          : (1 - rectWidth) / 2
+        : clamp(style.x - rectWidth / 2, 0, 1 - rectWidth);
     const top = clamp(position - rectHeight / 2, 0, 1 - rectHeight);
     this.lyricRect = [
       Math.min(left, 1 - rectWidth),

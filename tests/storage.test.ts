@@ -93,6 +93,38 @@ afterEach(() => {
 });
 
 describe("show files at the live-app boundary", () => {
+  it.each([0, 0.25, 0.5, 1])("round-trips horizontal lyric center %s", (x) => {
+    const input = show();
+    input.lyricStyle.x = x;
+    const json = serializeShow(input);
+    expect(JSON.parse(json).lyricStyle.x).toBe(x);
+    expect(validateShow(json).lyricStyle).toEqual(input.lyricStyle);
+    expect(read(input).lyricStyle).toEqual(input.lyricStyle);
+  });
+
+  it.each([-0.01, 1.01, NaN, Infinity, -Infinity, null, "0.5", true, {}])(
+    "rejects invalid horizontal lyric center %j at load and save boundaries",
+    (x) => {
+      const input = change("lyricStyle.x", x);
+      expect(() => read(input)).toThrow(/lyricStyle\.x/);
+      expect(() => serializeShow(input)).toThrow(/lyricStyle\.x/);
+    },
+  );
+
+  it.each(["left", "center"] as const)(
+    "preserves absent horizontal position for legacy %s alignment",
+    (align) => {
+      const input = show();
+      input.lyricStyle.align = align;
+      const json = serializeShow(input);
+      expect(JSON.parse(json).lyricStyle).not.toHaveProperty("x");
+      for (const result of [read(input), validateShow(json)]) {
+        expect(result.lyricStyle).toEqual(input.lyricStyle);
+        expect(result.lyricStyle).not.toHaveProperty("x");
+      }
+    },
+  );
+
   it("round-trips depth direction, mapping strength, and motion tempo", () => {
     const input = show();
     input.fx = { ...input.fx, depth: -0.8, mapping: 0.6, motionBeats: 16 };

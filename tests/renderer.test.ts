@@ -214,6 +214,108 @@ describe("renderer cadence and lifecycle", () => {
   });
 });
 
+describe("lyric placement in the final compositor", () => {
+  function lyricRig() {
+    const context = {
+      clearRect: vi.fn(),
+      measureText: vi.fn((text: string) => ({ width: text.length * 20 })),
+      strokeText: vi.fn(),
+      fillText: vi.fn(),
+    };
+    const getContext = MockCanvas.prototype.getContext;
+    vi.spyOn(MockCanvas.prototype, "getContext").mockImplementation(function (
+      this: MockCanvas,
+      kind: string,
+    ) {
+      return kind === "2d" ? context : getContext.call(this, kind);
+    });
+    const r = rig();
+    r.current.width = 1920;
+    r.current.height = 1080;
+    r.current.lyric = "Light\nOn";
+    r.current.lyricStyle.enabled = true;
+    const rect = () =>
+      r.gl.draws
+        .filter((draw) => draw.uniforms.has("uLyricRect"))
+        .at(-1)!
+        .uniforms.get("uLyricRect")!;
+    return { ...r, context, rect };
+  }
+
+  it.each(["left", "center"] as const)(
+    "translates the rectangle center and clamps both edges with %s text, without repainting",
+    (align) => {
+      const r = lyricRig();
+      r.current.lyricStyle.align = align;
+      r.current.lyricStyle.x = 0.5;
+      r.renderer.render(r.current);
+      const [initialLeft, bottom, width, height] = r.rect();
+      expect(initialLeft + width / 2).toBeCloseTo(0.5);
+      expect(width).toBeGreaterThan(0);
+      expect(width).toBeLessThan(0.5);
+      const allocations = r.gl.api.texImage2D.mock.calls.length;
+      const uploads = r.gl.api.texSubImage2D.mock.calls.length;
+      const measurements = r.context.measureText.mock.calls.length;
+      const paints = r.context.fillText.mock.calls.length;
+      const clears = r.context.clearRect.mock.calls.length;
+      expect(paints).toBeGreaterThan(0);
+
+      for (const [x, expectedLeft] of [
+        [0.25, 0.25 - width / 2],
+        [0.75, 0.75 - width / 2],
+        [0, 0],
+        [1, 1 - width],
+        [-1, 0],
+        [2, 1 - width],
+      ]) {
+        r.current.lyricStyle.x = x;
+        r.renderer.render(r.current);
+        expect(r.rect()[0]).toBeCloseTo(expectedLeft);
+        expect(r.rect().slice(1)).toEqual([bottom, width, height]);
+      }
+
+      delete r.current.lyricStyle.x;
+      r.renderer.render(r.current);
+      expect(r.rect()[0]).toBeCloseTo(
+        align === "left" ? 0.04 : (1 - width) / 2,
+      );
+      expect(r.gl.api.texImage2D).toHaveBeenCalledTimes(allocations);
+      expect(r.gl.api.texSubImage2D).toHaveBeenCalledTimes(uploads);
+      expect(r.context.measureText).toHaveBeenCalledTimes(measurements);
+      expect(r.context.fillText).toHaveBeenCalledTimes(paints);
+      expect(r.context.clearRect).toHaveBeenCalledTimes(clears);
+      r.renderer.dispose();
+    },
+  );
+
+  it.each(["left", "center"] as const)(
+    "keeps legacy %s placement and normalized/percentage vertical positioning",
+    (align) => {
+      const r = lyricRig();
+      r.current.lyricStyle.align = align;
+      r.renderer.render(r.current);
+      const [left, bottom, width, height] = r.rect();
+      expect(left).toBeCloseTo(align === "left" ? 0.04 : (1 - width) / 2);
+      expect(bottom + height / 2).toBeCloseTo(1 - 0.77);
+      r.current.lyricStyle.position = 77;
+      r.renderer.render(r.current);
+      expect(r.rect()).toEqual([left, bottom, width, height]);
+
+      r.current.lyricStyle.x = 0.25;
+      for (const [position, expectedBottom] of [
+        [0, 1 - height],
+        [1, 0],
+      ]) {
+        r.current.lyricStyle.position = position;
+        r.renderer.render(r.current);
+        expect(r.rect()[0]).toBeCloseTo(0.25 - width / 2);
+        expect(r.rect()[1]).toBeCloseTo(expectedBottom);
+      }
+      r.renderer.dispose();
+    },
+  );
+});
+
 describe("video clock and resource handling", () => {
   const videoAsset: Asset = {
     ...builtInAssets[0],

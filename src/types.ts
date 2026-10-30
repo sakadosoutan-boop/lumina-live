@@ -70,6 +70,8 @@ export interface LyricStyle {
   enabled: boolean;
   size: number;
   position: number;
+  /** Normalized rectangle center; absent preserves legacy alignment placement. */
+  x?: number;
   color: string;
   align: "center" | "left";
   mode: "line" | "karaoke" | "typewriter";

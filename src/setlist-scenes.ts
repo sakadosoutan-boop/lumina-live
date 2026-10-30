@@ -28,6 +28,31 @@ export function hasSetlistScenes(assets: readonly Asset[]): boolean {
   return assets.some((asset) => asset.tags.includes(SETLIST_SCENE_TAG));
 }
 
+/** Group scenes in setlist order without moving unrelated library entries. */
+export function sortSetlistScenes(assets: readonly Asset[]): Asset[] {
+  const songRank = (a: Asset) => {
+    const i = setlistSceneSongs.findIndex((s) =>
+      a.tags.includes(`song:${s.slug}`),
+    );
+    return i < 0 ? setlistSceneSongs.length : i;
+  };
+  const sectionRank = (a: Asset) => {
+    const i = setlistSceneSections.findIndex((s) =>
+      a.tags.includes(`section:${s.id}`),
+    );
+    return i < 0 ? setlistSceneSections.length : i;
+  };
+  const scenes = assets
+    .filter((a) => a.tags.includes(SETLIST_SCENE_TAG))
+    .sort(
+      (a, b) => songRank(a) - songRank(b) || sectionRank(a) - sectionRank(b),
+    );
+  let next = 0;
+  return assets.map((a) =>
+    a.tags.includes(SETLIST_SCENE_TAG) ? scenes[next++] : a,
+  );
+}
+
 export function filterLibraryAssets(
   assets: readonly Asset[],
   category: string,
@@ -36,20 +61,22 @@ export function filterLibraryAssets(
   sceneSection = "",
 ): Asset[] {
   const q = search.toLowerCase();
-  return assets.filter(
-    (asset) =>
-      (category === "all" ||
-        (category === "favorites" && asset.favorite) ||
-        (category === "video" && asset.kind === "video") ||
-        (category === "procedural" && asset.kind === "procedural") ||
-        asset.tags.includes(category)) &&
-      (category !== SETLIST_SCENE_TAG ||
-        ((!sceneSong || asset.tags.includes(`song:${sceneSong}`)) &&
-          (!sceneSection || asset.tags.includes(`section:${sceneSection}`)))) &&
-      (!q ||
-        `${asset.name} ${asset.tags.join(" ")} ${asset.license}`
-          .toLowerCase()
-          .includes(q)),
+  return sortSetlistScenes(
+    assets.filter(
+      (asset) =>
+        (category === "all" ||
+          (category === "favorites" && asset.favorite) ||
+          (category === "video" && asset.kind === "video") ||
+          (category === "procedural" && asset.kind === "procedural") ||
+          asset.tags.includes(category)) &&
+        (category !== SETLIST_SCENE_TAG ||
+          ((!sceneSong || asset.tags.includes(`song:${sceneSong}`)) &&
+            (!sceneSection ||
+              asset.tags.includes(`section:${sceneSection}`)))) &&
+        (!q ||
+          `${asset.name} ${asset.tags.join(" ")} ${asset.license}`
+            .toLowerCase()
+            .includes(q)),
+    ),
   );
 }
-

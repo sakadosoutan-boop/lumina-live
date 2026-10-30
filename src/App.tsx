@@ -1551,6 +1551,28 @@ function Console() {
     () => hasSetlistScenes(show.assets),
     [show.assets],
   );
+  const sceneCollections = useMemo(
+    () =>
+      setlistSceneSongs
+        .map((song) => ({
+          ...song,
+          count: show.assets.filter(
+            (a) =>
+              a.tags.includes(SETLIST_SCENE_TAG) &&
+              a.tags.includes(`song:${song.slug}`),
+          ).length,
+        }))
+        .filter((song) => song.count > 0),
+    [show.assets],
+  );
+  function openSceneCollection(slug = "") {
+    setCategory(SETLIST_SCENE_TAG);
+    setSceneSong(slug);
+    setSceneSection("");
+    setSearch("");
+    setRelated(false);
+    setTab("library");
+  }
   useEffect(() => {
     if (!scenesAvailable && category === SETLIST_SCENE_TAG) setCategory("all");
   }, [scenesAvailable, category]);
@@ -1812,6 +1834,48 @@ function Console() {
             </button>
           ))}
           <div className="nav-label lower">COLLECTIONS</div>
+          {scenesAvailable && (
+            <div
+              className="scene-collections"
+              role="group"
+              aria-label="曲別コレクション"
+            >
+              <button
+                className={
+                  "collection " +
+                  (category === SETLIST_SCENE_TAG && !sceneSong ? "active" : "")
+                }
+                aria-label="曲別シーンのコレクション"
+                aria-pressed={category === SETLIST_SCENE_TAG && !sceneSong}
+                onClick={() => openSceneCollection()}
+              >
+                <i />
+                曲別シーン
+                <small>
+                  {sceneCollections.reduce((sum, s) => sum + s.count, 0)}
+                </small>
+              </button>
+              {sceneCollections.map((s) => (
+                <button
+                  key={s.slug}
+                  className={
+                    "collection scene-collection " +
+                    (category === SETLIST_SCENE_TAG && sceneSong === s.slug
+                      ? "active"
+                      : "")
+                  }
+                  aria-label={`曲別コレクション：${s.name}`}
+                  aria-pressed={
+                    category === SETLIST_SCENE_TAG && sceneSong === s.slug
+                  }
+                  onClick={() => openSceneCollection(s.slug)}
+                >
+                  <span>{s.name}</span>
+                  <small>{s.count}</small>
+                </button>
+              ))}
+            </div>
+          )}
           {[
             { id: "all", label: "すべての素材" },
             { id: "favorites", label: "お気に入り" },
@@ -2701,8 +2765,13 @@ function Console() {
             <span>
               <Music2 size={13} /> LYRICS
             </span>
-            <button onClick={() => setModal("lyricStyle")}>
+            <button
+              onClick={() => setModal("lyricStyle")}
+              aria-label="歌詞の表示位置・スタイル"
+              title="歌詞の表示位置・スタイル"
+            >
               <Settings2 size={14} />
+              表示位置
             </button>
           </div>
           <div className="lyric-switch">
@@ -3316,6 +3385,76 @@ function Console() {
             ) : modal === "lyricStyle" ? (
               <>
                 <h2>歌詞の表示</h2>
+                <fieldset className="lyric-position-presets">
+                  <legend>表示位置</legend>
+                  <div className="lyric-position-grid">
+                    {[
+                      { label: "左上", x: 0.12, y: 0.15 },
+                      { label: "上中央", x: 0.5, y: 0.15 },
+                      { label: "右上", x: 0.88, y: 0.15 },
+                      { label: "左中央", x: 0.12, y: 0.5 },
+                      { label: "中央", x: 0.5, y: 0.5 },
+                      { label: "右中央", x: 0.88, y: 0.5 },
+                      { label: "左下", x: 0.12, y: 0.82 },
+                      { label: "下中央", x: 0.5, y: 0.82 },
+                      { label: "右下", x: 0.88, y: 0.82 },
+                    ].map((p) => (
+                      <button
+                        key={p.label}
+                        aria-pressed={
+                          Math.abs((show.lyricStyle.x ?? 0.5) - p.x) < 0.005 &&
+                          Math.abs(show.lyricStyle.position - p.y) < 0.005
+                        }
+                        onClick={() =>
+                          update({
+                            lyricStyle: {
+                              ...show.lyricStyle,
+                              x: p.x,
+                              position: p.y,
+                            },
+                          })
+                        }
+                      >
+                        {p.label}
+                      </button>
+                    ))}
+                  </div>
+                </fieldset>
+                <Range
+                  label="横位置（左→右）"
+                  value={show.lyricStyle.x ?? 0.5}
+                  unit="%"
+                  onChange={(v) =>
+                    update({ lyricStyle: { ...show.lyricStyle, x: v } })
+                  }
+                />
+                <Range
+                  label="縦位置（上→下）"
+                  value={show.lyricStyle.position}
+                  min={0}
+                  max={1}
+                  unit="%"
+                  onChange={(v) =>
+                    update({ lyricStyle: { ...show.lyricStyle, position: v } })
+                  }
+                />
+                <button
+                  onClick={() =>
+                    update({
+                      lyricStyle: {
+                        ...show.lyricStyle,
+                        x: 0.5,
+                        position: 0.77,
+                        align: "center",
+                      },
+                    })
+                  }
+                >
+                  位置を初期値に戻す
+                </button>
+                <p className="hint">
+                  投影画面にも反映されます。長い歌詞は画面内に収まるように位置を調整します。
+                </p>
                 <Range
                   label="文字サイズ"
                   value={show.lyricStyle.size}
@@ -3324,15 +3463,6 @@ function Console() {
                   step={1}
                   onChange={(v) =>
                     update({ lyricStyle: { ...show.lyricStyle, size: v } })
-                  }
-                />
-                <Range
-                  label="縦位置"
-                  value={show.lyricStyle.position}
-                  min={0.1}
-                  max={0.9}
-                  onChange={(v) =>
-                    update({ lyricStyle: { ...show.lyricStyle, position: v } })
                   }
                 />
                 <label className="field">

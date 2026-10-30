@@ -4,6 +4,7 @@ import {
   hasSetlistScenes,
   SETLIST_SCENE_TAG,
   setlistSceneSongs,
+  sortSetlistScenes,
 } from "../src/setlist-scenes";
 import type { Asset } from "../src/types";
 
@@ -38,6 +39,54 @@ const clips = [
 const ids = (assets: Asset[]) => assets.map((a) => a.id);
 
 describe("setlist scene library filters", () => {
+  it("groups shuffled scenes in setlist order and main/A/B/C order without mutating the library", () => {
+    const shuffled = [
+      scene("odoriko-c", "odoriko", "c"),
+      scene("music-b", "music", "b"),
+      scene("odoriko-main", "odoriko", "main"),
+      scene("music-a", "music", "a"),
+      scene("music-main", "music", "main"),
+      scene("odoriko-a", "odoriko", "a"),
+      scene("music-c", "music", "c"),
+      scene("odoriko-b", "odoriko", "b"),
+    ];
+    const before = structuredClone(shuffled);
+    expect(ids(filterLibraryAssets(shuffled, SETLIST_SCENE_TAG, ""))).toEqual([
+      "music-main",
+      "music-a",
+      "music-b",
+      "music-c",
+      "odoriko-main",
+      "odoriko-a",
+      "odoriko-b",
+      "odoriko-c",
+    ]);
+    expect(shuffled).toEqual(before);
+  });
+
+  it("preserves non-scene positions and the relative order of unknown scene tags", () => {
+    const ordinary = asset("ordinary", []),
+      later = asset("later", []);
+    const input = [
+      scene("z", "unknown", "a"),
+      ordinary,
+      scene("known-c", "music", "c"),
+      scene("known-a", "music", "a"),
+      later,
+      scene("y", "unknown", "a"),
+    ];
+    expect(ids(sortSetlistScenes(input))).toEqual([
+      "known-a",
+      "ordinary",
+      "known-c",
+      "z",
+      "later",
+      "y",
+    ]);
+    expect(ids(filterLibraryAssets(input, "all", "", "odoriko", "c"))).toEqual(
+      ids(sortSetlistScenes(input)),
+    );
+  });
   it("offers scenes only for exact collection membership, including newly loaded assets", () => {
     const ordinary = [
       asset("ordinary", ["song:music", "setlist-scene-preview"]),

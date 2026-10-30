@@ -365,6 +365,7 @@ function readShow(value: unknown): Show {
       enabled: boolean(fallback(l.enabled, true), "lyricStyle.enabled"),
       size: number(fallback(l.size, 64), "lyricStyle.size", 24, 120),
       position: number(fallback(l.position, 0.77), "lyricStyle.position", 0, 1),
+      ...(l.x === undefined ? {} : { x: number(l.x, "lyricStyle.x", 0, 1) }),
       color,
       align: enumeration(fallback(l.align, "center"), "lyricStyle.align", [
         "center",
