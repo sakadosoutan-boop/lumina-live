@@ -36,6 +36,10 @@ type Media = {
   lastPlaying: boolean;
   playPending: boolean;
   retryPlayAt: number;
+  // Raw clocks are captured when the first decoded frame can be synchronized.
+  origin?: { time: number; beat: number };
+  onceEndedAt?: number;
+  onceEndTarget?: number;
   staging?: HTMLCanvasElement;
   stagingContext?: CanvasRenderingContext2D;
 };
@@ -439,7 +443,9 @@ export class VJRenderer {
       if (
         !asset ||
         asset.url !== media.asset.url ||
-        asset.kind !== media.asset.kind
+        asset.kind !== media.asset.kind ||
+        (asset.kind === "video" &&
+          (asset.playback === "once") !== (media.asset.playback === "once"))
       )
         this.releaseMedia(slot);
       else media.asset = asset;
@@ -1231,7 +1237,7 @@ export class VJRenderer {
       video.muted = true;
       video.defaultMuted = true;
       video.playsInline = true;
-      video.loop = true;
+      video.loop = asset.playback !== "once";
       video.preload = "auto";
       video.onloadeddata = video.onseeked = () => {
         media.dirty = true;
@@ -1382,23 +1388,71 @@ export class VJRenderer {
     // holds frame zero; procedural shaders do support negative speed.
     const speed = clamp(deck.speed, 0, 8),
       duration = video.duration;
+    const once = media.asset.playback === "once";
+    // Loading time must not consume the beginning of a once-only story. Keep
+    // the decoder paused until its first frame can actually be presented.
+    if (
+      once &&
+      !media.origin &&
+      (video.readyState < 2 ||
+        video.seeking ||
+        !video.videoWidth ||
+        !video.videoHeight)
+    ) {
+      this.pauseOne(media);
+      return;
+    }
+    const origin = once
+      ? (media.origin ??= {
+          time: finite(state.time),
+          beat: finite(state.beat),
+        })
+      : undefined;
     let rate = speed,
-      clock = finite(state.time) * speed;
+      clock =
+        (origin ? finite(state.time) - origin.time : finite(state.time)) *
+        speed;
     if (deck.beatSync) {
       const beats = clamp(deck.beats || media.asset.beats || 4, 1, 128);
       const secondsPerBeat =
         Number.isFinite(duration) && duration > 0
           ? duration / beats
           : 60 / clamp(media.asset.bpm ?? 120, 20, 400);
-      clock = finite(state.beat) * secondsPerBeat * speed;
+      clock =
+        (origin ? finite(state.beat) - origin.beat : finite(state.beat)) *
+        secondsPerBeat *
+        speed;
       rate = (clamp(state.bpm, 20, 400) / 60) * secondsPerBeat * speed;
     }
-    const playing =
+    let playing =
       state.playing && speed > 0 && !state.freeze && !state.blackout;
     const playbackRate = clamp(rate, 0.0625, 16);
     // A clamped decoder speed must have a matching seek clock. Otherwise a
     // long clip squeezed into a few beats seeks every frame and never decodes.
     if (rate > 0 && playbackRate !== rate) clock *= playbackRate / rate;
+    const lastFrame = Math.max(0, duration - 0.001);
+    const backwards =
+      once && Number.isFinite(media.lastClock) && clock < media.lastClock;
+    let finished = false;
+    if (once) {
+      // Native playback can finish slightly ahead of the render clock. Latch
+      // that end too, so play() cannot restart the clip; a backward scrub clears it.
+      if (media.onceEndedAt !== undefined && clock < media.onceEndedAt)
+        media.onceEndedAt = undefined;
+      if (
+        video.ended &&
+        clock >= 0 &&
+        (!Number.isFinite(media.lastClock) || clock >= media.lastClock)
+      )
+        media.onceEndedAt ??= clock;
+      finished =
+        (Number.isFinite(duration) && duration > 0 && clock >= lastFrame) ||
+        media.onceEndedAt !== undefined;
+      if (!finished) media.onceEndTarget = undefined;
+      // A master-timeline reset does not rebase a retained slot. Hold frame
+      // zero before its origin instead of playing against a clamped seek clock.
+      playing &&= !finished && clock >= 0;
+    }
     if (Math.abs(video.playbackRate - playbackRate) > 0.001) {
       try {
         video.playbackRate = playbackRate;
@@ -1414,14 +1468,19 @@ export class VJRenderer {
       duration > 0 &&
       !video.seeking
     ) {
-      const target = Math.min(
-        modulo(clock, duration),
-        Math.max(0, duration - 0.001),
-      );
-      const drift = Math.abs(
-        modulo(video.currentTime - target + duration / 2, duration) -
-          duration / 2,
-      );
+      // Seeking just inside duration selects the final real frame without
+      // assuming an FPS. Keep the texture while that seek is decoding.
+      const target = once
+        ? finished
+          ? lastFrame
+          : clamp(clock, 0, lastFrame)
+        : Math.min(modulo(clock, duration), lastFrame);
+      const drift = once
+        ? Math.abs(video.currentTime - target)
+        : Math.abs(
+            modulo(video.currentTime - target + duration / 2, duration) -
+              duration / 2,
+          );
       const jump =
         Number.isFinite(media.lastClock) &&
         Math.abs(clock - media.lastClock) >
@@ -1430,11 +1489,15 @@ export class VJRenderer {
       const resumed = playing && !media.lastPlaying;
       const due = now - media.lastSeek > (playing ? 1200 : 80);
       if (
-        drift > (playing ? 0.28 : 1 / 30) &&
-        (initial || jump || resumed || due)
+        // currentTime can be rounded by the browser. A successful terminal
+        // seek must not repeat forever just because the getter rounds it.
+        (!finished || media.onceEndTarget !== target) &&
+        drift > (finished || backwards ? 0.000001 : playing ? 0.28 : 1 / 30) &&
+        (initial || jump || resumed || due || finished || backwards)
       ) {
         try {
           video.currentTime = target;
+          if (finished) media.onceEndTarget = target;
           media.dirty = true;
           media.lastSeek = now;
         } catch (error) {

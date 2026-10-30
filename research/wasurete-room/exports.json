@@ -1,0 +1,54 @@
+[
+  {
+    "key": "exterior",
+    "name": "家の外観",
+    "section": "main",
+    "frames": 288,
+    "source": "exterior-source.png",
+    "in": null,
+    "out": null,
+    "id": "original-wasurete-exterior",
+    "duration": 12.0,
+    "bytes": 4429201,
+    "review": "full decode passed; visual review recorded in research/wasurete-room-production.json"
+  },
+  {
+    "key": "lived-in-room",
+    "name": "生活のある部屋",
+    "section": "a",
+    "frames": 96,
+    "source": "trial-original.mp4",
+    "in": 0,
+    "out": 4,
+    "id": "original-wasurete-lived-in-room",
+    "duration": 4.0,
+    "bytes": 736447,
+    "review": "full decode passed; visual review recorded in research/wasurete-room-production.json"
+  },
+  {
+    "key": "emptying-room",
+    "name": "物が消えていく部屋",
+    "section": "b",
+    "frames": 360,
+    "source": "trial-original.mp4",
+    "in": 0,
+    "out": 15,
+    "id": "original-wasurete-emptying-room",
+    "duration": 15.0,
+    "bytes": 2978598,
+    "review": "full decode passed; visual review recorded in research/wasurete-room-production.json"
+  },
+  {
+    "key": "empty-room",
+    "name": "何もなくなった部屋",
+    "section": "c",
+    "frames": 72,
+    "source": "trial-original.mp4",
+    "in": 12,
+    "out": 15,
+    "id": "original-wasurete-empty-room",
+    "duration": 3.0,
+    "bytes": 566459,
+    "review": "full decode passed; visual review recorded in research/wasurete-room-production.json"
+  }
+]

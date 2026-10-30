@@ -64,6 +64,48 @@ describe("setlist scene library filters", () => {
     expect(shuffled).toEqual(before);
   });
 
+  it("keeps duplicate song sections visible in stable input order without preferring a provider", () => {
+    const variant = (provider: string, section: string) => {
+      const clip = scene(`${provider}-${section}`, "wasurete-kudasai", section);
+      return { ...clip, tags: [...clip.tags, provider] };
+    };
+    const input = [
+      variant("canva", "c"),
+      variant("canva", "main"),
+      asset("ordinary", []),
+      variant("original", "b"),
+      variant("canva", "a"),
+      variant("canva", "b"),
+      variant("original", "main"),
+      variant("original", "a"),
+      variant("original", "c"),
+    ];
+    const before = structuredClone(input);
+    expect(ids(sortSetlistScenes(input))).toEqual([
+      "canva-main",
+      "original-main",
+      "ordinary",
+      "canva-a",
+      "original-a",
+      "original-b",
+      "canva-b",
+      "canva-c",
+      "original-c",
+    ]);
+    expect(
+      ids(
+        filterLibraryAssets(
+          input,
+          SETLIST_SCENE_TAG,
+          "",
+          "wasurete-kudasai",
+          "b",
+        ),
+      ),
+    ).toEqual(["original-b", "canva-b"]);
+    expect(input).toEqual(before);
+  });
+
   it("preserves non-scene positions and the relative order of unknown scene tags", () => {
     const ordinary = asset("ordinary", []),
       later = asset("later", []);

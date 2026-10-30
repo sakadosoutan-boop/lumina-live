@@ -323,6 +323,525 @@ describe("video clock and resource handling", () => {
     kind: "video",
     url: "blob:host-owned",
   };
+  const onceAsset: Asset = { ...videoAsset, playback: "once" };
+
+  it.each([undefined, "loop"] as const)(
+    "preserves global modulo sync and decoder retention for playback %s",
+    (playback) => {
+      let now = 0;
+      vi.spyOn(performance, "now").mockImplementation(() => now);
+      const r = rig([{ ...videoAsset, playback }]);
+      r.current.playing = false;
+      r.current.time = 200.5;
+      r.current.beat = 401;
+      r.current.decks[0].beatSync = false;
+      r.renderer.render(r.current);
+      const video = document.videos[0];
+      expect(video.loop).toBe(true);
+      expect(video.currentTime).toBe(0.5);
+      r.renderer.setAssets([{ ...videoAsset, playback: "loop" }]);
+      now = 100;
+      r.current.decks[0].beatSync = true;
+      r.renderer.render(r.current);
+      expect(document.videos).toHaveLength(1);
+      expect(video.currentTime).toBe(1);
+      expect(video.playbackRate).toBe(2);
+      r.renderer.dispose();
+      expect(r.gl.remaining()).toBe(0);
+    },
+  );
+
+  it("starts once at zero at global time 200 and scrubs in local seconds while paused", () => {
+    let now = 0;
+    vi.spyOn(performance, "now").mockImplementation(() => now);
+    const r = rig([onceAsset]);
+    r.current.time = 200;
+    r.current.playing = false;
+    r.current.decks[0].beatSync = false;
+    r.renderer.render(r.current);
+    const video = document.videos[0];
+    expect(video.loop).toBe(false);
+    expect(video.currentTime).toBe(0);
+    for (const [time, expected] of [
+      [203, 3],
+      [201.25, 1.25],
+      [199, 0],
+    ]) {
+      now += 100;
+      r.current.time = time;
+      r.renderer.render(r.current);
+      expect(video.currentTime).toBe(expected);
+    }
+    expect(video.play).not.toHaveBeenCalled();
+    r.renderer.dispose();
+  });
+
+  it.each([false, true])(
+    "holds once at frame zero before its retained origin and resumes at the origin (beatSync=%s)",
+    async (beatSync) => {
+      let now = 0;
+      vi.spyOn(performance, "now").mockImplementation(() => now);
+      const r = rig([onceAsset]);
+      r.current.time = 200;
+      r.current.beat = 400;
+      r.current.decks[0].beatSync = beatSync;
+      r.renderer.render(r.current);
+      await Promise.resolve();
+      const video = document.videos[0];
+      let decodedTime = 8;
+      Object.assign(video, { paused: true, ended: true });
+      const seek = vi.fn((value: number) => {
+        decodedTime = value;
+      });
+      Object.defineProperty(video, "currentTime", {
+        get: () => decodedTime,
+        set: seek,
+      });
+      now += 100;
+      r.current.time = 208;
+      r.current.beat = 416;
+      r.renderer.render(r.current);
+      expect(video.currentTime).toBe(7.999);
+      expect(video.play).toHaveBeenCalledTimes(1);
+      seek.mockClear();
+      for (const time of [0, 1, 100, 199.9]) {
+        now += 1500;
+        r.current.time = time;
+        r.current.beat = time * 2;
+        r.renderer.render(r.current);
+        expect(video.currentTime).toBe(0);
+        expect(video.paused).toBe(true);
+        expect(video.play).toHaveBeenCalledTimes(1);
+      }
+      expect(seek).toHaveBeenCalledExactlyOnceWith(0);
+      Object.assign(video, { ended: false });
+      now += 100;
+      r.current.time = 200;
+      r.current.beat = 400;
+      r.renderer.render(r.current);
+      expect(video.currentTime).toBe(0);
+      expect(video.play).toHaveBeenCalledTimes(2);
+      await Promise.resolve();
+      now += 100;
+      r.current.time = 201;
+      r.current.beat = 402;
+      r.renderer.render(r.current);
+      expect(video.currentTime).toBe(beatSync ? 2 : 1);
+      r.renderer.dispose();
+      expect(r.gl.remaining()).toBe(0);
+    },
+  );
+
+  it("pauses a pending play resolved after scrubbing before the once origin", async () => {
+    const r = rig([onceAsset]);
+    r.current.time = 200;
+    r.current.playing = false;
+    r.current.decks[0].beatSync = false;
+    r.renderer.render(r.current);
+    const video = document.videos[0];
+    let finish = () => {};
+    video.play.mockImplementation(
+      () =>
+        new Promise<void>((resolve) => {
+          finish = () => {
+            video.paused = false;
+            resolve();
+          };
+        }),
+    );
+    r.current.playing = true;
+    r.renderer.render(r.current);
+    r.current.time = 0;
+    r.renderer.render(r.current);
+    finish();
+    await Promise.resolve();
+    expect(video.paused).toBe(true);
+    r.renderer.render(r.current);
+    expect(video.play).toHaveBeenCalledTimes(1);
+    expect(video.currentTime).toBe(0);
+    r.renderer.dispose();
+  });
+
+  it("recreates video when setAssets changes playback on the same metadata object", () => {
+    const updated: Asset = { ...videoAsset };
+    const r = rig([updated]);
+    r.current.time = 200;
+    r.current.playing = false;
+    r.current.decks[0].beatSync = false;
+    r.renderer.render(r.current);
+    const first = document.videos[0];
+    expect(first.loop).toBe(true);
+    updated.playback = "once";
+    r.renderer.setAssets([updated]);
+    expect(first.cancelVideoFrameCallback).toHaveBeenCalledOnce();
+    r.renderer.render(r.current);
+    const once = document.videos[1];
+    expect(once.loop).toBe(false);
+    expect(once.currentTime).toBe(0);
+    delete updated.playback;
+    r.renderer.setAssets([updated]);
+    expect(once.cancelVideoFrameCallback).toHaveBeenCalledOnce();
+    r.renderer.render(r.current);
+    expect(document.videos[2].loop).toBe(true);
+    expect(document.videos[2].currentTime).toBe(0); // 200 modulo 8
+    r.renderer.dispose();
+    expect(r.gl.remaining()).toBe(0);
+  });
+
+  it("anchors raw beats on first decoded sync after off-air preload and delayed metadata", () => {
+    let now = 0;
+    vi.spyOn(performance, "now").mockImplementation(() => now);
+    const r = rig([builtInAssets[0], onceAsset]);
+    r.current.decks = [deck(builtInAssets[0].id), deck(onceAsset.id)];
+    r.current.time = 100;
+    r.current.beat = 200;
+    r.current.playing = false;
+    r.renderer.render(r.current);
+    const video = document.videos[0];
+    expect(video.play).not.toHaveBeenCalled();
+    video.duration = NaN;
+    video.readyState = 0;
+    r.current.crossfade = 1;
+    r.current.time = 200;
+    r.current.beat = 400;
+    r.renderer.render(r.current);
+    video.duration = 15;
+    video.readyState = 2;
+    now += 100;
+    r.current.time = 201;
+    r.current.beat = 402;
+    r.renderer.render(r.current);
+    expect(video.currentTime).toBe(0);
+    now += 100;
+    r.current.time = 202;
+    r.current.beat = 404;
+    r.renderer.render(r.current);
+    expect(video.currentTime).toBe(3.75); // two local beats of an eight-beat clip
+    expect(video.playbackRate).toBe(3.75);
+    now += 100;
+    r.current.beat = 403;
+    r.renderer.render(r.current);
+    expect(video.currentTime).toBe(1.875);
+    r.renderer.dispose();
+  });
+
+  it.each([false, true])(
+    "starts once from zero after a five-second loading delay (beatSync=%s)",
+    async (beatSync) => {
+      let now = 0;
+      vi.spyOn(performance, "now").mockImplementation(() => now);
+      const r = rig([builtInAssets[0], onceAsset]);
+      r.current.decks = [
+        deck(builtInAssets[0].id),
+        { ...deck(onceAsset.id), beatSync },
+      ];
+      r.renderer.render(r.current); // Off-air preload creates the decoder.
+      const video = document.videos[0];
+      video.readyState = 0;
+      video.duration = NaN;
+      r.current.crossfade = 1;
+      r.current.time = 200;
+      r.current.beat = 400;
+      r.renderer.render(r.current);
+      expect(video.currentTime).toBe(0);
+      expect(video.play).not.toHaveBeenCalled();
+      now = 5000;
+      r.current.time = 205;
+      r.current.beat = 410;
+      video.duration = 15;
+      video.readyState = 1; // Metadata alone cannot start the story.
+      r.renderer.render(r.current);
+      expect(video.currentTime).toBe(0);
+      expect(video.play).not.toHaveBeenCalled();
+      now += 100;
+      r.current.time = 205.1;
+      r.current.beat = 410.2;
+      video.readyState = 2;
+      video.seeking = true;
+      r.renderer.render(r.current);
+      expect(video.play).not.toHaveBeenCalled();
+      video.seeking = false;
+      r.renderer.render(r.current);
+      expect(video.currentTime).toBe(0);
+      expect(video.play).toHaveBeenCalledOnce();
+      await Promise.resolve();
+      now += 1000;
+      r.current.time = 206.1;
+      r.current.beat = 412.2;
+      r.renderer.render(r.current);
+      expect(video.currentTime).toBeCloseTo(beatSync ? 3.75 : 1);
+      r.current.time = 204;
+      r.current.beat = 408;
+      r.renderer.render(r.current);
+      expect(video.currentTime).toBe(0);
+      expect(video.paused).toBe(true);
+      expect(video.play).toHaveBeenCalledOnce();
+      r.renderer.dispose();
+      expect(r.gl.remaining()).toBe(0);
+    },
+  );
+
+  it.each([undefined, "loop"] as const)(
+    "preserves native play attempts before decoding for ordinary playback %s",
+    async (playback) => {
+      const r = rig([builtInAssets[0], { ...videoAsset, playback }]);
+      r.current.decks = [
+        deck(builtInAssets[0].id),
+        { ...deck(videoAsset.id), beatSync: false },
+      ];
+      r.renderer.render(r.current);
+      const video = document.videos[0];
+      video.readyState = 0;
+      video.duration = NaN;
+      r.current.crossfade = 1;
+      r.current.time = 200;
+      r.renderer.render(r.current);
+      expect(video.play).toHaveBeenCalledOnce();
+      await Promise.resolve();
+      video.readyState = 2;
+      video.duration = 8;
+      r.current.time = 205;
+      r.renderer.render(r.current);
+      expect(video.currentTime).toBe(5); // Ordinary clips still use global time.
+      r.renderer.dispose();
+    },
+  );
+
+  it("keeps once origins per slot and applies capped speed to the local seek clock", () => {
+    let now = 0;
+    vi.spyOn(performance, "now").mockImplementation(() => now);
+    const r = rig([onceAsset]);
+    r.current.time = 200;
+    r.current.beat = 400;
+    r.current.playing = false;
+    r.current.decks = [deck(onceAsset.id), deck(onceAsset.id)];
+    r.renderer.render(r.current);
+    const [a, b] = document.videos;
+    a.duration = b.duration = 240;
+    now += 100;
+    r.current.crossfade = 0.5;
+    r.current.time = 201;
+    r.current.beat = 402;
+    r.renderer.render(r.current);
+    expect(a.playbackRate).toBe(16);
+    expect(a.currentTime).toBe(16);
+    expect(b.currentTime).toBe(0);
+    now += 100;
+    r.current.time = 202;
+    r.current.beat = 404;
+    r.renderer.render(r.current);
+    expect(a.currentTime).toBe(32);
+    expect(b.currentTime).toBe(16);
+    r.renderer.dispose();
+  });
+
+  it("holds the last texture through the terminal seek, never replays, and allows backward scrubbing", async () => {
+    let now = 0;
+    vi.spyOn(performance, "now").mockImplementation(() => now);
+    const r = rig([onceAsset]);
+    r.current.time = 200;
+    r.current.decks[0].beatSync = false;
+    r.renderer.render(r.current);
+    await Promise.resolve();
+    const video = document.videos[0];
+    video.duration = 15;
+    let decodedTime = 14.98;
+    const seek = vi.fn((value: number) => {
+      decodedTime = value;
+      video.seeking = true;
+    });
+    Object.defineProperty(video, "currentTime", {
+      get: () => decodedTime,
+      set: seek,
+    });
+    const uploads = r.gl.api.texSubImage2D.mock.calls.length;
+    const mediaDraws = r.gl.draws.filter((d) =>
+      d.uniforms.has("uMediaAspect"),
+    ).length;
+    now += 100;
+    r.current.time = 215;
+    r.renderer.render(r.current);
+    expect(seek).toHaveBeenCalledExactlyOnceWith(14.999);
+    expect(video.paused).toBe(true);
+    expect(r.gl.api.texSubImage2D).toHaveBeenCalledTimes(uploads);
+    expect(
+      r.gl.draws.filter((d) => d.uniforms.has("uMediaAspect")),
+    ).toHaveLength(mediaDraws + 1);
+    video.seeking = false;
+    video.onseeked?.();
+    r.renderer.render(r.current);
+    expect(r.gl.api.texSubImage2D).toHaveBeenCalledTimes(uploads + 1);
+    for (const time of [216, 230, 245]) {
+      now += 1500;
+      r.current.time = time;
+      r.renderer.render(r.current);
+    }
+    expect(video.play).toHaveBeenCalledTimes(1);
+    expect(seek).toHaveBeenCalledTimes(1);
+    expect(r.gl.api.texSubImage2D).toHaveBeenCalledTimes(uploads + 1);
+    now += 100;
+    r.current.time = 209;
+    r.renderer.render(r.current);
+    expect(seek).toHaveBeenLastCalledWith(9);
+    expect(video.play).toHaveBeenCalledTimes(2);
+    await Promise.resolve();
+    r.renderer.dispose();
+    expect(r.gl.remaining()).toBe(0);
+  });
+
+  it("does not replay a native ended clip ahead of the render clock, but scrubs back out of that hold", async () => {
+    let now = 0;
+    vi.spyOn(performance, "now").mockImplementation(() => now);
+    const r = rig([onceAsset]);
+    r.current.time = 200;
+    r.current.decks[0].beatSync = false;
+    r.renderer.render(r.current);
+    await Promise.resolve();
+    const video = document.videos[0];
+    Object.assign(video, { currentTime: 8, paused: true, ended: true });
+    now += 100;
+    r.current.time = 207.9;
+    r.renderer.render(r.current);
+    Object.assign(video, { ended: false }); // Seeking inside duration clears native ended.
+    for (let i = 0; i < 3; i++) {
+      now += 1500;
+      r.renderer.render(r.current);
+    }
+    expect(video.play).toHaveBeenCalledTimes(1);
+    expect(video.currentTime).toBe(7.999);
+    r.current.time = 207.85; // Smaller than the ordinary playing drift tolerance.
+    now += 100;
+    r.renderer.render(r.current);
+    expect(video.currentTime).toBeCloseTo(7.85);
+    expect(video.play).toHaveBeenCalledTimes(2);
+    await Promise.resolve();
+    r.current.time = 202;
+    now += 100;
+    r.renderer.render(r.current);
+    expect(video.currentTime).toBe(2);
+    expect(video.play).toHaveBeenCalledTimes(2);
+    await Promise.resolve();
+    r.renderer.dispose();
+  });
+
+  it("does not repeatedly seek the terminal frame when currentTime has reduced precision", async () => {
+    let now = 0;
+    vi.spyOn(performance, "now").mockImplementation(() => now);
+    const r = rig([onceAsset]);
+    r.current.time = 200;
+    r.current.decks[0].beatSync = false;
+    r.renderer.render(r.current);
+    await Promise.resolve();
+    const video = document.videos[0];
+    let roundedTime = 7.9;
+    const seek = vi.fn((value: number) => {
+      roundedTime = Math.round(value * 500) / 500;
+    });
+    Object.defineProperty(video, "currentTime", {
+      get: () => roundedTime,
+      set: seek,
+    });
+    for (const time of [208, 209, 224]) {
+      now += 1500;
+      r.current.time = time;
+      r.renderer.render(r.current);
+    }
+    expect(seek).toHaveBeenCalledExactlyOnceWith(7.999);
+    expect(video.play).toHaveBeenCalledTimes(1);
+    expect(video.paused).toBe(true);
+    r.current.time = 202;
+    now += 100;
+    r.renderer.render(r.current);
+    expect(video.currentTime).toBe(2);
+    await Promise.resolve();
+    r.renderer.dispose();
+  });
+
+  it("keeps the once origin through freeze/blackout and pauses a play promise resolved after the end", async () => {
+    const r = rig([onceAsset]);
+    r.current.time = 200;
+    r.current.playing = false;
+    r.current.decks[0].beatSync = false;
+    r.renderer.render(r.current);
+    const video = document.videos[0];
+    let finish = () => {};
+    video.play.mockImplementation(
+      () =>
+        new Promise<void>((resolve) => {
+          finish = () => {
+            video.paused = false;
+            resolve();
+          };
+        }),
+    );
+    r.current.playing = true;
+    r.renderer.render(r.current);
+    r.current.freeze = true;
+    r.current.time = 204;
+    r.renderer.render(r.current);
+    expect(video.currentTime).toBe(0);
+    r.current.blackout = true;
+    r.current.time = 210;
+    r.renderer.render(r.current);
+    r.current.freeze = r.current.blackout = false;
+    r.renderer.render(r.current);
+    expect(video.currentTime).toBe(7.999);
+    finish();
+    await Promise.resolve();
+    expect(video.paused).toBe(true);
+    r.renderer.render(r.current);
+    expect(video.play).toHaveBeenCalledTimes(1);
+    r.renderer.dispose();
+  });
+
+  it("retains a recalled once clip but resets its origin after release or a playback-mode change", () => {
+    let now = 0;
+    vi.spyOn(performance, "now").mockImplementation(() => now);
+    const revoke = vi.spyOn(URL, "revokeObjectURL");
+    const r = rig([onceAsset]);
+    r.current.time = 200;
+    r.current.playing = false;
+    r.current.decks[0].beatSync = false;
+    r.renderer.render(r.current);
+    const first = document.videos[0];
+    now += 100;
+    r.current.time = 203;
+    r.current.decks[0] = { ...r.current.decks[0] };
+    r.renderer.setAssets([{ ...onceAsset, name: "Recalled" }]);
+    r.renderer.render(r.current);
+    expect(document.videos).toHaveLength(1);
+    expect(first.currentTime).toBe(3);
+    r.current.blackout = true;
+    r.current.decks[0].opacity = 0;
+    r.renderer.render(r.current);
+    expect(first.cancelVideoFrameCallback).toHaveBeenCalledOnce();
+    expect(first.removeAttribute).toHaveBeenCalledWith("src");
+    expect(first.onseeked).toBeNull();
+    expect(first.onerror).toBeNull();
+    r.current.blackout = false;
+    r.current.decks[0].opacity = 1;
+    r.current.time = 210;
+    r.renderer.render(r.current);
+    expect(document.videos[1].currentTime).toBe(0);
+    r.renderer.setAssets([{ ...onceAsset, playback: "loop" }]);
+    r.renderer.render(r.current);
+    expect(document.videos[1].cancelVideoFrameCallback).toHaveBeenCalledOnce();
+    expect(document.videos[2].loop).toBe(true);
+    expect(document.videos[2].currentTime).toBe(2);
+    r.renderer.setAssets([onceAsset]);
+    r.renderer.render(r.current);
+    expect(document.videos[3].loop).toBe(false);
+    expect(document.videos[3].currentTime).toBe(0);
+    r.renderer.dispose();
+    expect(
+      document.videos.every(
+        (v) => v.cancelVideoFrameCallback.mock.calls.length === 1,
+      ),
+    ).toBe(true);
+    expect(revoke).not.toHaveBeenCalled();
+    expect(r.gl.remaining()).toBe(0);
+  });
+
   it("reports off-air video readiness only after assignment, decoding and seeking complete", () => {
     const r = rig([builtInAssets[0], videoAsset]);
     expect(r.renderer.isDeckReady(0)).toBe(false);

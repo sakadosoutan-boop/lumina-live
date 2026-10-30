@@ -8,6 +8,7 @@ import {
   revokeMediaUrls,
   serializeShow,
   storeMedia,
+  validateAssetCatalog,
   validateShow,
 } from "../src/storage";
 import { OutputMediaBridge } from "../src/output-media";
@@ -99,6 +100,60 @@ afterEach(() => {
 });
 
 describe("show files at the live-app boundary", () => {
+  it.each(["loop", "once"] as const)(
+    "persists explicit %s playback through catalogs, saves, and missing media",
+    async (playback) => {
+      const clip = asset("story", { playback, url: "indexeddb:story" });
+      expect(validateAssetCatalog([clip])[0].playback).toBe(playback);
+      const input = show();
+      input.assets.push(clip);
+      const json = serializeShow(input);
+      expect(JSON.parse(json).assets.at(-1).playback).toBe(playback);
+      const loaded = validateShow(json);
+      expect(loaded.assets.at(-1)?.playback).toBe(playback);
+      vi.stubGlobal("indexedDB", undefined);
+      loaded.assets = await restoreMedia(loaded.assets);
+      expect(loaded.assets.at(-1)).toMatchObject({
+        playback,
+        url: undefined,
+        status: "ファイルの再リンクが必要",
+      });
+      expect(validateShow(serializeShow(loaded)).assets.at(-1)?.playback).toBe(
+        playback,
+      );
+    },
+  );
+
+  it("keeps absent playback absent and serialized legacy assets byte-compatible", () => {
+    const input = show();
+    input.assets.push(asset("legacy", { url: "/media/legacy.mp4" }));
+    const json = serializeShow(input);
+    const catalog = validateAssetCatalog(input.assets);
+    expect(catalog.every((a) => !Object.hasOwn(a, "playback"))).toBe(true);
+    const loaded = validateShow(json);
+    expect(loaded.assets.every((a) => !Object.hasOwn(a, "playback"))).toBe(
+      true,
+    );
+    input.assets.forEach((a) => {
+      a.playback = undefined;
+    });
+    expect(serializeShow(input)).toBe(json);
+    expect(serializeShow(loaded)).toBe(json);
+  });
+
+  it.each([null, "", "Once", "repeat", false, 0, [], {}])(
+    "rejects invalid playback %j at catalog, save, and load boundaries",
+    (playback) => {
+      const input = show();
+      input.assets.push(Object.assign(asset(), { playback }));
+      expect(() => validateAssetCatalog(input.assets)).toThrow(
+        /assets.*playback/,
+      );
+      expect(() => read(input)).toThrow(/assets.*playback/);
+      expect(() => serializeShow(input)).toThrow(/assets.*playback/);
+    },
+  );
+
   it.each([0, 0.25, 0.5, 1])("round-trips horizontal lyric center %s", (x) => {
     const input = show();
     input.lyricStyle.x = x;

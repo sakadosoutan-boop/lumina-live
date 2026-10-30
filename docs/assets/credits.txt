@@ -995,3 +995,25 @@ Canvaで動画・横長・無料フィルターを確認して選定。個別作
 Canva Free Content License・出典と利用条件を参照
 Woman beach relaxation | https://www.canva.com/design/DAHZTxjKrIE/gK62YruOLY3g4og3YNapXw/edit
 Canvaで動画・横長・無料フィルターを確認して選定。個別作者名は未記録。Canvaから書き出し、無音化・短尺化・ループ加工。
+
+
+=== 忘れてください · 家と記憶（AIオリジナル） ===
+忘れてください · 家と記憶 — 家の外観
+AI生成オリジナル · Lumina Liveで利用可
+OpenAI ImageGen · exterior-source.png
+AI生成静止画を使用したカメラ移動。葉や建物そのものは動きません。 オリジナルの模型風背景。1280×720・24fps・H.264・無音に書き出し。
+
+忘れてください · 家と記憶 — 生活のある部屋
+AI生成オリジナル · Lumina Liveで利用可
+HeyGen Video 1 · 3f2798b92bb34776acf5e4d87ff721d4 · https://resource2.heygen.ai/videos/4f11394dbb9e4330825165e58204ebcc/4f11394dbb9e4330825165e58204ebcc/01a18b1f-fdfc-746e-a9f0-6aca5fa0d495.mp4
+HeyGen生成動画から実時間0–4秒を抽出。 オリジナルの模型風背景。1280×720・24fps・H.264・無音に書き出し。
+
+忘れてください · 家と記憶 — 物が消えていく部屋
+AI生成オリジナル · Lumina Liveで利用可
+HeyGen Video 1 · 3f2798b92bb34776acf5e4d87ff721d4 · https://resource2.heygen.ai/videos/4f11394dbb9e4330825165e58204ebcc/4f11394dbb9e4330825165e58204ebcc/01a18b1f-fdfc-746e-a9f0-6aca5fa0d495.mp4
+HeyGen生成動画から実時間0–15秒を抽出。 オリジナルの模型風背景。1280×720・24fps・H.264・無音に書き出し。
+
+忘れてください · 家と記憶 — 何もなくなった部屋
+AI生成オリジナル · Lumina Liveで利用可
+HeyGen Video 1 · 3f2798b92bb34776acf5e4d87ff721d4 · https://resource2.heygen.ai/videos/4f11394dbb9e4330825165e58204ebcc/4f11394dbb9e4330825165e58204ebcc/01a18b1f-fdfc-746e-a9f0-6aca5fa0d495.mp4
+HeyGen生成動画から実時間12–15秒を抽出。 オリジナルの模型風背景。1280×720・24fps・H.264・無音に書き出し。

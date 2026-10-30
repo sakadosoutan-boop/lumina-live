@@ -1,0 +1,90 @@
+{
+  "updatedAt": "2026-10-30",
+  "song": "ヨルシカ / 忘れてください",
+  "request": "家の外観、生活感のある部屋、少しずつ物がなくなる部屋、何もなくなった部屋をVJ用動画として制作する",
+  "style": "original handcrafted miniature diorama",
+  "format": "1280×720, 24fps, H.264 yuv420p MP4, silent; 16:9",
+  "continuity": "Same room, fixed camera, pale floorboards, off-white plaster, garden window left, doorway right; furnishings disappear in stages while architecture remains fixed.",
+  "targetAssets": [
+    {
+      "id": "original-wasurete-exterior",
+      "name": "家の外観",
+      "status": "exported",
+      "duration": 12
+    },
+    {
+      "id": "original-wasurete-lived-in-room",
+      "name": "生活のある部屋",
+      "status": "exported",
+      "duration": 4
+    },
+    {
+      "id": "original-wasurete-emptying-room",
+      "name": "物が消えていく部屋",
+      "status": "exported",
+      "duration": 15,
+      "playback": "once"
+    },
+    {
+      "id": "original-wasurete-empty-room",
+      "name": "何もなくなった部屋",
+      "status": "exported",
+      "duration": 3
+    }
+  ],
+  "trial": {
+    "provider": "HeyGen",
+    "model": "heygen-video-1",
+    "videoId": "3f2798b92bb34776acf5e4d87ff721d4",
+    "durationSeconds": 15,
+    "aspectRatio": "16:9",
+    "statusAtSubmission": "pending",
+    "playerShown": true,
+    "beatPlan": [
+      "0–5s: lived-in room, wooden table, two chairs, two mugs, bookcase and plant; subtle curtain movement",
+      "5–11s: mugs/books, plant/bookcase, chairs, table gently disappear in order; locked architecture and camera",
+      "11–15s: same room empty, hold on bare floor and walls with soft light and curtain movement"
+    ],
+    "reviewStatus": "All frames decoded; viewed source and final contact sheets sampled each second. Real-time video playback not available.",
+    "publicAppStatus": "ready_to_publish",
+    "billingAction": "No subscription purchase or credit top-up performed. Account reported free plan; generation accepted.",
+    "status": "completed",
+    "requestedResolution": "1080p",
+    "actualWidth": 1344,
+    "actualHeight": 768,
+    "sourcePath": "research/wasurete-room/trial-original.mp4"
+  },
+  "nextSteps": [
+    "Complete unit/build checks, publish main, verify public HTML/catalog/media hashes."
+  ],
+  "exterior": {
+    "failedVideoAttempt": "HeyGen insufficient_credit (402): free monthly videos exhausted. No video ID created, no subscription purchase or top-up.",
+    "approvedAlternative": "User chose AI still with slow camera movement, without additional purchase.",
+    "imageProvider": "built-in image_gen",
+    "imagePath": "research/wasurete-room/exterior-source.png",
+    "referencePath": "research/wasurete-room/room-reference.png",
+    "promptPath": "research/wasurete-room/exterior-prompt.txt",
+    "motion": "12s cosine zoom returning to initial crop; house and foliage are static."
+  },
+  "exportScript": "python scripts/render-wasurete-room.py",
+  "exportManifest": "research/wasurete-room/exports.json",
+  "notes": [
+    "Existing Canva IDs and scenes preserved.",
+    "Separate story pack button; default bulk-add still uses nature footage.",
+    "Once media starts from its slot origin and holds end. Same retained asset does not restart; switch away and reload to replay.",
+    "Not tested on actual Chromebook or HDMI projector."
+  ],
+  "validation": {
+    "tests": 617,
+    "testFiles": 20,
+    "productionBuild": "passed",
+    "standaloneBuild": "passed",
+    "media": "All four H264 files fully decoded; 1280x720,24fps,no audio; visual contact sheets inspected every second.",
+    "browser": "Not available; no real-time browser playback or Chromebook/HDMI QA claimed."
+  },
+  "publication": {
+    "branch": "main",
+    "url": "https://sakadosoutan-boop.github.io/lumina-live/",
+    "statusAtCommit": "ready_to_publish"
+  }
+}

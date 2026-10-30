@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import type { Asset, Deck, Show, SongScene } from "../src/types";
+import { mergeAssetCatalog } from "../src/media-library";
 import {
   applySongScene,
   assignSceneMainAsset,
@@ -292,6 +293,89 @@ describe("collection scene creation", () => {
     expect(scenes[1].fx.mapping).toBe(0.8);
     expect(live).toEqual(before);
   });
+
+  it.each([false, true])(
+    "uses the first matching asset after merging additive originals (exterior: %s)",
+    (includeExterior) => {
+      const sections = ["main", "a", "b", "c"];
+      const canva = sections.map((section) =>
+        tagged(section, "wasurete-kudasai", {
+          id: `canva-${section}`,
+          tags: [
+            "setlist-scene",
+            "song:wasurete-kudasai",
+            `section:${section}`,
+            "canva",
+          ],
+        }),
+      );
+      const originals = sections
+        .filter((section) => includeExterior || section !== "main")
+        .map((section) =>
+          tagged(section, "wasurete-kudasai", {
+            id: `original-wasurete-${section}`,
+            tags: [
+              "setlist-scene",
+              "song:wasurete-kudasai",
+              `section:${section}`,
+              "original",
+            ],
+          }),
+        );
+      // Even originals published first cannot move IDs already in a saved library.
+      const incoming = [...originals, ...canva];
+      const live = show();
+      live.assets = canva;
+      live.songs[0].scenes = [
+        assignSceneMainAsset(
+          captureSongScene(live, "Saved", "saved"),
+          canva[1],
+        ),
+      ];
+      const before = structuredClone({ live, incoming });
+      const merged = {
+        ...live,
+        assets: mergeAssetCatalog(live.assets, incoming),
+      };
+      expect(merged.assets.map((a) => a.id)).toEqual([
+        ...canva.map((a) => a.id),
+        ...originals.map((a) => a.id),
+      ]);
+      let n = 0;
+      const scenes = createCollectionSongScenes(
+        merged,
+        "wasurete-kudasai",
+        () => `scene-${++n}`,
+      );
+      expect(scenes.map((s) => s.decks[0].assetId)).toEqual(
+        canva.map((a) => a.id),
+      );
+      expect(scenes.map((s) => s.name)).toEqual([
+        "基本",
+        "Aメロ",
+        "Bメロ",
+        "Cメロ",
+      ]);
+      expect(merged.songs[0].scenes).toEqual(before.live.songs[0].scenes);
+
+      // A fresh library follows incoming order, selecting originals where present.
+      const fresh = { ...live, assets: mergeAssetCatalog([], incoming) };
+      expect(
+        createCollectionSongScenes(
+          fresh,
+          "wasurete-kudasai",
+          () => `fresh-${++n}`,
+        ).map((s) => s.decks[0].assetId),
+      ).toEqual(
+        sections.map((section) =>
+          includeExterior || section !== "main"
+            ? `original-wasurete-${section}`
+            : "canva-main",
+        ),
+      );
+      expect({ live, incoming }).toEqual(before);
+    },
+  );
 
   it("skips nonexistent sections without inventing footage or guessing titles", () => {
     const live = show();

@@ -24,6 +24,13 @@ export interface Asset {
   bpm?: number;
   beats?: number;
   duration?: number;
+  /**
+   * Videos default to global looping. Once waits for a decoded frame before
+   * anchoring the slot's first sync, holding zero before that origin and the
+   * final frame at completion. Loading does not advance once playback.
+   * Retained slots keep their origin across timeline resets and scene recalls.
+   */
+  playback?: "loop" | "once";
   license: string;
   source?: string;
   attribution?: string;

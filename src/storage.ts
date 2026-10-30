@@ -233,6 +233,12 @@ function readAsset(value: unknown, index: number): Asset {
   if (a.bpm !== undefined) asset.bpm = number(a.bpm, field + ".bpm", 20, 400);
   if (a.beats !== undefined)
     asset.beats = number(a.beats, field + ".beats", 1, 128, true);
+  if (a.playback !== undefined)
+    asset.playback = enumeration<NonNullable<Asset["playback"]>>(
+      a.playback,
+      field + ".playback",
+      ["loop", "once"],
+    );
   if (a.duration !== undefined)
     asset.duration = number(
       a.duration,

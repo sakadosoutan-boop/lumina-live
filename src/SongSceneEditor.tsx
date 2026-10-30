@@ -54,6 +54,12 @@ function SongSceneEditorView({
       )?.slug ?? "",
   );
   const full = scenes.length >= MAX_SONG_SCENES;
+  const roomStoryAssets = show.assets.filter((asset) =>
+    asset.tags.includes("wasurete-room-story"),
+  );
+  const hasRoomStory = ["main", "a", "b", "c"].every((section) =>
+    roomStoryAssets.some((asset) => asset.tags.includes(`section:${section}`)),
+  );
   const candidates = show.assets.filter((a) =>
     `${a.name} ${a.tags.join(" ")}`
       .toLowerCase()
@@ -86,9 +92,7 @@ function SongSceneEditorView({
       "現在の素材・レイヤー・エフェクトを曲のシーンに保存しました。セット保存で持ち出せます。",
     );
   };
-  const addCollection = () => {
-    if (!collection) return;
-    const added = createCollectionSongScenes(show, collection, createId);
+  const appendScenes = (added: SongScene[]) => {
     if (!added.length) {
       onNotice(
         "この曲の素材が見つかりません。素材ライブラリを読み込んでください。",
@@ -102,6 +106,26 @@ function SongSceneEditorView({
     onChange([...scenes, ...added]);
     onNotice(
       `${added.length}件を追加しました。シーン名や素材を編集して使えます。`,
+    );
+  };
+  const addCollection = () => {
+    if (!collection) return;
+    appendScenes(createCollectionSongScenes(show, collection, createId));
+  };
+  const addRoomStory = () => {
+    if (!hasRoomStory) return;
+    const names = [
+      "家の外観",
+      "生活のある部屋",
+      "物が消えていく部屋",
+      "何もなくなった部屋",
+    ];
+    appendScenes(
+      createCollectionSongScenes(
+        { ...show, assets: roomStoryAssets },
+        "wasurete-kudasai",
+        createId,
+      ).map((scene, index) => ({ ...scene, name: names[index] })),
     );
   };
   return (
@@ -139,6 +163,11 @@ function SongSceneEditorView({
         <button disabled={!collection || full} onClick={addCollection}>
           基本・A・B・Cを追加
         </button>
+        {collection === "wasurete-kudasai" && hasRoomStory && (
+          <button disabled={full} onClick={addRoomStory}>
+            家の外観→空室の4シーンを追加
+          </button>
+        )}
       </div>
       <div className="song-scene-tools">
         <label>
