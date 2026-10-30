@@ -1678,6 +1678,10 @@ function Console() {
     setActiveVisualScene({ songId: ownerId, id });
     announce(`${current.song.title} / ${scene.name} を呼び出しました`);
   };
+  const openSceneEditor = (id: string) => {
+    setSceneEditorSongId(id);
+    setModal("songScenes");
+  };
   const stampCue = (id: string) => {
     const at = lyricTime + song.offset;
     const cues = song.cues
@@ -1888,14 +1892,7 @@ function Console() {
           >
             次のシーン
           </button>
-          <button
-            onClick={() => {
-              setSceneEditorSongId(song.id);
-              setTab("setlist");
-            }}
-          >
-            シーン設定
-          </button>
+          <button onClick={() => openSceneEditor(song.id)}>シーン設定</button>
         </div>
         <button
           className={blackout ? "danger active" : "danger"}
@@ -2804,7 +2801,7 @@ function Console() {
                       <span>{s.bpm} BPM</span>
                       <span>{clock(s.duration)}</span>
                       <button onClick={() => switchSong(s.id)}>ロード</button>
-                      <button onClick={() => setSceneEditorSongId(s.id)}>
+                      <button onClick={() => openSceneEditor(s.id)}>
                         シーン設定
                         {s.scenes?.length ? ` (${s.scenes.length})` : ""}
                       </button>
@@ -2836,44 +2833,9 @@ function Console() {
                     </div>
                   ))}
                 </div>
-                <label className="song-scene-song-picker">
-                  シーンを編集する曲
-                  <select
-                    aria-label="シーンを編集する曲"
-                    value={sceneEditorSong.id}
-                    onChange={(e) => setSceneEditorSongId(e.target.value)}
-                  >
-                    {show.songs.map((s, i) => (
-                      <option key={s.id} value={s.id}>
-                        {i + 1}. {s.title}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <SongSceneEditor
-                  key={sceneEditorSong.id}
-                  song={sceneEditorSong}
-                  show={show}
-                  currentSongId={song.id}
-                  activeSceneId={
-                    activeVisualScene?.songId === sceneEditorSong.id
-                      ? activeVisualScene.id
-                      : ""
-                  }
-                  thumbnails={thumbnails}
-                  createId={uid}
-                  onChange={(scenes) =>
-                    setShow((s) => ({
-                      ...s,
-                      songs: s.songs.map((x) =>
-                        x.id === sceneEditorSong.id ? { ...x, scenes } : x,
-                      ),
-                    }))
-                  }
-                  onRecall={(id) => recallSongScene(id, sceneEditorSong.id)}
-                  onNotice={announce}
-                  onSave={() => void save()}
-                />
+                <p className="song-scene-footnote">
+                  各曲の「シーン設定」で専用の編集画面を開きます。曲の再生を止めずに準備できます。
+                </p>
               </>
             )}
           </section>
@@ -3169,11 +3131,13 @@ function Console() {
           }}
         >
           <section
-            className="modal"
+            className={
+              modal === "songScenes" ? "modal song-scenes-modal" : "modal"
+            }
             ref={modalPanel}
             role="dialog"
             aria-modal="true"
-            aria-label="設定"
+            aria-label={modal === "songScenes" ? "シーン設定" : "設定"}
           >
             <button
               className="modal-close"
@@ -3182,7 +3146,49 @@ function Console() {
             >
               <X size={18} />
             </button>
-            {modal === "library" ? (
+            {modal === "songScenes" ? (
+              <>
+                <h2>シーン設定</h2>
+                <label className="song-scene-song-picker">
+                  シーンを編集する曲
+                  <select
+                    aria-label="シーンを編集する曲"
+                    value={sceneEditorSong.id}
+                    onChange={(e) => setSceneEditorSongId(e.target.value)}
+                  >
+                    {show.songs.map((s, i) => (
+                      <option key={s.id} value={s.id}>
+                        {i + 1}. {s.title}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <SongSceneEditor
+                  key={sceneEditorSong.id}
+                  song={sceneEditorSong}
+                  show={show}
+                  currentSongId={song.id}
+                  activeSceneId={
+                    activeVisualScene?.songId === sceneEditorSong.id
+                      ? activeVisualScene.id
+                      : ""
+                  }
+                  thumbnails={thumbnails}
+                  createId={uid}
+                  onChange={(scenes) =>
+                    setShow((s) => ({
+                      ...s,
+                      songs: s.songs.map((x) =>
+                        x.id === sceneEditorSong.id ? { ...x, scenes } : x,
+                      ),
+                    }))
+                  }
+                  onRecall={(id) => recallSongScene(id, sceneEditorSong.id)}
+                  onNotice={announce}
+                  onSave={() => void save()}
+                />
+              </>
+            ) : modal === "library" ? (
               <>
                 <h2>素材管理</h2>
                 <p>

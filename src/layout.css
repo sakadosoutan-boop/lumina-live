@@ -60,6 +60,13 @@
   padding: 14px;
   margin-bottom: 20px;
 }
+.modal.song-scenes-modal {
+  width: 960px;
+  max-width: 100%;
+}
+.song-scenes-modal .song-scene-editor {
+  margin-bottom: 0;
+}
 .song-scene-heading {
   display: flex;
   justify-content: space-between;
